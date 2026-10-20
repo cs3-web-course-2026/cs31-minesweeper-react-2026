@@ -1,0 +1,90 @@
+.cell {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 1.125rem;
+  font-weight: bold;
+  user-select: none;
+  cursor: pointer;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.cellClosed {
+  background-color: #c0c0c0;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+}
+
+.cellClosed:active {
+  border: 1px solid #808080;
+}
+
+.cellOpened {
+  background-color: #ebebeb;
+  border: 1px solid #b0b0b0;
+  cursor: default;
+}
+
+.cellFlagged {
+  background-color: #c0c0c0;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+}
+
+.cellMine {
+  background-color: #ebebeb;
+  border: 1px solid #b0b0b0;
+}
+
+.cellMineExploded {
+  background-color: #f44;
+  border: 1px solid #404040;
+}
+
+.number1 {
+  color: #00f;
+}
+
+.number2 {
+  color: #080;
+}
+
+.number3 {
+  color: #f00;
+}
+
+.number4 {
+  color: #000080;
+}
+
+.number5 {
+  color: #800000;
+}
+
+.number6 {
+  color: #008080;
+}
+
+.number7 {
+  color: #000;
+}
+
+.number8 {
+  color: #808080;
+}
+
+@media (width <= 480px) {
+  .cell {
+    width: 1.875rem;
+    height: 1.875rem;
+    font-size: 1rem;
+  }
+}
