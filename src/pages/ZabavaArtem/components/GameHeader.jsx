@@ -9,7 +9,7 @@ function formatCounter(value) {
 function formatTime(seconds) {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = seconds % 60;
-  return `${minutes}${String(remainingSeconds).padStart(2, '0')}`.slice(-3);
+  return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
 }
 
 export default function GameHeader({ minesRemaining, gameTime, onNewGame }) {
@@ -26,7 +26,10 @@ export default function GameHeader({ minesRemaining, gameTime, onNewGame }) {
       >
         <span aria-hidden="true">🙂</span>
       </button>
-      <output className={styles.counter} aria-label="Elapsed time">
+      <output
+        className={`${styles.counter} ${styles.timeCounter}`}
+        aria-label="Elapsed time"
+      >
         {formatTime(gameTime)}
       </output>
     </header>
