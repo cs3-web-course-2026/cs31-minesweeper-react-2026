@@ -1,0 +1,6 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(var(--board-size), 1fr);
+  border: 3px solid;
+  border-color: #555 #fff #fff #555;
+}

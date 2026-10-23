@@ -1,0 +1,62 @@
+.header {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  border: 3px solid;
+  border-color: #555 #fff #fff #555;
+}
+
+.counter {
+  width: 72px;
+  padding: 4px 5px 2px;
+  overflow: hidden;
+  background: #000;
+  color: #f00;
+  font-family: 'Courier New', monospace;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.newGame {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: 0;
+  transition: none;
+  background: #c0c0c0;
+  border: 3px solid;
+  border-color: #fff #555 #555 #fff;
+  color: #ffea00;
+  cursor: pointer;
+}
+
+.newGame:hover {
+  transform: none;
+  background-color: #c0c0c0;
+}
+
+.newGame:active {
+  border-color: #555 #fff #fff #555;
+}
+
+.newGame:focus-visible {
+  outline: 2px solid #0000e0;
+  outline-offset: -5px;
+}
+
+@media (width <= 480px) {
+  .header {
+    min-height: 54px;
+    padding: 7px;
+    margin-bottom: 8px;
+  }
+
+  .counter {
+    width: 64px;
+    font-size: 24px;
+  }
+}
