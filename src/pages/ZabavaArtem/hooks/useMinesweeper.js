@@ -53,11 +53,11 @@ export function useMinesweeper() {
         return;
       }
 
-      const nextBoard = cloneBoard(board);
-      const selectedCell = nextBoard[row][col];
+      const selectedCell = board[row][col];
       setHasStarted(true);
 
       if (selectedCell.type === CELL_TYPE.MINE) {
+        const nextBoard = cloneBoard(board);
         nextBoard.forEach((rowCells, mineRow) => {
           rowCells.forEach((cell, mineCol) => {
             if (cell.type !== CELL_TYPE.MINE) return;
@@ -70,7 +70,7 @@ export function useMinesweeper() {
         return;
       }
 
-      openConnectedCells(nextBoard, row, col);
+      const nextBoard = openConnectedCells(board, row, col);
       setBoard(nextBoard);
       if (hasWon(nextBoard)) setStatus(GAME_STATUS.WIN);
     },

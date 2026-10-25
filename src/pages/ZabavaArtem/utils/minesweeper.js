@@ -63,11 +63,14 @@ export function getNeighbors(row, col) {
 }
 
 export function openConnectedCells(board, row, col) {
+  const nextBoard = board.map((rowCells) =>
+    rowCells.map((cell) => ({ ...cell })),
+  );
   const queue = [[row, col]];
 
   while (queue.length > 0) {
     const [currentRow, currentCol] = queue.shift();
-    const cell = board[currentRow][currentCol];
+    const cell = nextBoard[currentRow][currentCol];
 
     if (cell.state !== CELL_STATE.CLOSED || cell.type === CELL_TYPE.MINE) {
       continue;
@@ -78,6 +81,8 @@ export function openConnectedCells(board, row, col) {
       queue.push(...getNeighbors(currentRow, currentCol));
     }
   }
+
+  return nextBoard;
 }
 
 export function hasWon(board) {
