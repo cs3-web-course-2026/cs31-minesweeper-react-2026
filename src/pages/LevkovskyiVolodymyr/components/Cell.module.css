@@ -1,0 +1,70 @@
+.cell {
+  border: 1px solid #fff;
+  width: var(--cell-size, 100px);
+  height: var(--cell-size, 100px);
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 28px;
+  font-weight: bold;
+  user-select: none;
+  background: none;
+  padding: 0;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.closed {
+  background-color: #3b4d66;
+}
+
+.interactive.closed:hover {
+  cursor: pointer;
+  background-color: #273142;
+  transition: 0.3s;
+}
+
+.opened {
+  background-color: #2d9d65;
+}
+
+.flagged {
+  background-color: #f39c12;
+  color: #fff;
+}
+
+.flaggedWrong {
+  background-color: #8e44ad;
+}
+
+.bombed {
+  background-color: #d70a1b;
+}
+
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.firstExploded {
+  background-color: #d70a1b;
+  animation: pulsate 1s infinite ease-in-out;
+}
+
+@media (width <= 640px) {
+  .cell {
+    font-size: 18px;
+  }
+}

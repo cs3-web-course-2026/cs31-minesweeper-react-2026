@@ -1,0 +1,13 @@
+.boardContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.boardGrid {
+  border-collapse: collapse;
+  display: inline-grid;
+  gap: 0;
+  border: 1px solid #fff;
+}

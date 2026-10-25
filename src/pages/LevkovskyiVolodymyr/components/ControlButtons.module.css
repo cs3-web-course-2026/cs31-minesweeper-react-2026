@@ -1,0 +1,50 @@
+.controlsContainer {
+  display: flex;
+  gap: 10px;
+}
+
+.startButton {
+  padding: 10px;
+  width: 150px;
+  border-radius: 5px;
+  outline: none;
+  background-color: #f5c34c;
+  border: 1px solid #000;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+}
+
+.startButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.startButton:hover:not(:disabled) {
+  background-color: #ce9306;
+  transition: 0.3s;
+}
+
+.stopButton {
+  padding: 10px;
+  width: 150px;
+  border-radius: 5px;
+  outline: none;
+  background-color: #e50d0d;
+  border: 1px solid #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.stopButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.stopButton:hover:not(:disabled) {
+  background-color: #620606;
+  transition: 0.3s;
+}

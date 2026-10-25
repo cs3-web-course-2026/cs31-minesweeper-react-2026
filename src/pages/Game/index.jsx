@@ -64,10 +64,11 @@ function Game() {
     },
     {
       id: 2,
-      title: 'Basic Minesweeper',
-      description: 'A simple implementation with basic game mechanics',
-      author: 'Author Name',
-      link: '#',
+      title: 'Minesweeper Game by Volodymyr Levkovskyi',
+      description:
+        'React-based 6x6 Minesweeper with timer, flags counter, safe first move, and modular component architecture.',
+      author: 'Volodymyr Levkovskyi',
+      link: 'levkovskyi-volodymyr',
       difficulty: 'Beginner',
       status: 'Complete',
     },

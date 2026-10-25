@@ -1,0 +1,13 @@
+.statusItem {
+  font-size: 18px;
+  padding: 10px;
+  color: #000;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 0;
+  display: inline-block;
+}
+
+.statusItem:empty {
+  display: none;
+}

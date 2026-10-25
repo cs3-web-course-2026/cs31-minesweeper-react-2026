@@ -1,0 +1,46 @@
+.gameWrapper {
+  --cell-size: 100px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  min-height: 80vh;
+}
+
+.gameHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  width: 100%;
+  max-width: 626px;
+  margin-bottom: 20px;
+}
+
+.scoresContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.mainArea {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (width <= 640px) {
+  .gameWrapper {
+    --cell-size: min(14vw, 55px);
+  }
+
+  .gameHeader {
+    flex-direction: column;
+    align-items: center;
+  }
+}
