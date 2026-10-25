@@ -11,6 +11,12 @@ export const GAME_STATUS = {
   LOST: 'lost',
 };
 
+export const GAME_ACTION = {
+  RESTART: 'restart',
+  REVEAL_CELL: 'revealCell',
+  TOGGLE_FLAG: 'toggleFlag',
+};
+
 export const CELL_CONTENT = {
   MINE: 'mine',
   EMPTY: 'empty',

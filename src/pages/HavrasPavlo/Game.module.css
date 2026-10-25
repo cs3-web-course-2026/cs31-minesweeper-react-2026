@@ -1,4 +1,7 @@
 .game {
+  --cell-size: 2.25rem;
+  --button-size: 2.25rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,4 +35,10 @@
   border: 2px solid;
   border-color: #808080 #fff #fff #808080;
   box-sizing: border-box;
+}
+
+@media (width <= 480px) {
+  .game {
+    --cell-size: 1.875rem;
+  }
 }

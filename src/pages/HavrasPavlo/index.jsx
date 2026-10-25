@@ -13,21 +13,10 @@ import GameStatus from './components/GameStatus';
 import styles from './Game.module.css';
 
 
-function HavrasPavlo() {
-  const [searchParams] = useSearchParams();
-  const customMines = searchParams.get('mines');
+const MAX_MINES = DEFAULT_CONFIG.rows * DEFAULT_CONFIG.cols - 1;
 
-  const gameConfig = useMemo(() => {
-    if (customMines) {
-      const parsedMines = Number.parseInt(customMines, 10);
-      if (!Number.isNaN(parsedMines) && parsedMines > 0) {
-        return { ...DEFAULT_CONFIG, mineCount: parsedMines };
-      }
-    }
 
-    return DEFAULT_CONFIG;
-  }, [customMines]);
-
+function HavrasPavloGame({ gameConfig }) {
   const {
     board,
     gameStatus,
@@ -66,6 +55,25 @@ function HavrasPavlo() {
       </div>
     </main>
   );
+}
+
+
+function HavrasPavlo() {
+  const [searchParams] = useSearchParams();
+  const customMines = searchParams.get('mines');
+
+  const gameConfig = useMemo(() => {
+    const parsedMines = Number.parseInt(customMines, 10);
+
+    if (Number.isNaN(parsedMines) || parsedMines <= 0) {
+      return DEFAULT_CONFIG;
+    }
+
+    return { ...DEFAULT_CONFIG, mineCount: Math.min(parsedMines, MAX_MINES) };
+  }, [customMines]);
+
+  // key перестворює гру (і її стан), коли змінюється кількість мін у query-параметрі
+  return <HavrasPavloGame key={gameConfig.mineCount} gameConfig={gameConfig} />;
 }
 
 

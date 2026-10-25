@@ -1,6 +1,6 @@
 .cell {
-  width: 2.25rem;
-  height: 2.25rem;
+  width: var(--cell-size);
+  height: var(--cell-size);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,8 +83,6 @@
 
 @media (width <= 480px) {
   .cell {
-    width: 1.875rem;
-    height: 1.875rem;
     font-size: 1rem;
   }
 }

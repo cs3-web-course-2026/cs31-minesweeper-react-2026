@@ -7,7 +7,11 @@ function Board({ board, onReveal, onFlag }) {
   return (
     <div
       className={styles.board}
-      role="grid"
+      style={{
+        '--board-rows': board.length,
+        '--board-cols': board[0].length,
+      }}
+      role="group"
       aria-label="Ігрове поле"
     >
       {board.map((rowCells, rowIndex) =>

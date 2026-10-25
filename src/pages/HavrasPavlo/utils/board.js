@@ -4,10 +4,8 @@ import { isInBounds } from './checks.js';
 
 export function createCell() {
   return {
-    type: CELL_CONTENT.EMPTY,
     content: CELL_CONTENT.EMPTY,
     state: CELL_STATE.CLOSED,
-    neighborMines: 0,
     adjacentMines: 0,
     isExploded: false,
   };
@@ -51,21 +49,20 @@ export function calculateAdjacency(board) {
   const rows = board.length;
   const cols = board[0].length;
 
-  for (let row = 0; row < rows; row++) {
-    for (let col = 0; col < cols; col++) {
-      const cell = board[row][col];
-
-      if (cell.content === CELL_CONTENT.EMPTY) {
-        const adjacentCount = getNeighbours(row, col, rows, cols).filter(
-          ([neighbourRow, neighbourCol]) =>
-            board[neighbourRow][neighbourCol].content === CELL_CONTENT.MINE,
-        ).length;
-
-        cell.adjacentMines = adjacentCount;
-        cell.neighborMines = adjacentCount;
+  return board.map((rowCells, row) =>
+    rowCells.map((cell, col) => {
+      if (cell.content !== CELL_CONTENT.EMPTY) {
+        return { ...cell };
       }
-    }
-  }
+
+      const adjacentMines = getNeighbours(row, col, rows, cols).filter(
+        ([neighbourRow, neighbourCol]) =>
+          board[neighbourRow][neighbourCol].content === CELL_CONTENT.MINE,
+      ).length;
+
+      return { ...cell, adjacentMines };
+    }),
+  );
 }
 
 
@@ -78,9 +75,9 @@ export function placeMines(
   excludedCol = null,
 ) {
   const totalMinesToPlace = Math.min(mineCount, rows * cols - (excludedRow !== null ? 1 : 0));
-  let plantedMines = 0;
+  const minePositions = new Set();
 
-  while (plantedMines < totalMinesToPlace) {
+  while (minePositions.size < totalMinesToPlace) {
     const row = Math.floor(Math.random() * rows);
     const col = Math.floor(Math.random() * cols);
 
@@ -88,12 +85,16 @@ export function placeMines(
       continue;
     }
 
-    if (board[row][col].content !== CELL_CONTENT.MINE) {
-      board[row][col].content = CELL_CONTENT.MINE;
-      board[row][col].type = CELL_CONTENT.MINE;
-      plantedMines++;
-    }
+    minePositions.add(`${row}-${col}`);
   }
 
-  calculateAdjacency(board);
+  const boardWithMines = board.map((rowCells, row) =>
+    rowCells.map((cell, col) =>
+      minePositions.has(`${row}-${col}`)
+        ? { ...cell, content: CELL_CONTENT.MINE }
+        : { ...cell },
+    ),
+  );
+
+  return calculateAdjacency(boardWithMines);
 }

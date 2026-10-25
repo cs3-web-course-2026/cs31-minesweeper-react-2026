@@ -1,15 +1,8 @@
 import { memo } from 'react';
 
-import { COUNTER_DIGITS } from '../constants/game';
+import { formatCounterValue } from '../utils/format';
 
-import styles from './MineCounter.module.css';
-
-
-function formatCounter(count) {
-  const nonNegative = Math.max(0, count);
-
-  return String(nonNegative).padStart(COUNTER_DIGITS, '0');
-}
+import styles from './Counter.module.css';
 
 
 function MineCounter({ remainingCount }) {
@@ -20,7 +13,7 @@ function MineCounter({ remainingCount }) {
       aria-label="Залишилось прапорців"
     >
       <span className={styles.counterIcon} aria-hidden="true">🚩</span>
-      <span className={styles.counterValue}>{formatCounter(remainingCount)}</span>
+      <span className={styles.counterValue}>{formatCounterValue(remainingCount)}</span>
     </div>
   );
 }

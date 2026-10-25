@@ -1,6 +1,7 @@
 import { useReducer, useCallback } from 'react';
 
 import {
+  GAME_ACTION,
   GAME_STATUS,
   DEFAULT_CONFIG,
 } from '../constants/game.js';
@@ -21,11 +22,11 @@ function createInitialState(config = DEFAULT_CONFIG) {
 
 function gameReducer(state, action) {
   switch (action.type) {
-    case 'RESTART': {
+    case GAME_ACTION.RESTART: {
       return createInitialState(state.config);
     }
 
-    case 'REVEAL_CELL': {
+    case GAME_ACTION.REVEAL_CELL: {
       if (
         state.gameStatus === GAME_STATUS.WON ||
         state.gameStatus === GAME_STATUS.LOST
@@ -38,9 +39,8 @@ function gameReducer(state, action) {
 
       // При першому кліку генеруємо міни з виключенням першої клітинки
       if (state.gameStatus === GAME_STATUS.IDLE) {
-        currentBoard = createBoard(state.config.rows, state.config.cols);
-        placeMines(
-          currentBoard,
+        currentBoard = placeMines(
+          createBoard(state.config.rows, state.config.cols),
           state.config.rows,
           state.config.cols,
           state.config.mineCount,
@@ -79,7 +79,7 @@ function gameReducer(state, action) {
       };
     }
 
-    case 'TOGGLE_FLAG': {
+    case GAME_ACTION.TOGGLE_FLAG: {
       if (
         state.gameStatus === GAME_STATUS.WON ||
         state.gameStatus === GAME_STATUS.LOST
@@ -110,15 +110,15 @@ export function useGameState(config = DEFAULT_CONFIG) {
   );
 
   const revealCellAt = useCallback((row, col) => {
-    dispatch({ type: 'REVEAL_CELL', row, col });
+    dispatch({ type: GAME_ACTION.REVEAL_CELL, row, col });
   }, []);
 
   const toggleFlagAtCoords = useCallback((row, col) => {
-    dispatch({ type: 'TOGGLE_FLAG', row, col });
+    dispatch({ type: GAME_ACTION.TOGGLE_FLAG, row, col });
   }, []);
 
   const restartGame = useCallback(() => {
-    dispatch({ type: 'RESTART' });
+    dispatch({ type: GAME_ACTION.RESTART });
   }, []);
 
   return {

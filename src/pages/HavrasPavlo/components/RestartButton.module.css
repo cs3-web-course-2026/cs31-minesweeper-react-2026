@@ -1,6 +1,6 @@
 .restartButton {
-  width: 2.25rem;
-  height: 2.25rem;
+  width: var(--button-size);
+  height: var(--button-size);
   background-color: #c0c0c0;
   border-top: 2px solid #fff;
   border-left: 2px solid #fff;

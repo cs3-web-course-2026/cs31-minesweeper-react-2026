@@ -1,15 +1,8 @@
 import { memo } from 'react';
 
-import { COUNTER_DIGITS } from '../constants/game';
+import { formatCounterValue } from '../utils/format';
 
-import styles from './Timer.module.css';
-
-
-function formatSeconds(seconds) {
-  const nonNegative = Math.max(0, seconds);
-
-  return String(nonNegative).padStart(COUNTER_DIGITS, '0');
-}
+import styles from './Counter.module.css';
 
 
 function Timer({ seconds }) {
@@ -20,7 +13,7 @@ function Timer({ seconds }) {
       aria-label="Час гри"
     >
       <span className={styles.counterIcon} aria-hidden="true">⏱</span>
-      <span className={styles.counterValue}>{formatSeconds(seconds)}</span>
+      <span className={styles.counterValue}>{formatCounterValue(seconds)}</span>
     </div>
   );
 }
