@@ -1,6 +1,7 @@
 import { useReducer, useCallback } from 'react';
 
 import {
+  CELL_STATE,
   GAME_ACTION,
   GAME_STATUS,
   DEFAULT_CONFIG,
@@ -34,13 +35,19 @@ function gameReducer(state, action) {
         return state;
       }
 
+      // Клітинку з прапорцем не відкриваємо (і не починаємо з неї гру)
+      if (state.board[action.row][action.col].state === CELL_STATE.FLAGGED) {
+        return state;
+      }
+
       let currentBoard = state.board;
       let nextStatus = state.gameStatus;
 
-      // При першому кліку генеруємо міни з виключенням першої клітинки
+      // При першому кліку генеруємо міни з виключенням першої клітинки.
+      // Міни ставимо на поточне поле, щоб не загубити прапорці, поставлені до першого кліку.
       if (state.gameStatus === GAME_STATUS.IDLE) {
         currentBoard = placeMines(
-          createBoard(state.config.rows, state.config.cols),
+          state.board,
           state.config.rows,
           state.config.cols,
           state.config.mineCount,
