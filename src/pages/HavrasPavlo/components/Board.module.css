@@ -1,0 +1,11 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(var(--board-cols), var(--cell-size));
+  grid-template-rows: repeat(var(--board-rows), var(--cell-size));
+  border-top: 3px solid #404040;
+  border-left: 3px solid #404040;
+  border-right: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  background-color: #808080;
+  box-sizing: border-box;
+}

@@ -1,0 +1,8 @@
+.statusMessage {
+  margin: 0.75rem 0 0;
+  min-height: 1.5rem;
+  font-size: var(--status-font-size, 1rem);
+  font-weight: 500;
+  text-align: center;
+  color: var(--status-text-color, #1f2937);
+}
