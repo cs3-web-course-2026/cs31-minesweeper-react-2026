@@ -17,9 +17,16 @@ function Timer({ isRunning }) {
       return undefined;
     }
 
-    const timerId = setInterval(() => setSeconds(previous => previous + 1), TIMER_INTERVAL);
+    const startedAt = performance.now();
+    const updateSeconds = () => {
+      setSeconds(Math.floor((performance.now() - startedAt) / TIMER_INTERVAL));
+    };
+    const timerId = setInterval(updateSeconds, TIMER_INTERVAL);
 
-    return () => clearInterval(timerId);
+    return () => {
+      clearInterval(timerId);
+      updateSeconds();
+    };
   }, [isRunning]);
 
   return <Indicator icon="⏱" label="Час" value={seconds} variant="time" />;

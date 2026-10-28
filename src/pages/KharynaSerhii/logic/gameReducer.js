@@ -1,6 +1,6 @@
 import { CELL_STATE, CELL_TYPE, DEFAULT_SETTINGS, GAME_STATUS } from '../constants';
 import {
-  checkWinCondition, cloneBoard, countFlags, createBoard, revealSafeCells,
+  checkWinCondition, cloneBoard, countFlags, createBoard, generateMinePositions, revealSafeCells,
 } from './field';
 
 export const ACTION = { OPEN: 'open', FLAG: 'flag', RESTART: 'restart' };
@@ -11,7 +11,13 @@ export const ACTION = { OPEN: 'open', FLAG: 'flag', RESTART: 'restart' };
  */
 export function createDefaultBoard() {
 
-  return createBoard(DEFAULT_SETTINGS.ROWS, DEFAULT_SETTINGS.COLS, DEFAULT_SETTINGS.MINES);
+  const minePositions = generateMinePositions(
+    DEFAULT_SETTINGS.ROWS,
+    DEFAULT_SETTINGS.COLS,
+    DEFAULT_SETTINGS.MINES,
+  );
+
+  return createBoard(DEFAULT_SETTINGS.ROWS, DEFAULT_SETTINGS.COLS, minePositions);
 }
 
 /**
@@ -45,13 +51,14 @@ function openCell(state, row, col) {
     return state;
   }
 
-  const board = cloneBoard(state.board);
   let status = GAME_STATUS.PROCESS;
+  let board;
   if (cell.type === CELL_TYPE.MINE) {
+    board = cloneBoard(state.board);
     board[row][col].state = CELL_STATE.OPENED;
     status = GAME_STATUS.LOSE;
   } else {
-    revealSafeCells(board, row, col);
+    board = revealSafeCells(state.board, row, col);
     if (checkWinCondition(board)) {
       status = GAME_STATUS.WIN;
     }

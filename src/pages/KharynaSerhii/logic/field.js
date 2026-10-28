@@ -62,20 +62,67 @@ export function cloneBoard(field) {
   return field.map(cells => cells.map(cell => ({ ...cell })));
 }
 
+function validateDimensions(rows, cols) {
+  if (!Number.isInteger(rows) || !Number.isInteger(cols) ||
+      rows <= 0 || cols <= 0) {
+
+    throw new RangeError('Некоректні розміри поля.');
+  }
+}
+
 /**
- * Створює закрите поле й випадково розставляє міни без повторів.
+ * Випадково обирає унікальні позиції мін для нової гри.
  * @param {number} rows Кількість рядків.
  * @param {number} cols Кількість стовпців.
  * @param {number} minesCount Кількість мін.
- * @returns {Cell[][]} Нове поле з мінами.
+ * @returns {number[]} Індекси позицій мін у пласкому масиві поля.
  * @throws {RangeError} Якщо розміри або кількість мін некоректні.
  */
-function generateField(rows, cols, minesCount) {
-  if (!Number.isInteger(rows) || !Number.isInteger(cols) ||
-      !Number.isInteger(minesCount) || rows <= 0 || cols <= 0 ||
-      minesCount < 0 || minesCount >= rows * cols) {
+export function generateMinePositions(rows, cols, minesCount) {
+  validateDimensions(rows, cols);
+  if (!Number.isInteger(minesCount) || minesCount < 0 || minesCount >= rows * cols) {
 
-    throw new RangeError('Некоректні розміри поля або кількість мін.');
+    throw new RangeError('Некоректна кількість мін.');
+  }
+
+  const positions = Array.from({ length: rows * cols }, (_, position) => position);
+
+  for (let mineIndex = 0; mineIndex < minesCount; mineIndex++) {
+    const randomIndex = mineIndex + Math.floor(Math.random() * (positions.length - mineIndex));
+    [positions[mineIndex], positions[randomIndex]] = [positions[randomIndex], positions[mineIndex]];
+  }
+
+  return positions.slice(0, minesCount);
+}
+
+/**
+ * Повертає поле з кількістю мін серед сусідів кожної клітинки.
+ * @param {Cell[][]} field Поле, яке потрібно обробити.
+ * @returns {Cell[][]} Нове поле з підрахованими сусідніми мінами.
+ */
+function countNeighbourMines(field) {
+  return field.map((cells, row) => cells.map((cell, col) => ({
+    ...cell,
+    neighborMines: getNeighbours(field, row, col).filter(
+      ([neighbourRow, neighbourCol]) => field[neighbourRow][neighbourCol].type === CELL_TYPE.MINE,
+    ).length,
+  })));
+}
+
+/**
+ * Створює детерміноване поле з переданими позиціями мін.
+ * @param {number} rows Кількість рядків.
+ * @param {number} cols Кількість стовпців.
+ * @param {number[]} minePositions Індекси мін у пласкому масиві поля.
+ * @returns {Cell[][]} Готове до гри поле.
+ */
+export function createBoard(rows, cols, minePositions) {
+  validateDimensions(rows, cols);
+  if (!Array.isArray(minePositions) || minePositions.length >= rows * cols ||
+      minePositions.some(position => !Number.isInteger(position) || position < 0 || position >= rows * cols) ||
+      new Set(minePositions).size !== minePositions.length) {
+
+    throw new RangeError('Некоректні позиції мін.');
   }
 
   const field = Array.from({ length: rows }, () =>
@@ -85,65 +132,37 @@ function generateField(rows, cols, minesCount) {
       neighborMines: 0,
     })),
   );
-  const positions = Array.from({ length: rows * cols }, (_, position) => position);
-
-  // Вибираємо позиції без повторів, навіть для щільного поля.
-  for (let mineIndex = 0; mineIndex < minesCount; mineIndex++) {
-    const randomIndex = mineIndex + Math.floor(Math.random() * (positions.length - mineIndex));
-    [positions[mineIndex], positions[randomIndex]] = [positions[randomIndex], positions[mineIndex]];
-    const position = positions[mineIndex];
+  minePositions.forEach(position => {
     field[Math.floor(position / cols)][position % cols].type = CELL_TYPE.MINE;
-  }
+  });
 
-  return field;
+  return countNeighbourMines(field);
 }
 
 /**
- * Записує в кожну клітинку кількість мін серед її сусідів.
- * @param {Cell[][]} field Поле, яке потрібно обробити.
- * @returns {void}
- */
-function countNeighbourMines(field) {
-  field.forEach((cells, row) => cells.forEach((cell, col) => {
-    cell.neighborMines = getNeighbours(field, row, col).filter(
-      ([neighbourRow, neighbourCol]) => field[neighbourRow][neighbourCol].type === CELL_TYPE.MINE,
-    ).length;
-  }));
-}
-
-/**
- * Створює нове поле з мінами та підрахованими сусідніми числами.
- * @param {number} rows Кількість рядків.
- * @param {number} cols Кількість стовпців.
- * @param {number} minesCount Кількість мін.
- * @returns {Cell[][]} Готове до гри поле.
- */
-export function createBoard(rows, cols, minesCount) {
-  const field = generateField(rows, cols, minesCount);
-  countNeighbourMines(field);
-
-  return field;
-}
-
-/**
- * Рекурсивно відкриває порожню область і цифри на її межі.
- * Змінює передане поле, тому викликається лише для його копії.
+ * Відкриває порожню область і цифри на її межі, не змінюючи вхідне поле.
  * @param {Cell[][]} field Копія ігрового поля.
  * @param {number} row Рядок клітинки.
  * @param {number} col Стовпець клітинки.
- * @returns {void}
+ * @returns {Cell[][]} Нове поле з відкритою областю.
  */
 export function revealSafeCells(field, row, col) {
-  const cell = field[row]?.[col];
-  if (!cell || cell.state !== CELL_STATE.CLOSED || cell.type === CELL_TYPE.MINE) {
+  const updatedField = cloneBoard(field);
+  const positionsToReveal = [[row, col]];
 
-    return;
+  while (positionsToReveal.length > 0) {
+    const [targetRow, targetCol] = positionsToReveal.pop();
+    const cell = updatedField[targetRow]?.[targetCol];
+    if (!cell || cell.state !== CELL_STATE.CLOSED || cell.type === CELL_TYPE.MINE) {
+
+      continue;
+    }
+
+    cell.state = CELL_STATE.OPENED;
+    if (cell.neighborMines === 0) {
+      positionsToReveal.push(...getNeighbours(updatedField, targetRow, targetCol));
+    }
   }
 
-  cell.state = CELL_STATE.OPENED;
-  if (cell.neighborMines === 0) {
-    getNeighbours(field, row, col).forEach(([neighbourRow, neighbourCol]) => {
-      revealSafeCells(field, neighbourRow, neighbourCol);
-    });
-  }
+  return updatedField;
 }
