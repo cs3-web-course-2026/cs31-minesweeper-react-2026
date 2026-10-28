@@ -1,0 +1,9 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(var(--board-columns), var(--cell-size));
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.35rem;
+  border-radius: 0.85rem;
+  background: #cfd6e8;
+}
