@@ -98,6 +98,16 @@ function Game() {
       difficulty: 'Beginner',
       status: 'Complete',
     },
+    {
+      id: 6,
+      title: 'Minesweeper by Artem Zabava',
+      description:
+        'A React implementation with a timer, flagging, and win/lose detection.',
+      author: 'Artem Zabava',
+      link: 'zabava-artem',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
   ];
 
   return (
