@@ -1,0 +1,102 @@
+/* Змінні задаються тут і успадковуються стилями дочірніх компонентів. */
+.page {
+  --cell-size: clamp(2rem, 6.5vw, 3.25rem);
+  --page-background: #f5f7ff;
+  --surface: #fff;
+  --ink: #19253e;
+  --muted-ink: #65718a;
+  --closed-cell: #7890ff;
+  --closed-cell-shadow: #526bdc;
+  --opened-cell: #edf0f8;
+  --mine: #27334e;
+  --danger: #f45467;
+  --border-radius: 1.25rem;
+
+  min-width: 20rem;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: Nunito, Arial, sans-serif;
+  background:
+    radial-gradient(circle at 15% 15%, #dce3ff 0, transparent 29rem),
+    radial-gradient(circle at 85% 85%, #d8f3ed 0, transparent 25rem),
+    var(--page-background);
+}
+
+.page,
+.page *,
+.page *::before,
+.page *::after {
+  box-sizing: border-box;
+}
+
+.game {
+  width: min(100% - 2rem, 42rem);
+  margin: 0 auto;
+  padding: 3rem 0;
+}
+
+.header {
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  color: #fff;
+  text-align: center;
+  background: linear-gradient(135deg, #334ac0, #657cff);
+  box-shadow: 0 1.25rem 3.75rem rgb(54 77 157 / 18%);
+}
+
+.eyebrow {
+  margin: 0;
+  color: #dce3ff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0.25rem 0 1.5rem;
+  font-size: clamp(2.25rem, 8vw, 3.5rem);
+  line-height: 1;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+.boardSection {
+  padding: clamp(1.25rem, 5vw, 2.5rem);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  background: var(--surface);
+  box-shadow: 0 1.25rem 3.75rem rgb(54 77 157 / 18%);
+}
+
+.hint {
+  margin: 0 0 1.25rem;
+  color: var(--muted-ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (width <= 28rem) {
+  .page {
+    --cell-size: clamp(1.5rem, 8vw, 3.25rem);
+  }
+
+  .game {
+    width: min(100% - 1rem, 42rem);
+    padding: 1rem 0;
+  }
+
+  .header,
+  .boardSection {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .controls {
+    gap: 0.5rem;
+  }
+}

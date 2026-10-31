@@ -1,0 +1,15 @@
+.message {
+  margin: 1.25rem 0 0;
+  color: var(--muted-ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.win {
+  color: #237744;
+}
+
+.lose {
+  color: #b63143;
+}
