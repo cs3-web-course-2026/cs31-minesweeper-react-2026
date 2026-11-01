@@ -1,0 +1,20 @@
+.hint {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-align: center;
+}
+
+.hint span {
+  margin: 0 0.3rem;
+}
+
+.key {
+  padding: 0.15rem 0.45rem;
+  border: 1px solid var(--card-border);
+  border-bottom-width: 2px;
+  border-radius: 0.35rem;
+  background: var(--badge);
+  color: var(--ink);
+  font: 600 0.72rem 'IBM Plex Mono', monospace;
+}

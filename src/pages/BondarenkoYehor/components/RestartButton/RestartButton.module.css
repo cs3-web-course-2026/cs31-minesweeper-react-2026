@@ -1,0 +1,32 @@
+.button {
+  padding: 0.65rem 1.1rem;
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--primary-text);
+  font: 600 0.8rem 'IBM Plex Sans', sans-serif;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--primary) 35%, transparent);
+  cursor: pointer;
+  transition:
+    transform 0.12s,
+    filter 0.12s;
+}
+
+.button:hover {
+  filter: brightness(1.1);
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (width <= 650px) {
+  .button {
+    flex: 1;
+  }
+}

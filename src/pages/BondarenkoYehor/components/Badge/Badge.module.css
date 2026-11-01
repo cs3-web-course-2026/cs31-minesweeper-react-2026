@@ -1,0 +1,27 @@
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 6.5rem;
+  padding: 0.5rem 0.8rem;
+  background: var(--badge);
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  color: var(--ink);
+  font: 600 0.78rem 'IBM Plex Mono', monospace;
+}
+
+.icon {
+  color: var(--accent);
+}
+
+.danger {
+  color: var(--danger);
+}
+
+@media (width <= 430px) {
+  .badge {
+    min-width: 0;
+    flex: 1;
+  }
+}

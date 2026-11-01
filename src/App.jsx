@@ -6,6 +6,8 @@ import Game from './pages/Game';
 import MockGame from './pages/MockGame';
 import ZabavaArtem from './pages/ZabavaArtem';
 import Minesweeper from './pages/KharynaSerhii';
+import IsaievaAnna from './pages/IsaievaAnna';
+import BondarenkoYehor from './pages/BondarenkoYehor';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="mock-game" element={<MockGame />} />
         <Route path="zabava-artem" element={<ZabavaArtem />} />
         <Route path="kharyna-serhii" element={<Minesweeper />} />
+        <Route path="isaieva-anna" element={<IsaievaAnna />} />
+        <Route path="bondarenko-yehor" element={<BondarenkoYehor />} />
       </Route>
     </Routes>
   );

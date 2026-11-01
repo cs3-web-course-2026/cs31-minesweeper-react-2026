@@ -1,0 +1,26 @@
+.message {
+  width: min(100%, 520px);
+  margin: 1rem auto 0;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--danger);
+  border-radius: 0.7rem;
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  animation: message-in 0.25s ease-out;
+}
+
+.win {
+  border-color: var(--success);
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+@keyframes message-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
