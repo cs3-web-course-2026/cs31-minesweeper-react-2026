@@ -13,7 +13,7 @@ function GameHeader({ settings, seconds, flagsCount, theme, onToggleTheme, onRes
       <h1 className={styles.title}>
         Minesweeper
         <span className={styles.info}>
-          {rows} Г— {cols} grid В· {minesCount} mines
+          {rows} &times; {cols} grid &middot; {minesCount} mines
         </span>
       </h1>
       <div className={styles.controls}>
@@ -23,7 +23,7 @@ function GameHeader({ settings, seconds, flagsCount, theme, onToggleTheme, onRes
           label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
           onClick={onToggleTheme}
         >
-          {isDark ? 'вЂ' : 'вѕ'}
+          {isDark ? '\u2600' : '\u263E'}
         </IconButton>
         <RestartButton onRestart={onRestart} />
       </div>

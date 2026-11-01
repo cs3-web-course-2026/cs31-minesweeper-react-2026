@@ -3,7 +3,7 @@ import styles from './Badge/Badge.module.css';
 
 function FlagsCounter({ flags, total }) {
   return (
-    <Badge icon="вљ‘" iconClassName={styles.danger}>
+    <Badge icon={'\u2691'} iconClassName={styles.danger}>
       Flags: {flags} / {total}
     </Badge>
   );

@@ -4,4 +4,4 @@ export const GAME_STATUS = { PROCESS: 'process', WIN: 'win', LOSE: 'lose' };
 export const CELL_TYPE = { EMPTY: 'empty', MINE: 'mine' };
 export const CELL_STATE = { CLOSED: 'closed', OPENED: 'opened', FLAGGED: 'flagged' };
 
-export const SYMBOLS = { flag: 'вљ‘', mine: 'вњ№' };
+export const SYMBOLS = { flag: '\u2691', mine: '\u2739' };

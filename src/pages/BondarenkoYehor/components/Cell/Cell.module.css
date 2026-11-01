@@ -117,7 +117,7 @@
 }
 
 .wrongFlag::after {
-  content: 'Г—';
+  content: '\00d7';
   position: absolute;
   right: 6%;
   bottom: 3%;
