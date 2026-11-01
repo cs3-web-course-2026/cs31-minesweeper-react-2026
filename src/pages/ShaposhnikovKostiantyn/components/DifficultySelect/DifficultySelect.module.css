@@ -1,0 +1,10 @@
+.label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.select {
+  padding: 4px 8px;
+  font-size: 16px;
+}

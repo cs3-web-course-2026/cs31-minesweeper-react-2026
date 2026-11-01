@@ -108,6 +108,16 @@ function Game() {
       difficulty: 'Intermediate',
       status: 'Complete',
     },
+      {
+        id: 7,
+        title: 'Minesweeper by Kostiantyn Shaposhnikov',
+        description:
+            'A React implementation with CSS Modules, a timer, flagging, difficulty levels, and win/lose detection.',
+        author: 'Kostiantyn Shaposhnikov',
+        link: 'shaposhnikov-kostiantyn',
+        difficulty: 'Intermediate',
+        status: 'Complete',
+      },
   ];
 
   return (
