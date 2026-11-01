@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+.page {
+  --page: #e4eaf6;
+  --page-line: rgb(47 94 209 / 7%);
+  --card: #fff;
+  --card-border: #c9d4ea;
+  --ink: #16203a;
+  --muted: #5f6c8a;
+  --accent: #2757d6;
+  --closed-top: #f7faff;
+  --closed-bottom: #cdd9f0;
+  --closed-edge: #8697bd;
+  --highlight: #fff;
+  --hover-b: 1.04;
+  --open: #e9eef9;
+  --open-shadow: inset 0 2px 5px rgb(22 32 58 / 18%);
+  --border: #a9b9d9;
+  --open-border: #c5d0e8;
+  --board: #b4c2de;
+  --danger: #d03a32;
+  --danger-soft: #fbe3e1;
+  --success: #1f8a58;
+  --success-soft: #dcf2e6;
+  --count-4: #6a35b8;
+  --count-5: #8a4b12;
+  --mine: #16203a;
+  --mine-text: #fff;
+  --badge: #eef2fb;
+  --shadow: 0 2px 4px rgb(22 32 58 / 8%), 0 20px 48px rgb(39 87 214 / 18%);
+  --primary: #2757d6;
+  --primary-text: #fff;
+
+  color-scheme: light;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+  background-color: var(--page);
+  background-image:
+    linear-gradient(var(--page-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--page-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+  transition:
+    background-color 0.25s,
+    color 0.25s;
+}
+
+.page[data-theme='dark'] {
+  --page: #000;
+  --page-line: rgb(255 255 255 / 4%);
+  --card: #0a0a0c;
+  --card-border: #1c2029;
+  --ink: #e8ecf5;
+  --muted: #8b95ab;
+  --accent: #6f9bff;
+  --closed-top: #1f2535;
+  --closed-bottom: #151a26;
+  --closed-edge: #000;
+  --highlight: rgb(255 255 255 / 7%);
+  --hover-b: 1.3;
+  --open: #000;
+  --open-shadow: none;
+  --border: #272d3d;
+  --open-border: #1d2230;
+  --board: #11141b;
+  --danger: #ff6b61;
+  --danger-soft: #2a1214;
+  --success: #4ccf93;
+  --success-soft: #0f2419;
+  --count-4: #b794f6;
+  --count-5: #f0a35e;
+  --mine: #262e40;
+  --mine-text: #fff;
+  --badge: #000;
+  --shadow: 0 16px 40px rgb(0 0 0 / 60%);
+  --primary: #4a7dff;
+  --primary-text: #fff;
+
+  color-scheme: dark;
+}
+
+.page,
+.page *,
+.page *::before,
+.page *::after {
+  box-sizing: border-box;
+}
+
+.sheet {
+  width: min(100%, 680px);
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 1.1rem;
+  box-shadow: var(--shadow);
+  transition:
+    background-color 0.25s,
+    border-color 0.25s;
+}
+
+.main {
+  padding-top: 1.5rem;
+}
+
+@media (width <= 430px) {
+  .page {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .sheet {
+    padding: 1rem;
+  }
+}

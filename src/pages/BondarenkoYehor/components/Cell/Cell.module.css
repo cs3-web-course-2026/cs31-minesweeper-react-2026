@@ -1,0 +1,126 @@
+.cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  font: 700 clamp(0.85rem, 2.7vw, 1.2rem) 'IBM Plex Mono', monospace;
+  user-select: none;
+  transition: filter 0.12s;
+  padding: 0;
+  color: inherit;
+  appearance: none;
+}
+
+.cell:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.cover,
+.content {
+  grid-area: 1 / 1;
+}
+
+.closed,
+.flagged {
+  cursor: pointer;
+  background: linear-gradient(180deg, var(--closed-top), var(--closed-bottom));
+  border: 1px solid var(--border);
+  box-shadow:
+    inset 0 1px 0 var(--highlight),
+    0 2px 0 var(--closed-edge);
+}
+
+.flagged {
+  color: var(--danger);
+}
+
+.closed:hover,
+.flagged:hover {
+  filter: brightness(var(--hover-b));
+}
+
+.closed:active,
+.flagged:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 1px 0 var(--highlight);
+}
+
+.closed .content,
+.empty .content {
+  opacity: 0;
+}
+
+.open {
+  background: var(--open);
+  border: 1px solid var(--open-border);
+  box-shadow: var(--open-shadow);
+}
+
+.open .cover,
+.flaggedMine .cover,
+.mine .cover,
+.triggeredMine .cover,
+.wrongFlag .cover {
+  display: none;
+}
+
+.count1 .content {
+  color: var(--accent);
+}
+
+.count2 .content {
+  color: var(--success);
+}
+
+.count3 .content {
+  color: var(--danger);
+}
+
+.count4 .content {
+  color: var(--count-4);
+}
+
+.count5 .content,
+.count6 .content,
+.count7 .content,
+.count8 .content {
+  color: var(--count-5);
+}
+
+.flaggedMine {
+  background: var(--danger-soft);
+  border: 1px solid var(--border);
+  color: var(--success);
+}
+
+.mine {
+  background: var(--mine);
+  border: 1px solid var(--mine);
+  color: var(--mine-text);
+}
+
+.triggeredMine {
+  background: var(--danger);
+  border: 1px solid var(--danger);
+  color: #fff;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 25%, transparent);
+}
+
+.wrongFlag {
+  background: var(--danger-soft);
+  border: 1px solid var(--danger);
+  color: var(--danger);
+}
+
+.wrongFlag::after {
+  content: '\00d7';
+  position: absolute;
+  right: 6%;
+  bottom: 3%;
+  font-size: 0.55em;
+  font-weight: 700;
+}

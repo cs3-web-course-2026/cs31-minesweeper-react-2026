@@ -1,0 +1,17 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 9), minmax(0, 1fr));
+  gap: 4px;
+  width: min(100%, 520px);
+  margin: 0 auto;
+  padding: 6px;
+  background: var(--board);
+  border-radius: 0.8rem;
+}
+
+@media (width <= 430px) {
+  .board {
+    gap: 3px;
+    padding: 4px;
+  }
+}

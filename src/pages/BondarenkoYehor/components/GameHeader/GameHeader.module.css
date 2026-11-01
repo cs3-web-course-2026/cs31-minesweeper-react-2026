@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  letter-spacing: -0.02em;
+}
+
+.info {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font: 0.78rem 'IBM Plex Mono', monospace;
+  letter-spacing: 0;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: end;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (width <= 650px) {
+  .header {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .controls {
+    justify-content: start;
+    width: 100%;
+  }
+}
