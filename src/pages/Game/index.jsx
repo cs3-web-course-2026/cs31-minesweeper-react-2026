@@ -108,6 +108,16 @@ function Game() {
       difficulty: 'Intermediate',
       status: 'Complete',
     },
+    {
+      id: 7,
+      title: 'Сапер на React',
+      description:
+        'React-версія гри: таймер, лічильник прапорців, рекурсивне відкриття порожніх клітинок, визначення перемоги та поразки.',
+      author: 'Korzhyk Anton',
+      link: 'korzhyk-anton',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
   ];
 
   return (
