@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 18px;
+  background: var(--ka-panel);
+  border: 2px solid var(--ka-grid-line);
+  border-radius: 8px;
+}
+
+@media (width <= 480px) {
+  .header {
+    flex-direction: column;
+  }
+}

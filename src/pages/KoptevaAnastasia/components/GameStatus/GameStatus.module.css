@@ -1,0 +1,16 @@
+.status {
+  min-height: 1.5em;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ka-text);
+  text-align: center;
+}
+
+.win {
+  color: var(--ka-accent-2);
+}
+
+.lose {
+  color: var(--ka-cell-mine);
+}

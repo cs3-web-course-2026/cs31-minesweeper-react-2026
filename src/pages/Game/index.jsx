@@ -108,6 +108,16 @@ function Game() {
       difficulty: 'Intermediate',
       status: 'Complete',
     },
+    {
+      id: 7,
+      title: 'Minesweeper — Kopteva Anastasia',
+      description:
+        'Гра 10×10 з 15 мінами, переписана на React',
+      author: 'Kopteva Anastasia',
+      link: 'kopteva-anastasia',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
   ];
 
   return (
