@@ -34,6 +34,7 @@ function getCellView(cell, isLost, isExploded) {
 function Cell({ cell, row, col, isLost, isExploded, onOpen, onFlag }) {
   const { classes, count, label } = getCellView(cell, isLost, isExploded);
   const className = [styles.cell, ...classes].filter(Boolean).join(' ');
+  const ariaLabel = `Рядок ${row + 1}, стовпець ${col + 1}: ${label}`;
 
   const handleClick = () => onOpen(row, col);
 
@@ -47,7 +48,7 @@ function Cell({ cell, row, col, isLost, isExploded, onOpen, onFlag }) {
       type="button"
       className={className}
       data-count={count || undefined}
-      aria-label={label}
+      aria-label={ariaLabel}
       onClick={handleClick}
       onContextMenu={handleContextMenu}
     >
