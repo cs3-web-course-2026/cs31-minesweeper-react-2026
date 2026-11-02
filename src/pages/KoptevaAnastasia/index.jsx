@@ -1,66 +1,26 @@
-import { useEffect, useState } from 'react';
-
+import { GAME_STATUS, MINES_COUNT } from './constants/game';
+import { countFlags } from './utils/board';
+import { useGameState } from './hooks/useGameState';
+import { useTimer } from './hooks/useTimer';
 import Board from './components/Board';
 import GameHeader from './components/GameHeader';
 import GameStatus from './components/GameStatus';
-import {
-  GAME_STATUS,
-  MINES_COUNT,
-  SECOND,
-  countFlags,
-  createEmptyBoard,
-  generateBoard,
-  openCell,
-  toggleFlag,
-} from './gameLogic';
+
 import styles from './KoptevaAnastasia.module.css';
 
 function KoptevaAnastasia() {
-  const [board, setBoard] = useState(createEmptyBoard);
-  const [status, setStatus] = useState(GAME_STATUS.IDLE);
-  const [seconds, setSeconds] = useState(0);
-  const [explodedCell, setExplodedCell] = useState(null);
+  const {
+    board,
+    status,
+    explodedCell,
+    seconds,
+    restart,
+    tick,
+    revealCell,
+    flagCell,
+  } = useGameState();
 
-  useEffect(() => {
-    if (status !== GAME_STATUS.PROCESS) {
-      return undefined;
-    }
-
-    const intervalId = setInterval(() => {
-      setSeconds((previousSeconds) => previousSeconds + 1);
-    }, SECOND);
-
-    return () => clearInterval(intervalId);
-  }, [status]);
-
-  const handleRestart = () => {
-    setBoard(createEmptyBoard());
-    setStatus(GAME_STATUS.IDLE);
-    setSeconds(0);
-    setExplodedCell(null);
-  };
-
-  const handleOpen = (row, col) => {
-    if (status === GAME_STATUS.WIN || status === GAME_STATUS.LOSE) {
-      return;
-    }
-
-    const currentBoard =
-      status === GAME_STATUS.IDLE ? generateBoard(row, col) : board;
-    const result = openCell(currentBoard, row, col);
-
-    setBoard(result.board);
-    setStatus(result.status);
-    setExplodedCell(result.explodedCell);
-  };
-
-  const handleToggleFlag = (row, col) => {
-    if (status !== GAME_STATUS.PROCESS) {
-      return;
-    }
-
-    setBoard(toggleFlag(board, row, col));
-  };
+  useTimer(status === GAME_STATUS.PROCESS, tick);
 
   return (
     <div className={styles.page}>
@@ -74,14 +34,14 @@ function KoptevaAnastasia() {
           flagsLeft={MINES_COUNT - countFlags(board)}
           seconds={seconds}
           status={status}
-          onRestart={handleRestart}
+          onRestart={restart}
         />
 
         <Board
           board={board}
           explodedCell={explodedCell}
-          onOpen={handleOpen}
-          onToggleFlag={handleToggleFlag}
+          onReveal={revealCell}
+          onFlag={flagCell}
         />
 
         <GameStatus status={status} />

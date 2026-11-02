@@ -1,9 +1,10 @@
-import { CELL_STATE, CELL_TYPE } from '../../gameLogic';
+import { CELL_STATE, CELL_TYPE } from '../constants/game';
+
 import styles from './Cell.module.css';
 
 function getContent(cell) {
   if (cell.state === CELL_STATE.FLAGGED) {
-    return '🚩';
+    return '\u{1F6A9}';
   }
 
   if (cell.state !== CELL_STATE.OPENED) {
@@ -11,7 +12,7 @@ function getContent(cell) {
   }
 
   if (cell.type === CELL_TYPE.MINE) {
-    return '💣';
+    return '\u{1F4A3}';
   }
 
   return cell.minesAround > 0 ? cell.minesAround : '';
@@ -37,9 +38,10 @@ function getLabel(cell, row, col) {
     : `${position}: порожня`;
 }
 
-function Cell({ cell, row, col, isExploded, onOpen, onToggleFlag }) {
+function Cell({ cell, row, col, isExploded, onReveal, onFlag }) {
   const isOpened = cell.state === CELL_STATE.OPENED;
   const isMine = cell.type === CELL_TYPE.MINE;
+  const hasNumber = isOpened && !isMine && cell.minesAround > 0;
 
   const className = [
     styles.cell,
@@ -47,25 +49,23 @@ function Cell({ cell, row, col, isExploded, onOpen, onToggleFlag }) {
     cell.state === CELL_STATE.FLAGGED ? styles.flagged : null,
     isOpened && isMine ? styles.mine : null,
     isExploded ? styles.exploded : null,
-    isOpened && !isMine && cell.minesAround > 0
-      ? styles[`number${cell.minesAround}`]
-      : null,
+    hasNumber ? styles[`number${cell.minesAround}`] : null,
   ]
     .filter(Boolean)
     .join(' ');
 
   const handleContextMenu = (event) => {
     event.preventDefault();
-    onToggleFlag(row, col);
+    onFlag(row, col);
   };
 
   return (
     <button
       type="button"
       className={className}
-      onClick={() => onOpen(row, col)}
-      onContextMenu={handleContextMenu}
       aria-label={getLabel(cell, row, col)}
+      onClick={() => onReveal(row, col)}
+      onContextMenu={handleContextMenu}
     >
       {getContent(cell)}
     </button>

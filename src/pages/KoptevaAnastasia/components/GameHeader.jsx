@@ -1,7 +1,8 @@
-import FlagCounter from '../FlagCounter';
-import RestartButton from '../RestartButton';
-import Timer from '../Timer';
-import { GAME_STATUS } from '../../gameLogic';
+import { GAME_STATUS } from '../constants/game';
+import FlagCounter from './FlagCounter';
+import RestartButton from './RestartButton';
+import Timer from './Timer';
+
 import styles from './GameHeader.module.css';
 
 function GameHeader({ flagsLeft, seconds, status, onRestart }) {

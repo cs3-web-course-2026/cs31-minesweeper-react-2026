@@ -1,4 +1,5 @@
-import { GAME_STATUS } from '../../gameLogic';
+import { GAME_STATUS } from '../constants/game';
+
 import styles from './GameStatus.module.css';
 
 const MESSAGE = {
