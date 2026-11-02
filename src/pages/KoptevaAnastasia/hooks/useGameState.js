@@ -1,7 +1,11 @@
 import { useCallback, useReducer } from 'react';
 
-import { GAME_STATUS } from '../constants/game';
-import { createEmptyBoard, generateBoard } from '../utils/board';
+import { CELL_STATE, GAME_STATUS } from '../constants/game';
+import {
+  createEmptyBoard,
+  generateBoard,
+  restoreFlags,
+} from '../utils/board';
 import { openCell, toggleFlag } from '../utils/reveal';
 
 function createInitialState() {
@@ -13,7 +17,6 @@ function createInitialState() {
   };
 }
 
-// Редьюсер лишається чистим: нове поле приходить ззовні, в action.
 function gameReducer(state, action) {
   switch (action.type) {
     case 'RESTART':
@@ -25,18 +28,25 @@ function gameReducer(state, action) {
     case 'OPEN_CELL': {
       const isFinished =
         state.status === GAME_STATUS.WIN || state.status === GAME_STATUS.LOSE;
+      const target = state.board[action.row][action.col];
 
-      if (isFinished) {
+      if (isFinished || target.state === CELL_STATE.FLAGGED) {
         return state;
       }
 
-      const board = action.freshBoard ?? state.board;
+      const board = action.freshBoard
+        ? restoreFlags(action.freshBoard, state.board)
+        : state.board;
 
       return { ...state, ...openCell(board, action.row, action.col) };
     }
 
     case 'TOGGLE_FLAG': {
-      if (state.status !== GAME_STATUS.PROCESS) {
+      const canFlag =
+        state.status === GAME_STATUS.IDLE ||
+        state.status === GAME_STATUS.PROCESS;
+
+      if (!canFlag) {
         return state;
       }
 

@@ -3,6 +3,7 @@
   gap: 16px;
   align-items: center;
   justify-content: space-between;
+  box-sizing: border-box;
   width: 100%;
   padding: 12px 18px;
   background: var(--ka-panel);

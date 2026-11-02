@@ -59,6 +59,13 @@ function Cell({ cell, row, col, isExploded, onReveal, onFlag }) {
     onFlag(row, col);
   };
 
+  const handleKeyDown = (event) => {
+    if (event.code === 'KeyF') {
+      event.preventDefault();
+      onFlag(row, col);
+    }
+  };
+
   return (
     <button
       type="button"
@@ -66,6 +73,7 @@ function Cell({ cell, row, col, isExploded, onReveal, onFlag }) {
       aria-label={getLabel(cell, row, col)}
       onClick={() => onReveal(row, col)}
       onContextMenu={handleContextMenu}
+      onKeyDown={handleKeyDown}
     >
       {getContent(cell)}
     </button>

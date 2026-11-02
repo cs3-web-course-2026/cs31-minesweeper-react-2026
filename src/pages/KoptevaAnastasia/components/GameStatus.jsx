@@ -4,7 +4,9 @@ import styles from './GameStatus.module.css';
 
 const MESSAGE = {
   [GAME_STATUS.IDLE]: 'Start',
-  [GAME_STATUS.PROCESS]: 'Лівий клік відкриває, правий ставить прапорець',
+  [GAME_STATUS.PROCESS]:
+    'Лівий клік відкриває, правий ставить прапорець. ' +
+    'З клавіатури: Tab — перехід, Enter — відкрити, F — прапорець',
   [GAME_STATUS.WIN]: 'Перемога!',
   [GAME_STATUS.LOSE]: 'Міна. Спробуйте ще раз',
 };

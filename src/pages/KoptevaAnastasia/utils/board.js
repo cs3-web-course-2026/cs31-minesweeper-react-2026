@@ -86,6 +86,16 @@ export function generateBoard(safeRow, safeCol, minesCount = MINES_COUNT) {
   return board;
 }
 
+export function restoreFlags(board, previousBoard) {
+  return board.map((row, rowIndex) =>
+    row.map((cell, colIndex) =>
+      previousBoard[rowIndex][colIndex].state === CELL_STATE.FLAGGED
+        ? { ...cell, state: CELL_STATE.FLAGGED }
+        : cell,
+    ),
+  );
+}
+
 export function countFlags(board) {
   return board.flat().filter((cell) => cell.state === CELL_STATE.FLAGGED)
     .length;

@@ -18,7 +18,13 @@
   --ka-num-6: #066;
   --ka-num-7: #000;
   --ka-num-8: #404040;
-  --ka-cell-size: 34px;
+  
+  --ka-board-chrome: 76px;
+  --ka-cell-size: clamp(
+    22px,
+    calc((100vw - var(--ka-board-chrome)) / 10),
+    34px
+  );
   --ka-transition: 0.15s ease;
 
   display: flex;
@@ -53,10 +59,6 @@
 }
 
 @media (width <= 480px) {
-  .page {
-    --ka-cell-size: 28px;
-  }
-
   .title {
     font-size: 1.35rem;
   }
