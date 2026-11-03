@@ -3,7 +3,8 @@ import { GAME_STATUS } from '../constants/game';
 import styles from './GameStatus.module.css';
 
 const MESSAGE = {
-  [GAME_STATUS.IDLE]: 'Start',
+  [GAME_STATUS.IDLE]:
+    'Клікніть будь-яку клітинку, щоб почати. Правий клік — прапорець',
   [GAME_STATUS.PROCESS]:
     'Лівий клік відкриває, правий ставить прапорець. ' +
     'З клавіатури: Tab — перехід, Enter — відкрити, F — прапорець',

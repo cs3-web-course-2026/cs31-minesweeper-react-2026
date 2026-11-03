@@ -33,7 +33,6 @@ function KoptevaAnastasia() {
         <GameHeader
           flagsLeft={MINES_COUNT - countFlags(board)}
           seconds={seconds}
-          status={status}
           onRestart={restart}
         />
 
