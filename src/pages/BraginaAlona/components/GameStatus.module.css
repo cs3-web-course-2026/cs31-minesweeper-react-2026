@@ -1,0 +1,27 @@
+.status {
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.idle {
+  background: #eee8fb;
+  color: #604b91;
+}
+
+.playing {
+  background: #e7efff;
+  color: #4268a5;
+}
+
+.won {
+  background: #e2f5e9;
+  color: #287a48;
+}
+
+.lost {
+  background: #fbe5e5;
+  color: #ad3f48;
+}
