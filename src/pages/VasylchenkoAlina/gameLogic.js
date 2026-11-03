@@ -22,13 +22,17 @@ const cloneBoard = (board) => board.map((row) => row.map((cell) => ({ ...cell })
 
 function getNeighbors(board, row, col) {
   const result = [];
-  for (let dr = -1; dr <= 1; dr++) {
-    for (let dc = -1; dc <= 1; dc++) {
-      if (dr === 0 && dc === 0) continue;
-      const r = row + dr;
-      const c = col + dc;
-      const insideBoard = r >= 0 && r < board.length && c >= 0 && c < board[0].length;
-      if (insideBoard) result.push({ row: r, col: c });
+  for (let rowOffset = -1; rowOffset <= 1; rowOffset++) {
+    for (let colOffset = -1; colOffset <= 1; colOffset++) {
+      if (rowOffset === 0 && colOffset === 0) continue;
+      const neighborRow = row + rowOffset;
+      const neighborCol = col + colOffset;
+      const insideBoard =
+        neighborRow >= 0 &&
+        neighborRow < board.length &&
+        neighborCol >= 0 &&
+        neighborCol < board[0].length;
+      if (insideBoard) result.push({ row: neighborRow, col: neighborCol });
     }
   }
   return result;
@@ -58,7 +62,7 @@ export function createBoard({ rows, cols, minesCount }) {
     cells.forEach((cell, col) => {
       if (cell.isMine) return;
       cell.neighborMines = getNeighbors(board, row, col).filter(
-        (n) => board[n.row][n.col].isMine
+        (neighbor) => board[neighbor.row][neighbor.col].isMine
       ).length;
     });
   });

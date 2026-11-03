@@ -5,8 +5,11 @@ export function useTimer(isRunning) {
 
   useEffect(() => {
     if (!isRunning) return undefined;
-    const id = setInterval(() => setSeconds((s) => s + 1), 1000);
-    return () => clearInterval(id);
+    const intervalId = setInterval(
+      () => setSeconds((previousSeconds) => previousSeconds + 1),
+      1000
+    );
+    return () => clearInterval(intervalId);
   }, [isRunning]);
 
   const reset = useCallback(() => setSeconds(0), []);
