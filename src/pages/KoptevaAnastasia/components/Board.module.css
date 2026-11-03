@@ -1,0 +1,11 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(var(--ka-columns, 10), var(--ka-cell-size));
+  gap: 2px;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 10px;
+  background: var(--ka-panel);
+  border: 2px solid var(--ka-grid-line);
+  border-radius: 8px;
+}

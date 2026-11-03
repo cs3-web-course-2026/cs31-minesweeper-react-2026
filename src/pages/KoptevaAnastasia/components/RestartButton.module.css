@@ -1,0 +1,30 @@
+.restart {
+  padding: 10px 22px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ka-bg);
+  cursor: pointer;
+  background: var(--ka-accent);
+  border: none;
+  border-radius: 6px;
+  transition:
+    background var(--ka-transition),
+    transform var(--ka-transition);
+}
+
+.restart:hover {
+  background: var(--ka-accent-2);
+  transform: translateY(-2px);
+}
+
+.restart:focus-visible {
+  outline: 2px solid var(--ka-accent-2);
+  outline-offset: 3px;
+}
+
+@media (width <= 480px) {
+  .restart {
+    width: 100%;
+  }
+}

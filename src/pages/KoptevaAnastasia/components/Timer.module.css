@@ -1,0 +1,14 @@
+.timer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0;
+  font-size: 1.25rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--ka-accent);
+}
+
+.icon {
+  font-size: 1.1rem;
+}

@@ -1,0 +1,65 @@
+.page {
+  --ka-bg: #000;
+  --ka-panel: #262626;
+  --ka-text: #f5f5f5;
+  --ka-grid-line: #1a1a1a;
+  --ka-cell-closed: #3f5266;
+  --ka-cell-open: #09ff00;
+  --ka-cell-flagged: #5a4a1a;
+  --ka-cell-mine: #ff1900;
+  --ka-cell-mine-exploded: #4c0901;
+  --ka-accent: #f1c40f;
+  --ka-accent-2: #09ff00;
+  --ka-num-1: #00c;
+  --ka-num-2: #060;
+  --ka-num-3: #c00;
+  --ka-num-4: #006;
+  --ka-num-5: #600;
+  --ka-num-6: #066;
+  --ka-num-7: #000;
+  --ka-num-8: #404040;
+  
+  --ka-board-chrome: 76px;
+  --ka-cell-size: clamp(
+    22px,
+    calc((100vw - var(--ka-board-chrome)) / 10),
+    34px
+  );
+  --ka-transition: 0.15s ease;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 16px;
+  color: var(--ka-text);
+  background: var(--ka-bg);
+  border-radius: 12px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.75rem;
+  color: var(--ka-accent);
+  text-align: center;
+}
+
+.subtitle {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+  color: var(--ka-text);
+  text-align: center;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+@media (width <= 480px) {
+  .title {
+    font-size: 1.35rem;
+  }
+}
