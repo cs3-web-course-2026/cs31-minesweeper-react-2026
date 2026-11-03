@@ -1,0 +1,96 @@
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: calc(var(--cell-size) * 0.45);
+  width: var(--cell-size);
+  height: var(--cell-size);
+  font-weight: bold;
+  padding: 0;
+  border: none;
+}
+
+.cell:focus-visible {
+  outline: 3px solid var(--color-flag);
+  outline-offset: -3px;
+}
+
+.closed {
+  background-color: var(--color-cell-closed);
+  color: var(--color-background);
+  border-radius: 2px;
+  box-shadow: var(--shadow-cell-raised);
+  cursor: pointer;
+}
+
+.closed:hover {
+  opacity: 0.9;
+}
+
+.opened {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  cursor: default;
+  border-radius: 2px;
+  /* обводка та легке «втиснення», щоб відкриті клітинки були видні так само, як закриті */
+  box-shadow:
+    inset 0 0 0 1px var(--color-cell-border),
+    inset 1px 1px 3px rgb(0 0 0 / 15%);
+}
+
+.num1 { color: var(--color-cell-num-1); }
+.num2 { color: var(--color-cell-num-2); }
+.num3 { color: var(--color-cell-num-3); }
+.num4 { color: var(--color-cell-num-4); }
+.num5 { color: var(--color-cell-num-5); }
+.num6 { color: var(--color-cell-num-6); }
+.num7 { color: var(--color-cell-num-7); }
+.num8 { color: var(--color-cell-num-8); }
+
+/* Прапорець під час гри (невідомо, що під ним) */
+.flagged {
+  background-color: var(--color-cell-closed);
+  color: var(--color-flag);
+  text-shadow: 0 1px 2px rgb(0 0 0 / 60%);
+  border-radius: 2px;
+  box-shadow: var(--shadow-cell-raised);
+  font-size: calc(var(--cell-size) * 0.55);
+  cursor: pointer;
+}
+
+.flagged:hover {
+  opacity: 0.9;
+}
+
+/* Після завершення гри: прапорець стояв помилково */
+.flagged.wrong {
+  background-color: var(--color-flag-wrong-bg);
+  color: var(--color-flag-wrong);
+  text-shadow: none;
+  box-shadow: none;
+  cursor: default;
+}
+
+/* Після завершення гри: прапорець стояв правильно */
+.flagged.correct {
+  background-color: var(--color-flag-correct-bg);
+  color: var(--color-flag-correct);
+  text-shadow: none;
+  box-shadow: none;
+  cursor: default;
+}
+
+.mine {
+  background-color: var(--color-mine-bg);
+  color: var(--color-mine);
+  border-radius: 2px;
+  cursor: default;
+  font-size: calc(var(--cell-size) * 0.55);
+}
+
+.exploded {
+  background-color: var(--color-exploded-bg);
+  color: #fff;
+  font-weight: lighter;
+}

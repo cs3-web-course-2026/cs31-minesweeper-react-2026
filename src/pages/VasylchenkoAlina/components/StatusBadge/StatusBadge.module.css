@@ -1,0 +1,26 @@
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  padding: 0 12px;
+  border-radius: 10px;
+  opacity: 0.9;
+}
+
+.start {
+  justify-self: start;
+}
+
+.end {
+  justify-self: end;
+}
+
+@media (width <= 400px) {
+  .badge {
+    padding: 0 8px;
+    gap: 4px;
+  }
+}
