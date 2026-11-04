@@ -108,6 +108,16 @@ function Game() {
       difficulty: 'Intermediate',
       status: 'Complete',
     },
+    {
+      id: 7,
+      title: 'Minesweeper by Pavlo Havras',
+      description:
+        'Classic Minesweeper with recursive reveal, timer, flags, and retro styling',
+      author: 'Pavlo Havras',
+      link: 'havras-pavlo',
+      difficulty: 'Beginner',
+      status: 'Complete',
+    },
   ];
 
   return (
