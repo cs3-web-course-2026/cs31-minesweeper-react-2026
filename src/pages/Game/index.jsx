@@ -91,6 +91,25 @@ function Game() {
     },
     {
       id: 5,
+      title: 'Сапер',
+      description: 'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
+      author: 'Kharyna Serhii',
+      link: 'kharyna-serhii',
+      difficulty: 'Beginner',
+      status: 'Complete',
+    },
+    {
+      id: 6,
+      title: 'Minesweeper by Artem Zabava',
+      description:
+        'A React implementation with a timer, flagging, and win/lose detection.',
+      author: 'Artem Zabava',
+      link: 'zabava-artem',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
+    {
+      id: 7,
       title: 'Minesweeper by Pavlo Havras',
       description:
         'Classic Minesweeper with recursive reveal, timer, flags, and retro styling',

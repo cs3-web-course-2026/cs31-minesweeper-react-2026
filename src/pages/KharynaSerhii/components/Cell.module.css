@@ -1,0 +1,89 @@
+.cell {
+  display: grid;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  padding: 0;
+  border: 0;
+  border-radius: 0.35rem;
+  place-items: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.closed {
+  color: #fff;
+  cursor: pointer;
+  background: var(--closed-cell);
+  box-shadow: inset 0 -0.2rem 0 var(--closed-cell-shadow);
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.closed:hover {
+  background: #8ca0ff;
+  transform: translateY(-0.1rem);
+}
+
+.opened {
+  color: var(--ink);
+  background: var(--opened-cell);
+}
+
+.number1 { color: #2e78d6; }
+.number2 { color: #2d9d65; }
+.number3 { color: #dc5e56; }
+.number4 { color: #7658c6; }
+.number5 { color: #97422d; }
+.number6 { color: #168080; }
+.number7 { color: #27334e; }
+.number8 { color: #65718a; }
+
+.flag {
+  color: #fff4ca;
+  font-size: 1.6rem;
+}
+
+.flagOnMine {
+  text-shadow: 0 0.1rem 0 var(--closed-cell-shadow);
+}
+
+.flagWithoutMine {
+  position: relative;
+}
+
+.flagWithoutMine::after {
+  position: absolute;
+  width: 125%;
+  height: 0.16rem;
+  border-radius: 999px;
+  content: "";
+  background: var(--danger);
+  transform: rotate(-45deg);
+}
+
+.mine {
+  color: #fff;
+  background: var(--mine);
+}
+
+.mineHit {
+  color: #fff;
+  background: var(--danger);
+  box-shadow: inset 0 0 0 0.15rem #ff9ca7;
+}
+
+.cell:focus-visible {
+  outline: 0.2rem solid #f5c34c;
+  outline-offset: 0.2rem;
+}
+
+.cell[aria-disabled="true"] {
+  cursor: default;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .closed {
+    transition: none;
+  }
+}

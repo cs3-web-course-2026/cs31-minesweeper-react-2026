@@ -1,0 +1,40 @@
+.indicator {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.4rem;
+  align-items: center;
+  text-align: left;
+}
+
+.icon {
+  grid-row: span 2;
+  color: #f5c34c;
+  font-size: 1.65rem;
+}
+
+.time {
+  text-align: right;
+}
+
+.time .icon {
+  color: #bdf0e4;
+}
+
+.value {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.label {
+  color: #dce3ff;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+@media (width <= 28rem) {
+  .label {
+    font-size: 0.6rem;
+  }
+}

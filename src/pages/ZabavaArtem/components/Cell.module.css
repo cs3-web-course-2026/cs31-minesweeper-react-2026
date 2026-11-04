@@ -1,0 +1,67 @@
+.cell {
+  aspect-ratio: 1;
+  min-width: 0;
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 0;
+  transition: none;
+  font-family: Arial, sans-serif;
+  font-size: var(--cell-font-size);
+  font-weight: bold;
+}
+
+.cell:hover {
+  transform: none;
+  background-color: #c0c0c0;
+}
+
+.closed {
+  background: #c0c0c0;
+  border: 3px solid;
+  border-color: #fff #777 #777 #fff;
+  cursor: pointer;
+}
+
+.closed:focus-visible {
+  outline: 2px solid #0000e0;
+  outline-offset: -5px;
+}
+
+.opened,
+.mine {
+  background: #c0c0c0;
+  border: 1px solid #808080;
+}
+
+.numberOne {
+  color: #0000e0;
+}
+
+.numberTwo {
+  color: #008000;
+}
+
+.numberThree {
+  color: #e00000;
+}
+
+.numberFour {
+  color: #000080;
+}
+
+.numberFive,
+.numberSix,
+.numberSeven,
+.numberEight {
+  color: #800000;
+}
+
+.flagged {
+  color: #e00000;
+}
+
+.exploded {
+  background: #f00;
+}
