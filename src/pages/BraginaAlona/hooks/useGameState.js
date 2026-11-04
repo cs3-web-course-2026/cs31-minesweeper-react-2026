@@ -4,6 +4,7 @@ import {
   GAME_CONFIG,
   GAME_STATUS,
   CELL_STATE,
+  CELL_CONTENT,
 } from '../constants/game';
 
 import {
@@ -105,12 +106,24 @@ function gameReducer(state, action) {
 
     // Перевіряємо, чи була відкрита міна
     if (isMine(newBoard[row][col])) {
-      return {
-        board: newBoard,
-        status: GAME_STATUS.LOST,
-      };
-    }
+    const revealedBoard = newBoard.map((boardRow) =>
+      boardRow.map((BoardCell) => {
+        if (BoardCell.content === CELL_CONTENT.MINE) {
+          return {
+            ...BoardCell,
+            state: CELL_STATE.OPEN,
+          };
+        }
 
+      return BoardCell;
+    }),
+  );
+
+  return {
+    board: revealedBoard,
+    status: GAME_STATUS.LOST,
+  };
+}
     // Перевіряємо перемогу
     const hasWon = checkWin(newBoard);
 
