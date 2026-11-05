@@ -1,0 +1,14 @@
+.gameMessage {
+  min-height: 1.5rem;
+  margin: 0.75rem 0 0;
+  font-weight: 700;
+  text-align: center;
+}
+
+.gameMessageWin {
+  color: var(--color-number-2);
+}
+
+.gameMessageLose {
+  color: var(--color-number-3);
+}
