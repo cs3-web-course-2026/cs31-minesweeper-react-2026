@@ -5,10 +5,6 @@
   text-align: center;
 }
 
-.gameMessage:empty {
-  display: none;
-}
-
 .gameMessageWin {
   color: var(--color-number-2);
 }

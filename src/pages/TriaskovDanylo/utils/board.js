@@ -51,6 +51,12 @@ export function countNeighbourMines(field) {
 
 // Генерація ігрового поля та випадкове розміщення мін
 export function generateField(rows, cols, minesCount) {
+  if (minesCount < 0 || minesCount > rows * cols) {
+    throw new RangeError(
+      'Кількість мін не може перевищувати кількість клітинок поля.',
+    );
+  }
+
   const field = Array.from({ length: rows }, () =>
     Array.from({ length: cols }, createEmptyCell),
   );
