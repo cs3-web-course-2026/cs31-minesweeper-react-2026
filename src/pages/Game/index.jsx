@@ -92,7 +92,8 @@ function Game() {
     {
       id: 5,
       title: 'Сапер',
-      description: 'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
+      description:
+        'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
       author: 'Kharyna Serhii',
       link: 'kharyna-serhii',
       difficulty: 'Beginner',
@@ -116,6 +117,16 @@ function Game() {
       author: 'Pavlo Havras',
       link: 'havras-pavlo',
       difficulty: 'Beginner',
+      status: 'Complete',
+    },
+    {
+      id: 8,
+      title: 'Minesweeper with Difficulty Levels',
+      description:
+        'Three difficulty levels, safe first click, best times saved per level, built from small components with hooks and CSS Modules',
+      author: 'Anastasiia Shevchenko',
+      link: 'shevchenko-anastasiia',
+      difficulty: 'Intermediate',
       status: 'Complete',
     },
   ];

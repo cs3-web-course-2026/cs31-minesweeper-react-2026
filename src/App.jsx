@@ -7,6 +7,7 @@ import MockGame from './pages/MockGame';
 import ZabavaArtem from './pages/ZabavaArtem';
 import Minesweeper from './pages/KharynaSerhii';
 import HavrasPavlo from './pages/HavrasPavlo';
+import ShevchenkoAnastasiia from './pages/ShevchenkoAnastasiia';
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
         <Route path="zabava-artem" element={<ZabavaArtem />} />
         <Route path="kharyna-serhii" element={<Minesweeper />} />
         <Route path="havras-pavlo" element={<HavrasPavlo />} />
+        <Route
+          path="shevchenko-anastasiia"
+          element={<ShevchenkoAnastasiia />}
+        />
       </Route>
     </Routes>
   );
