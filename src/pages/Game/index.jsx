@@ -118,6 +118,16 @@ function Game() {
       difficulty: 'Beginner',
       status: 'Complete',
     },
+    {
+      id: 8,
+      title: 'Minesweeper by Danylo Triaskov',
+      description:
+        'Сапер 10 на 10 із рекурсивним відкриттям клітинок',
+      author: 'Danylo Triaskov',
+      link: 'triaskov-danylo',
+      difficulty: 'Beginner',
+      status: 'Complete',
+    },
   ];
 
   return (

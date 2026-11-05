@@ -1,0 +1,31 @@
+.startButton {
+  padding: 0.7rem 1rem;
+  font: inherit;
+  font-weight: 700;
+  color: var(--color-ink);
+  cursor: pointer;
+  background: var(--color-start);
+  border: 0.16rem solid;
+  border-color: #f7f7f7 #6e6e6e #6e6e6e #f7f7f7;
+  border-radius: 0.45rem;
+}
+
+.startButton:hover {
+  background: var(--color-start-hover);
+}
+
+.startButton:active {
+  background: var(--color-start-active);
+  border-color: #6e6e6e #f7f7f7 #f7f7f7 #6e6e6e;
+}
+
+.startButton:focus-visible {
+  outline: 0.15rem solid var(--color-ink);
+  outline-offset: 0.15rem;
+}
+
+@media (width <= 22rem) {
+  .startButton {
+    padding: 0.55rem 0.7rem;
+  }
+}
