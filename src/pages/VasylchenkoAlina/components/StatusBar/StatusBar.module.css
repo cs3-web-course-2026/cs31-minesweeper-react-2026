@@ -1,0 +1,21 @@
+.statusBar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* кнопка рестарту завжди по центру */
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 20px;
+  padding: 12px;
+  border-radius: 5px;
+  background-color: var(--color-surface);
+  box-shadow: 0 10px 60px var(--color-surface);
+}
+
+@media (width <= 400px) {
+  .statusBar {
+    font-size: 16px;
+    padding: 8px;
+    gap: 6px;
+  }
+}
