@@ -1,0 +1,34 @@
+.game {
+  --game-width: 30rem;
+  --game-gap: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--game-gap);
+  padding: 1.5rem 1rem 2.5rem;
+  color: var(--color-text);
+}
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--game-gap);
+  box-sizing: border-box;
+  width: min(100%, var(--game-width));
+  padding: 0.75rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(var(--card-blur));
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--game-gap);
+  width: min(100%, var(--game-width));
+}
