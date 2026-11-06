@@ -2,6 +2,8 @@
   --cell-font-size: clamp(0.8rem, 3.2vw, 1.2rem);
   --cell-transition-duration: 0.15s;
   --explode-duration: 0.35s;
+  --cell-background: var(--cell-revealed);
+  --cell-border-color: var(--cell-border);
 
   position: relative;
   display: flex;
@@ -10,8 +12,9 @@
   width: var(--cell-size, 2.5rem);
   height: var(--cell-size, 2.5rem);
   padding: 0;
-  border: 1px solid var(--cell-border);
+  border: 1px solid var(--cell-border-color);
   border-radius: var(--cell-radius);
+  background: var(--cell-background);
   color: var(--color-text);
   font-family: var(--font-cell);
   font-size: var(--cell-font-size);
@@ -22,31 +25,39 @@
     transform var(--cell-transition-duration) ease;
 }
 
+/* Beats the global button:hover rule so settled cells keep their look */
+.cell:hover {
+  border-color: var(--cell-border-color);
+  background: var(--cell-background);
+  transform: none;
+}
+
 /* ── Closed ───────────────────────────────────────────── */
 
 .closed {
-  background: linear-gradient(
+  --cell-background: linear-gradient(
     145deg,
     var(--cell-hidden-top),
     var(--cell-hidden-bottom)
   );
+
   box-shadow: inset 0 1px 0 rgb(255 255 255 / 18%);
 }
 
 .closed:hover {
-  background: linear-gradient(
+  --cell-background: linear-gradient(
     145deg,
     var(--cell-hidden-hover-top),
     var(--cell-hidden-hover-bottom)
   );
-  border-color: var(--color-accent);
+  --cell-border-color: var(--color-accent);
+
   transform: scale(1.06);
 }
 
 /* ── Open ─────────────────────────────────────────────── */
 
 .open {
-  background: var(--cell-revealed);
   box-shadow: inset 0 1px 3px rgb(0 0 0 / 22%);
   cursor: default;
 }
@@ -54,14 +65,14 @@
 /* ── Flagged ──────────────────────────────────────────── */
 
 .flagged {
-  background: var(--gradient-gold);
-  border-color: var(--cell-flag);
+  --cell-background: var(--gradient-gold);
+  --cell-border-color: var(--cell-flag);
 }
 
 /* Flag placed on a cell without a mine (shown after losing) */
 .wrongFlag {
-  background: var(--color-danger-dim);
-  border-color: var(--color-danger-border);
+  --cell-background: var(--color-danger-dim);
+  --cell-border-color: var(--color-danger-border);
 }
 
 .wrongFlag::after {
@@ -73,14 +84,15 @@
 /* ── Mines ────────────────────────────────────────────── */
 
 .mine {
-  background: var(--color-danger-dim);
-  border-color: var(--color-danger-border);
+  --cell-background: var(--color-danger-dim);
+  --cell-border-color: var(--color-danger-border);
 }
 
 /* The mine the player clicked on */
 .exploded {
-  background: var(--cell-mine);
-  border-color: var(--cell-mine);
+  --cell-background: var(--cell-mine);
+  --cell-border-color: var(--cell-mine);
+
   animation: explode var(--explode-duration) ease-out;
 }
 
