@@ -1,15 +1,12 @@
 import styles from './Cell.module.css';
 
-function getStateLabel({ isRevealed, isFlagged, isMine, neighborMines }) {
-  if (isFlagged) return 'позначена прапорцем';
-  if (!isRevealed) return 'закрита';
-  if (isMine) return 'міна';
-  return neighborMines > 0
-    ? `відкрита, мін поруч: ${neighborMines}`
-    : 'відкрита, порожня';
+function getContent({ isRevealed, isFlagged, isMine, neighborMines }) {
+  if (isFlagged) return '🚩';
+  if (!isRevealed) return '';
+  if (isMine) return '💣';
+  return neighborMines > 0 ? neighborMines : '';
 }
-
-export default function Cell({ cell, onReveal, onFlag }) {
+export default function Cell({ cell, row, col, onReveal, onFlag }) {
   const className = [
     styles.cell,
     cell.isRevealed ? styles.revealed : styles.hidden,
