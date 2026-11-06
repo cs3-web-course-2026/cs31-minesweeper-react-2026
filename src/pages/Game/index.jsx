@@ -119,6 +119,16 @@ function Game() {
       status: 'Complete',
     },
     {
+      id: 8,
+      title: 'Minesweeper by Anna Isaieva',
+      description:
+        'A React Minesweeper game with flood-fill reveal, flagging, timer, and win/loss detection.',
+      author: 'Anna Isaieva',
+      link: 'isaieva-anna',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+      },
+    {
       id: 16,
       title: 'Minesweeper by Ivan Hrabovyi',
       description:
