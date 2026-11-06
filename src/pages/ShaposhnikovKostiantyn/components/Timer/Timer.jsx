@@ -6,15 +6,11 @@ export default function Timer({ status }) {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
-    if (status === STATUS.IDLE) {
-      setSeconds(0);
-      return undefined;
-    }
-    if (status !== STATUS.PLAYING) return undefined; // гру завершено — таймер зупиняється
+  if (status !== STATUS.PLAYING) return undefined; // очікування або гру завершено — таймер не йде
 
-    const id = setInterval(() => setSeconds((s) => s + 1), 1000);
-    return () => clearInterval(id); // очищення інтервалу при зміні статусу / розмонтуванні
-  }, [status]);
+  const id = setInterval(() => setSeconds((s) => s + 1), 1000);
+  return () => clearInterval(id); // очищення інтервалу при зміні статусу / розмонтуванні
+}, [status]);
 
   return <span className={styles.timer}>⏱ {String(seconds).padStart(3, '0')}</span>;
 }

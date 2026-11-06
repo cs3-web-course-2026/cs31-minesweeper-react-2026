@@ -1,10 +1,12 @@
 import styles from './Cell.module.css';
 
-function getContent({ isRevealed, isFlagged, isMine, neighborMines }) {
-  if (isFlagged) return '🚩';
-  if (!isRevealed) return '';
-  if (isMine) return '💣';
-  return neighborMines > 0 ? neighborMines : '';
+function getStateLabel({ isRevealed, isFlagged, isMine, neighborMines }) {
+  if (isFlagged) return 'позначена прапорцем';
+  if (!isRevealed) return 'закрита';
+  if (isMine) return 'міна';
+  return neighborMines > 0
+    ? `відкрита, мін поруч: ${neighborMines}`
+    : 'відкрита, порожня';
 }
 
 export default function Cell({ cell, onReveal, onFlag }) {
@@ -24,6 +26,7 @@ export default function Cell({ cell, onReveal, onFlag }) {
     <button
       type="button"
       className={className}
+      aria-label={`Рядок ${row + 1}, стовпець ${col + 1}: ${getStateLabel(cell)}`}
       onClick={onReveal}
       onContextMenu={handleContextMenu}
     >

@@ -13,11 +13,12 @@ export default function Board({ board, onReveal, onFlag }) {
       {board.map((line, row) =>
         line.map((cell, col) => (
           <Cell
-            // позиція клітинки не змінюється, тому індекси тут допустимі як key
-            key={`${row}-${col}`}
-            cell={cell}
-            onReveal={() => onReveal(row, col)}
-            onFlag={() => onFlag(row, col)}
+              key={`${row}-${col}`}
+              cell={cell}
+              row={row}
+              col={col}
+              onReveal={() => onReveal(row, col)}
+              onFlag={() => onFlag(row, col)}
           />
         )),
       )}

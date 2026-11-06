@@ -18,7 +18,7 @@ const createBoard = (difficultyKey) => {
   return createEmptyBoard(rows, cols);
 };
 
-// Кастомний хук: уся логіка стану гри зберігається тут, а компоненти лише відображають.
+
 export default function useMinesweeper(initialDifficulty = 'beginner') {
   const [difficulty, setDifficulty] = useState(initialDifficulty);
   const [board, setBoard] = useState(() => createBoard(initialDifficulty));
@@ -27,12 +27,15 @@ export default function useMinesweeper(initialDifficulty = 'beginner') {
   const { mines } = DIFFICULTIES[difficulty];
   const minesLeft = mines - countFlags(board);
   const isFinished = status === STATUS.WON || status === STATUS.LOST;
+  const [gameId, setGameId] = useState(0);
 
   const restart = useCallback((key = difficulty) => {
     setDifficulty(key);
     setBoard(createBoard(key));
     setStatus(STATUS.IDLE);
-  }, [difficulty]);
+    setGameId((id) => id + 1);
+    }, [difficulty]);
+  return { board, status, difficulty, gameId, minesLeft, reveal, flag, restart };
 
   const finishIfNeeded = (nextBoard) => {
     if (hasExploded(nextBoard)) {
