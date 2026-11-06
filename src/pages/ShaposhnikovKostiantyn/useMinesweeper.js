@@ -23,19 +23,21 @@ export default function useMinesweeper(initialDifficulty = 'beginner') {
   const [difficulty, setDifficulty] = useState(initialDifficulty);
   const [board, setBoard] = useState(() => createBoard(initialDifficulty));
   const [status, setStatus] = useState(STATUS.IDLE);
+  const [gameId, setGameId] = useState(0);
 
   const { mines } = DIFFICULTIES[difficulty];
   const minesLeft = mines - countFlags(board);
   const isFinished = status === STATUS.WON || status === STATUS.LOST;
-  const [gameId, setGameId] = useState(0);
 
-  const restart = useCallback((key = difficulty) => {
-    setDifficulty(key);
-    setBoard(createBoard(key));
-    setStatus(STATUS.IDLE);
-    setGameId((id) => id + 1);
-    }, [difficulty]);
-  return { board, status, difficulty, gameId, minesLeft, reveal, flag, restart };
+  const restart = useCallback(
+    (key = difficulty) => {
+      setDifficulty(key);
+      setBoard(createBoard(key));
+      setStatus(STATUS.IDLE);
+      setGameId((id) => id + 1);
+    },
+    [difficulty],
+  );
 
   const finishIfNeeded = (nextBoard) => {
     if (hasExploded(nextBoard)) {
@@ -65,5 +67,5 @@ export default function useMinesweeper(initialDifficulty = 'beginner') {
     setBoard(toggleFlag(board, row, col));
   };
 
-  return { board, status, difficulty, minesLeft, reveal, flag, restart };
+  return { board, status, difficulty, gameId, minesLeft, reveal, flag, restart };
 }
