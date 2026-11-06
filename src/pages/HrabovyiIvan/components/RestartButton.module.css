@@ -1,0 +1,25 @@
+.restartButton {
+  --restart-button-size: 2.75rem;
+
+  width: var(--restart-button-size);
+  height: var(--restart-button-size);
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-btn);
+  background: var(--gradient-gold);
+  box-shadow: var(--shadow-gold);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.restartButton:hover {
+  background: var(--gradient-gold-hover);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .restartButton {
+    transition: none;
+  }
+}
