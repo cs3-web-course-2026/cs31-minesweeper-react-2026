@@ -118,6 +118,16 @@ function Game() {
       difficulty: 'Beginner',
       status: 'Complete',
     },
+    {
+      id: 16,
+      title: 'Minesweeper by Ivan Hrabovyi',
+      description:
+        'React Minesweeper with a safe first click, flood-fill reveal, flags, timer, and win/lose detection.',
+      author: 'Ivan Hrabovyi',
+      link: 'hrabovyi-ivan',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
   ];
 
   return (
