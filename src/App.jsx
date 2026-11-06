@@ -8,6 +8,8 @@ import ZabavaArtem from './pages/ZabavaArtem';
 import Minesweeper from './pages/KharynaSerhii';
 import HavrasPavlo from './pages/HavrasPavlo';
 import HrabovyiIvan from './pages/HrabovyiIvan';
+import BraginaAlona from './pages/BraginaAlona';
+
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route path="kharyna-serhii" element={<Minesweeper />} />
         <Route path="havras-pavlo" element={<HavrasPavlo />} />
         <Route path="hrabovyi-ivan" element={<HrabovyiIvan />} />
+        <Route path="bragina-alona" element={<BraginaAlona />} />
+
       </Route>
     </Routes>
   );

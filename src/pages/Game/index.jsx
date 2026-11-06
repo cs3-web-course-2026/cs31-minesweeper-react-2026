@@ -109,6 +109,16 @@ function Game() {
       status: 'Complete',
     },
     {
+      id: 14,
+      title: 'Minesweeper by Alona Bragina',
+      description:
+        'A React implementation with a timer, flagging, flood-fill reveal, and win/lose detection.',
+      author: 'Alona Bragina',
+      link: 'bragina-alona',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+     },
+     {
       id: 7,
       title: 'Minesweeper by Pavlo Havras',
       description:
