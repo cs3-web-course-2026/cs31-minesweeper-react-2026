@@ -1,0 +1,16 @@
+.board {
+  /* розмір клітинки: вписуємо поле в ширину екрана, але не більше 42px */
+  --cell-size: clamp(
+    20px,
+    calc((95vw - 2 * var(--container-padding) - var(--board-cols) * 1px) / var(--board-cols)),
+    42px
+  );
+
+  display: grid;
+  grid-template-rows: repeat(var(--board-rows), var(--cell-size));
+  grid-template-columns: repeat(var(--board-cols), var(--cell-size));
+  width: fit-content;
+  border-radius: 5px;
+  justify-content: center;
+  gap: 1px;
+}
