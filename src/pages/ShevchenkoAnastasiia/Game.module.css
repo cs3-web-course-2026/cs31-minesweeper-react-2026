@@ -1,0 +1,30 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(var(--card-blur));
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(1.75rem, 5vw, 2.4rem);
+  text-align: center;
+  background: var(--gradient-gold-text);
+  background-clip: text;
+  color: transparent;
+}
+
+@media (width <= 480px) {
+  .game {
+    padding: 1rem;
+  }
+}

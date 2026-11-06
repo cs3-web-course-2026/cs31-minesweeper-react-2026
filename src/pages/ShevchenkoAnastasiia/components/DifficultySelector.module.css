@@ -1,0 +1,39 @@
+.selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.label {
+  font-weight: 700;
+}
+
+.details {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+.active,
+.active:hover {
+  color: var(--color-on-accent);
+  background: var(--gradient-gold);
+  border-color: var(--color-accent-border);
+}
+
+.active .details {
+  color: var(--color-on-accent);
+}
+
+@media (width <= 480px) {
+  .option {
+    padding: 0.4rem;
+  }
+}

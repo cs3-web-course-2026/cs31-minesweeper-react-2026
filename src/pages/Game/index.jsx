@@ -128,24 +128,34 @@ function Game() {
       status: 'Complete',
     },
     {
-      id: 16,
-      title: 'Minesweeper by Ivan Hrabovyi',
-      description:
+        id: 16,
+        title: 'Minesweeper by Ivan Hrabovyi',
+        description:
         'React Minesweeper with a safe first click, flood-fill reveal, flags, timer, and win/lose detection.',
-      author: 'Ivan Hrabovyi',
-      link: 'hrabovyi-ivan',
-      difficulty: 'Intermediate',
-      status: 'Complete',
+        author: 'Ivan Hrabovyi',
+        link: 'hrabovyi-ivan',
+        difficulty: 'Intermediate',
+        status: 'Complete',
     },
     {
-      id: 17,
-      title: 'Сапер на React',
-      description:
+        id: 17,
+        title: 'Сапер на React',
+        description:
         'React-версія гри: таймер, лічильник прапорців, рекурсивне відкриття порожніх клітинок, визначення перемоги та поразки.',
-      author: 'Korzhyk Anton',
-      link: 'korzhyk-anton',
-      difficulty: 'Intermediate',
-      status: 'Complete',
+        author: 'Korzhyk Anton',
+        link: 'korzhyk-anton',
+        difficulty: 'Intermediate',
+        status: 'Complete',
+    },
+    {
+        id: 18,
+        title: 'Minesweeper with Difficulty Levels',
+        description:
+        'Three difficulty levels, safe first click, best times saved per level, built from small components with hooks and CSS Modules',
+        author: 'Anastasiia Shevchenko',
+        link: 'shevchenko-anastasiia',
+        difficulty: 'Intermediate',
+        status: 'Complete',
     },
   ];
 
