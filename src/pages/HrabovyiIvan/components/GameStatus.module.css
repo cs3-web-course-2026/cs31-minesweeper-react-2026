@@ -1,0 +1,15 @@
+.message {
+  min-height: 1.5rem;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-weight: 700;
+  text-align: center;
+}
+
+.won {
+  color: var(--color-success);
+}
+
+.lost {
+  color: var(--color-danger);
+}

@@ -1,0 +1,18 @@
+.board {
+  --board-columns: 10;
+  --board-gap: 0.2rem;
+  --cell-size: clamp(1.6rem, 7vw, 2.5rem);
+
+  display: grid;
+  grid-template-columns: repeat(var(--board-columns), var(--cell-size));
+  gap: var(--board-gap);
+  justify-content: center;
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0.75rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(var(--card-blur));
+}
