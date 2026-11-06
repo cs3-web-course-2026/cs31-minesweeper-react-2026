@@ -1,0 +1,62 @@
+/* Дизайн-токени задано на обгортці сторінки, щоб не впливати на інші реалізації */
+.page {
+  --color-bg: #1e2433;
+  --color-panel: #2b3245;
+  --color-panel-border: #3a4359;
+  --color-display-bg: #12151f;
+  --color-display-text: #ff5a4f;
+
+  --color-cell-closed: #8fa3c7;
+  --color-cell-closed-light: #b4c4e0;
+  --color-cell-closed-dark: #61759b;
+  --color-cell-opened: #dfe5ef;
+  --color-cell-opened-border: #c3ccdb;
+  --color-cell-exploded: #ff5a4f;
+  --color-cell-wrong: #f7c548;
+  --color-focus: #ffd166;
+
+  --radius: 6px;
+  --font-ui: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Courier New", ui-monospace, monospace;
+
+  box-sizing: border-box;
+  container-type: inline-size;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: var(--color-bg);
+  font-family: var(--font-ui);
+  color: #f1f3f8;
+}
+
+.page *,
+.page *::before,
+.page *::after {
+  box-sizing: inherit;
+}
+
+.game {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--color-panel);
+  border: 1px solid var(--color-panel-border);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 35%);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+@media (width <= 420px) {
+  .game {
+    padding: 10px;
+  }
+}

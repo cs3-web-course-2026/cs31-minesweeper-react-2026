@@ -1,0 +1,25 @@
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 5.5em;
+  padding: 4px 10px;
+  background: var(--color-display-bg);
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-display-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.icon {
+  font-size: 1rem;
+}
+
+@media (width <= 420px) {
+  .counter {
+    min-width: 4.5em;
+    font-size: 1.15rem;
+  }
+}
