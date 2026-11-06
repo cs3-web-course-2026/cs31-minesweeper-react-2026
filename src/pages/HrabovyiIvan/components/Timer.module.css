@@ -1,0 +1,18 @@
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 5.5rem;
+  padding: 0.4rem 0.75rem;
+  background: var(--cell-revealed);
+  border-radius: var(--radius-sm);
+  font-size: 1.1rem;
+}
+
+.value {
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}

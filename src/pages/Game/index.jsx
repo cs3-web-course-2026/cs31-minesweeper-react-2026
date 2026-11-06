@@ -117,6 +117,26 @@ function Game() {
       link: 'isaieva-anna',
       difficulty: 'Intermediate',
       status: 'Complete',
+      },
+      {
+      id: 8,
+      title: 'Minesweeper by Pavlo Havras',
+      description:
+        'Classic Minesweeper with recursive reveal, timer, flags, and retro styling',
+      author: 'Pavlo Havras',
+      link: 'havras-pavlo',
+      difficulty: 'Beginner',
+      status: 'Complete',
+    },
+    {
+      id: 16,
+      title: 'Minesweeper by Ivan Hrabovyi',
+      description:
+        'React Minesweeper with a safe first click, flood-fill reveal, flags, timer, and win/lose detection.',
+      author: 'Ivan Hrabovyi',
+      link: 'hrabovyi-ivan',
+      difficulty: 'Intermediate',
+      status: 'Complete',
     },
   ];
 
