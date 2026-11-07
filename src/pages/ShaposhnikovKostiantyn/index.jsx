@@ -12,19 +12,15 @@ export default function Minesweeper() {
       useMinesweeper();
 
   return (
-    <div className={styles.game}>
-      <h1 className={styles.title}>Minesweeper</h1>
+  <div className={styles.page}>
+    <header className={styles.panel}>
+      {/* статус-бар: таймер, мины */}
+      {/* управление: сложность, рестарт */}
+    </header>
 
-      <DifficultySelect value={difficulty} onChange={restart} />
-
-      <div className={styles.panel}>
-        <span className={styles.counter}>💣 {minesLeft}</span>
-        <RestartButton status={status} onClick={() => restart()} />
-        <Timer key={gameId} isRunning={status === STATUS.PLAYING} />
-      </div>
-
-      <GameStatus status={status} />
-      <Board board={board} onReveal={reveal} onFlag={flag} />
-    </div>
+    <section className={styles.boardArea} aria-label="Ігрове поле">
+      {/* <Board ... /> */}
+    </section>
+  </div>
   );
 }
