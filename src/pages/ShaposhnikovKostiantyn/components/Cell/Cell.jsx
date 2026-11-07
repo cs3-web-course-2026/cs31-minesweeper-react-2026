@@ -6,6 +6,14 @@ function getContent({ isRevealed, isFlagged, isMine, neighborMines }) {
   if (isMine) return '💣';
   return neighborMines > 0 ? neighborMines : '';
 }
+
+function getStateLabel({ isRevealed, isFlagged, isMine, neighborMines }) {
+  if (isFlagged) return 'прапорець';
+  if (!isRevealed) return 'закрита';
+  if (isMine) return 'міна';
+  return neighborMines > 0 ? `мін поруч: ${neighborMines}` : 'порожня';
+}
+
 export default function Cell({ cell, row, col, onReveal, onFlag }) {
   const className = [
     styles.cell,
