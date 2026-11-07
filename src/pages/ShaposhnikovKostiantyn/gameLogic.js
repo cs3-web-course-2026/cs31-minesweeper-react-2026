@@ -31,13 +31,18 @@ const cloneBoard = (board) => board.map((row) => row.map((cell) => ({ ...cell })
 
 export function getNeighbors(board, row, col) {
   const result = [];
-  for (let dr = -1; dr <= 1; dr += 1) {
-    for (let dc = -1; dc <= 1; dc += 1) {
-      if (dr === 0 && dc === 0) continue;
-      const r = row + dr;
-      const c = col + dc;
-      if (r >= 0 && r < board.length && c >= 0 && c < board[0].length) {
-        result.push([r, c]);
+  for (let rowOffset = -1; rowOffset <= 1; rowOffset += 1) {
+    for (let colOffset = -1; colOffset <= 1; colOffset += 1) {
+      if (rowOffset === 0 && colOffset === 0) continue;
+      const neighborRow = row + rowOffset;
+      const neighborCol = col + colOffset;
+      if (
+        neighborRow >= 0 &&
+        neighborRow < board.length &&
+        neighborCol >= 0 &&
+        neighborCol < board[0].length
+      ) {
+        result.push([neighborRow, neighborCol]);
       }
     }
   }
@@ -48,22 +53,24 @@ export function getNeighbors(board, row, col) {
 export function placeMines(board, mines, safeRow, safeCol) {
   const next = cloneBoard(board);
   const candidates = [];
-  next.forEach((line, r) =>
-    line.forEach((_, c) => {
-      if (r !== safeRow || c !== safeCol) candidates.push([r, c]);
+  next.forEach((line, rowIndex) =>
+    line.forEach((_, colIndex) => {
+      if (rowIndex !== safeRow || colIndex !== safeCol) {
+        candidates.push([rowIndex, colIndex]);
+      }
     }),
   );
 
-  for (let i = 0; i < mines; i += 1) {
-    const index = Math.floor(Math.random() * candidates.length);
-    const [r, c] = candidates.splice(index, 1)[0];
-    next[r][c].isMine = true;
+  for (let mineIndex = 0; mineIndex < mines; mineIndex += 1) {
+    const candidateIndex = Math.floor(Math.random() * candidates.length);
+    const [rowIndex, colIndex] = candidates.splice(candidateIndex, 1)[0];
+    next[rowIndex][colIndex].isMine = true;
   }
 
-  next.forEach((line, r) =>
-    line.forEach((cell, c) => {
-      cell.neighborMines = getNeighbors(next, r, c).filter(
-        ([nr, nc]) => next[nr][nc].isMine,
+  next.forEach((line, rowIndex) =>
+    line.forEach((cell, colIndex) => {
+      cell.neighborMines = getNeighbors(next, rowIndex, colIndex).filter(
+        ([neighborRow, neighborCol]) => next[neighborRow][neighborCol].isMine,
       ).length;
     }),
   );
@@ -84,12 +91,14 @@ export function revealCell(board, row, col) {
 
   const stack = [[row, col]];
   while (stack.length > 0) {
-    const [r, c] = stack.pop();
-    const cell = next[r][c];
+    const [currentRow, currentCol] = stack.pop();
+    const cell = next[currentRow][currentCol];
     if (cell.isRevealed || cell.isFlagged) continue;
     cell.isRevealed = true;
     if (cell.neighborMines === 0) {
-      getNeighbors(next, r, c).forEach(([nr, nc]) => stack.push([nr, nc]));
+      getNeighbors(next, currentRow, currentCol).forEach(
+        ([neighborRow, neighborCol]) => stack.push([neighborRow, neighborCol]),
+      );
     }
   }
   return next;

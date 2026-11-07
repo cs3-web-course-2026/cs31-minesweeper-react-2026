@@ -5,6 +5,7 @@ import RestartButton from './components/RestartButton/RestartButton';
 import Timer from './components/Timer/Timer';
 import useMinesweeper from './useMinesweeper';
 import styles from './Minesweeper.module.css';
+import {STATUS} from "./gameLogic.js";
 
 export default function Minesweeper() {
   const { board, status, difficulty, gameId, minesLeft, reveal, flag, restart } =
@@ -19,7 +20,7 @@ export default function Minesweeper() {
       <div className={styles.panel}>
         <span className={styles.counter}>💣 {minesLeft}</span>
         <RestartButton status={status} onClick={() => restart()} />
-        <Timer key={gameId} status={status} />
+        <Timer key={gameId} isRunning={status === STATUS.PLAYING} />
       </div>
 
       <GameStatus status={status} />
