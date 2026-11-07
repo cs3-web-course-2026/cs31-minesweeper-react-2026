@@ -19,8 +19,8 @@ export default function Minesweeper() {
               💣 {minesLeft}
           </span>
           <Timer key={gameId} isRunning={status === STATUS.PLAYING} />
-          <DifficultySelect difficulty={difficulty} onChange={restart} />
-          <RestartButton onRestart={() => restart()} />
+          <DifficultySelect value={difficulty} onChange={restart} />
+          <RestartButton status={status} onClick={() => restart()} />
       </header>
 
       <section className={styles.boardArea} aria-label="Ігрове поле">
