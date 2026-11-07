@@ -12,7 +12,6 @@ import HavrasPavlo from './pages/HavrasPavlo';
 import HrabovyiIvan from './pages/HrabovyiIvan';
 import KorzhykAnton from './pages/KorzhykAnton';
 
-
 function App() {
   return (
     <Routes>
@@ -23,22 +22,14 @@ function App() {
         <Route path="mock-game" element={<MockGame />} />
         <Route path="zabava-artem" element={<ZabavaArtem />} />
         <Route path="kharyna-serhii" element={<Minesweeper />} />
-
-
         <Route
           path="shaposhnikov-kostiantyn"
           element={<ShaposhnikovKostiantyn />}
         />
-
-        <Route path="havras-pavlo" element={<HavrasPavlo />} />
-        <Route path="hrabovyi-ivan" element={<HrabovyiIvan />} />
-
-
         <Route path="vasylchenko-alina" element={<VasylchenkoAlina />} />
         <Route path="havras-pavlo" element={<HavrasPavlo />} />
         <Route path="hrabovyi-ivan" element={<HrabovyiIvan />} />
         <Route path="korzhyk-anton" element={<KorzhykAnton />} />
-
       </Route>
     </Routes>
   );
