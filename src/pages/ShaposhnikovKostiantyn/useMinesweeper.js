@@ -51,15 +51,16 @@ export default function useMinesweeper(initialDifficulty = 'beginner') {
     }
   };
 
-  const reveal = (row, col) => {
-    if (isFinished || board[row][col].isFlagged) return;
-    let current = board;
-    if (status === STATUS.IDLE) {
-      current = placeMines(board, mines, row, col);
-      setStatus(STATUS.PLAYING);
-    }
-    finishIfNeeded(revealCell(current, row, col));
-  };
+const reveal = (row, col) => {
+  if (isFinished || board[row][col].isFlagged) return;
+
+  let current = board;
+  if (status === STATUS.IDLE) {
+    current = placeMines(board, mines, row, col);
+    setStatus(STATUS.PLAYING);
+  }
+  finishIfNeeded(revealCell(current, row, col));
+};
 
   const flag = (row, col) => {
     if (isFinished) return;
