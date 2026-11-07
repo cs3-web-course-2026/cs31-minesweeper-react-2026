@@ -14,10 +14,13 @@ export default function Minesweeper() {
   return (
     <div className={styles.page}>
       <header className={styles.panel}>
-        <GameStatus status={status} minesLeft={minesLeft} />
-        <Timer key={gameId} isRunning={status === STATUS.PLAYING} />
-        <DifficultySelect difficulty={difficulty} onChange={restart} />
-        <RestartButton onRestart={() => restart()} />
+          <GameStatus status={status} />
+          <span className={styles.counter} aria-label="Залишилось мін">
+              💣 {minesLeft}
+          </span>
+          <Timer key={gameId} isRunning={status === STATUS.PLAYING} />
+          <DifficultySelect difficulty={difficulty} onChange={restart} />
+          <RestartButton onRestart={() => restart()} />
       </header>
 
       <section className={styles.boardArea} aria-label="Ігрове поле">
