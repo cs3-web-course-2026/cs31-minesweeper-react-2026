@@ -112,7 +112,7 @@ function Game() {
       id: 18,
       title: 'Minesweeper by Kostiantyn Shaposhnikov',
       description:
-          'A React implementation with CSS Modules, a timer, flagging, difficulty levels, and win/lose detection.',
+        'A React implementation with CSS Modules, a timer, flagging, difficulty levels, and win/lose detection.',
       author: 'Kostiantyn Shaposhnikov',
       link: 'shaposhnikov-kostiantyn',
       difficulty: 'Intermediate',
@@ -158,6 +158,7 @@ function Game() {
       status: 'Complete',
     },
   ];
+
   return (
     <div className={styles.gameContainer}>
       <div className={styles.gameHeader}>
@@ -220,4 +221,5 @@ function Game() {
     </div>
   );
 }
+
 export default Game;
