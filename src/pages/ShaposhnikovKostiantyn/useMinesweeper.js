@@ -52,8 +52,7 @@ export default function useMinesweeper(initialDifficulty = 'beginner') {
   };
 
   const reveal = (row, col) => {
-    if (isFinished) return;
-
+    if (isFinished || board[row][col].isFlagged) return;
     let current = board;
     if (status === STATUS.IDLE) {
       current = placeMines(board, mines, row, col);
