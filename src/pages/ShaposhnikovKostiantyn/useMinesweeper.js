@@ -63,7 +63,7 @@ export default function useMinesweeper(initialDifficulty = 'beginner') {
   };
 
   const flag = (row, col) => {
-    if (isFinished || status === STATUS.IDLE) return;
+    if (isFinished) return;
     setBoard(toggleFlag(board, row, col));
   };
 
