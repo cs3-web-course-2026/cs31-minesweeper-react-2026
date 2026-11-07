@@ -108,7 +108,6 @@ function Game() {
       difficulty: 'Intermediate',
       status: 'Complete',
     },
-
     {
       id: 18,
       title: 'Minesweeper by Kostiantyn Shaposhnikov',
@@ -119,7 +118,6 @@ function Game() {
       difficulty: 'Intermediate',
       status: 'Complete',
     },
-
     {
       id: 15,
       title: 'Зелений сапер',
@@ -149,9 +147,6 @@ function Game() {
       difficulty: 'Intermediate',
       status: 'Complete',
     },
-
-
-
     {
       id: 17,
       title: 'Сапер на React',
@@ -162,9 +157,7 @@ function Game() {
       difficulty: 'Intermediate',
       status: 'Complete',
     },
-
   ];
-
   return (
     <div className={styles.gameContainer}>
       <div className={styles.gameHeader}>
@@ -227,5 +220,4 @@ function Game() {
     </div>
   );
 }
-
 export default Game;
