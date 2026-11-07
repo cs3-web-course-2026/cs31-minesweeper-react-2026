@@ -1,0 +1,38 @@
+.cell {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hidden {
+  background: #d1d5db;
+  box-shadow: inset -2px -2px 0 #9ca3af, inset 2px 2px 0 #f3f4f6;
+}
+
+.hidden:hover {
+  background: #e5e7eb;
+}
+
+.revealed {
+  background: #f9fafb;
+  cursor: default;
+}
+
+.exploded {
+  background: #fca5a5;
+}
+
+.n1 { color: #2563eb; }
+.n2 { color: #16a34a; }
+.n3 { color: #dc2626; }
+.n4 { color: #1e3a8a; }
+.n5 { color: #991b1b; }
+.n6 { color: #0d9488; }
+.n7 { color: #111827; }
+.n8 { color: #6b7280; }

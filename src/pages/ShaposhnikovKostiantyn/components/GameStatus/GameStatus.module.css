@@ -1,0 +1,18 @@
+.status {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.idle,
+.playing {
+  color: #374151;
+}
+
+.won {
+  color: #16a34a;
+}
+
+.lost {
+  color: #dc2626;
+}
