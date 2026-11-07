@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { STATUS } from '../../gameLogic';
 import styles from './Timer.module.css';
 
 export default function Timer({ isRunning }) {
@@ -12,5 +11,5 @@ export default function Timer({ isRunning }) {
     return () => clearInterval(id);
   }, [isRunning]);
 
- return <span>{seconds}</span>;
+ return <span className={styles.timer}>{seconds}</span>;;
 }
