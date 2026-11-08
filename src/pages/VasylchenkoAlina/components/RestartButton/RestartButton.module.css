@@ -1,0 +1,20 @@
+.button {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  min-width: 0;
+  height: 40px;
+  padding: 0;
+  background-color: var(--color-text);
+  color: var(--color-background);
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-touch-callout: none;
+  border: none;
+  border-radius: 2px;
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+}

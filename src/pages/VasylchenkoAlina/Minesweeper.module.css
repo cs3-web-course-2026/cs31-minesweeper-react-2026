@@ -1,0 +1,68 @@
+/* Кольори та розміри гри. Змінні оголошені на .page, тож діють лише всередині гри */
+.page {
+  --color-background: #e4fadf;
+  --color-surface: #a7d19e;
+  --color-text: #33522c;
+  --color-cell-num-1: #4a6fa5;
+  --color-cell-num-2: #3f8a32;
+  --color-cell-num-3: #b0524a;
+  --color-cell-num-4: #2f8f7a;
+  --color-cell-num-5: #a8445a;
+  --color-cell-num-6: #c07a1a;
+  --color-cell-num-7: #7a5ca8;
+  --color-cell-num-8: #4a4a4a;
+  --color-flag: #f2c14e;
+  --color-flag-correct-bg: #c4e6b8;
+  --color-flag-correct: #2f6b2a;
+  --color-flag-wrong-bg: #e9c0b8;
+  --color-flag-wrong: #8a3b30;
+  --color-mine-bg: #f0d9d3;
+  --color-mine: #8a3b30;
+  --color-exploded-bg: #c0504a;
+  --color-cell-closed: #5c8a52;
+  --color-cell-border: #8fb886;
+  --font-main: 'Comic Neue', 'Comic Sans MS', cursive; /* змінити шрифт гри можна тут */
+  --container-padding: 20px;
+  --shadow-cell-raised:
+    inset 2px 2px 0 rgb(255 255 255 / 35%),
+    inset -2px -2px 0 rgb(0 0 0 / 25%);
+
+  width: 100%;
+  color: var(--color-text);
+  font-family: var(--font-main);
+}
+
+/* Усі елементи гри беруть єдиний шрифт, а не стилі проєкту */
+.page :where(h1, button, output, p) {
+  font-family: inherit;
+}
+
+/* Скидання базових стилів лише всередині гри (нульова специфічність, тож не заважає іншим правилам) */
+:where(.page, .page *, .page *::before, .page *::after) {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.container {
+  background-color: var(--color-background);
+  display: inline-block;
+  border-radius: 15px;
+  padding: var(--container-padding);
+  max-width: 95vw;
+  box-shadow: 0 5px 25px var(--color-text);
+}
+
+@media (width <= 400px) {
+  .page {
+    --container-padding: 12px; /* більше місця для поля на вузьких екранах */
+  }
+}

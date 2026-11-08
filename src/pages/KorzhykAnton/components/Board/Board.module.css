@@ -1,0 +1,18 @@
+.board {
+  /* Розмір клітинки рахується від ширини сторінки (container query units), щоб поле вміщалось на телефоні */
+  --cell-size: min(40px, calc((100cqi - 64px) / var(--cols)));
+
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--cell-size));
+  grid-auto-rows: var(--cell-size);
+  gap: 2px;
+  padding: 4px;
+  background: var(--color-panel-border);
+  border-radius: var(--radius);
+}
+
+/* Після завершення гри клітинки не реагують на наведення */
+.finished > * {
+  cursor: default;
+  pointer-events: none;
+}

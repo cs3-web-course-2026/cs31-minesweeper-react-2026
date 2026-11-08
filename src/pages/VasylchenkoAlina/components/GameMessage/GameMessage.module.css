@@ -1,0 +1,13 @@
+.message {
+  min-height: 1.5em;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.win {
+  color: var(--color-flag-correct);
+}
+
+.lose {
+  color: var(--color-flag-wrong);
+}
