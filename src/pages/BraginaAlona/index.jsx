@@ -1,7 +1,11 @@
 import { useGameState } from './hooks/useGameState';
 import { useTimer } from './hooks/useTimer';
 
-import { GAME_CONFIG, GAME_STATUS } from './constants/game';
+import {
+  GAME_CONFIG,
+  GAME_STATUS,
+  GAME_ACTION,
+} from './constants/game';
 
 import { countFlags } from './utils/checks';
 
@@ -16,6 +20,7 @@ function Minesweeper() {
   const {
     board,
     status,
+    explodedCell,
     dispatch,
     restartGame,
   } = useGameState();
@@ -28,7 +33,7 @@ function Minesweeper() {
   // Відкриття клітинки
   function handleReveal(row, col) {
     dispatch({
-      type: 'REVEAL_CELL',
+      type: GAME_ACTION.REVEAL_CELL,
       row,
       col,
     });
@@ -37,7 +42,7 @@ function Minesweeper() {
   // Встановлення або зняття прапорця
   function handleToggleFlag(row, col) {
     dispatch({
-      type: 'TOGGLE_FLAG',
+      type: GAME_ACTION.TOGGLE_FLAG,
       row,
       col,
     });
@@ -88,6 +93,7 @@ function Minesweeper() {
           onReveal={handleReveal}
           onToggleFlag={handleToggleFlag}
           disabled={isGameOver}
+          explodedCell={explodedCell}
         />
 
         <div className={styles.footer}>

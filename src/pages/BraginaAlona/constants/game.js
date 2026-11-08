@@ -21,3 +21,9 @@ export const CELL_CONTENT = {
   MINE: 'mine',
   EMPTY: 'empty',
 };
+
+export const GAME_ACTION = {
+  RESTART: 'RESTART',
+  REVEAL_CELL: 'REVEAL_CELL',
+  TOGGLE_FLAG: 'TOGGLE_FLAG',
+};

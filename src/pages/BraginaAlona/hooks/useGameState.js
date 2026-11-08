@@ -3,6 +3,7 @@ import { useReducer } from 'react';
 import {
   GAME_CONFIG,
   GAME_STATUS,
+  GAME_ACTION,
   CELL_STATE,
   CELL_CONTENT,
 } from '../constants/game';
@@ -35,13 +36,14 @@ function createInitialState() {
       minePositions,
     ),
     status: GAME_STATUS.IDLE,
+    explodedCell: null,
   };
 }
 
 // Обробляє всі дії гравця
 function gameReducer(state, action) {
   // Перезапуск гри
-  if (action.type === 'RESTART') {
+  if (action.type === GAME_ACTION.RESTART) {
     return createInitialState();
   }
 
@@ -54,9 +56,8 @@ function gameReducer(state, action) {
   }
 
   // Встановлення або зняття прапорця
-  if (action.type === 'TOGGLE_FLAG') {
+  if (action.type === GAME_ACTION.TOGGLE_FLAG) {
     const { row, col } = action;
-
     const cell = state.board[row][col];
 
     if (cell.state === CELL_STATE.OPEN) {
@@ -93,9 +94,8 @@ function gameReducer(state, action) {
   }
 
   // Відкриття клітинки
-  if (action.type === 'REVEAL_CELL') {
+  if (action.type === GAME_ACTION.REVEAL_CELL) {
     const { row, col } = action;
-
     const cell = state.board[row][col];
 
     if (cell.state !== CELL_STATE.CLOSED) {
@@ -106,28 +106,31 @@ function gameReducer(state, action) {
 
     // Перевіряємо, чи була відкрита міна
     if (isMine(newBoard[row][col])) {
-    const revealedBoard = newBoard.map((boardRow) =>
-      boardRow.map((BoardCell) => {
-        if (BoardCell.content === CELL_CONTENT.MINE) {
-          return {
-            ...BoardCell,
-            state: CELL_STATE.OPEN,
-          };
-        }
+      const revealedBoard = newBoard.map((boardRow) =>
+        boardRow.map((boardCell) => {
+          if (boardCell.content === CELL_CONTENT.MINE) {
+            return {
+              ...boardCell,
+              state: CELL_STATE.OPEN,
+            };
+          }
 
-      return BoardCell;
-    }),
-  );
+          return boardCell;
+        }),
+      );
 
-  return {
-    board: revealedBoard,
-    status: GAME_STATUS.LOST,
-  };
-}
+      return {
+        board: revealedBoard,
+        status: GAME_STATUS.LOST,
+        explodedCell: { row, col },
+      };
+    }
+
     // Перевіряємо перемогу
     const hasWon = checkWin(newBoard);
 
     return {
+      ...state,
       board: newBoard,
       status: hasWon
         ? GAME_STATUS.WON
@@ -149,7 +152,8 @@ export function useGameState() {
   return {
     board: state.board,
     status: state.status,
+    explodedCell: state.explodedCell,
     dispatch,
-    restartGame: () => dispatch({ type: 'RESTART' }),
+    restartGame: () => dispatch({ type: GAME_ACTION.RESTART }),
   };
 }

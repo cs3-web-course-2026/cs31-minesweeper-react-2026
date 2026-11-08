@@ -1,11 +1,12 @@
 import { CELL_CONTENT, CELL_STATE } from '../constants/game';
+import { getNeighbourPositions } from './board';
 
-// Відкриває клітинку та сусідні порожні 
+// Відкриває клітинку та сусідні порожні клітинки
 export function revealCell(board, startRow, startCol) {
   const rows = board.length;
   const cols = board[0].length;
 
-  // Початкове поле
+  // Створюємо копію поля
   const newBoard = board.map((row) =>
     row.map((cell) => ({ ...cell })),
   );
@@ -17,7 +18,7 @@ export function revealCell(board, startRow, startCol) {
     return newBoard;
   }
 
-  // Прапорець перевіряємо до відкриття клітинки
+  // Якщо натрапили на міну, відкриваємо її
   if (firstCell.content === CELL_CONTENT.MINE) {
     firstCell.state = CELL_STATE.OPEN;
     return newBoard;
@@ -44,39 +45,24 @@ export function revealCell(board, startRow, startCol) {
 
     cell.state = CELL_STATE.OPEN;
 
-    // Якщо навколо є міни, сусідні клітинки не відкриваємо
+    // Якщо поруч є міни, сусідні клітинки не відкриваємо
     if (cell.adjacentMines > 0) {
       continue;
     }
 
-    // Перевіряємо всі вісім сусідніх клітинок
-    for (let rowOffset = -1; rowOffset <= 1; rowOffset++) {
-      for (let colOffset = -1; colOffset <= 1; colOffset++) {
-        const neighbourRow = row + rowOffset;
-        const neighbourCol = col + colOffset;
+    // Додаємо закритих сусідів до черги
+    const neighbours = getNeighbourPositions(row, col, rows, cols);
 
-        const isCurrentCell = rowOffset === 0 && colOffset === 0;
+    neighbours.forEach(([neighbourRow, neighbourCol]) => {
+      const neighbour = newBoard[neighbourRow][neighbourCol];
 
-        const isInsideBoard =
-          neighbourRow >= 0 &&
-          neighbourRow < rows &&
-          neighbourCol >= 0 &&
-          neighbourCol < cols;
-
-        if (!isInsideBoard || isCurrentCell) {
-          continue;
-        }
-
-        const neighbour = newBoard[neighbourRow][neighbourCol];
-
-        if (
-          neighbour.state === CELL_STATE.CLOSED &&
-          neighbour.content === CELL_CONTENT.EMPTY
-        ) {
-          queue.push([neighbourRow, neighbourCol]);
-        }
+      if (
+        neighbour.state === CELL_STATE.CLOSED &&
+        neighbour.content === CELL_CONTENT.EMPTY
+      ) {
+        queue.push([neighbourRow, neighbourCol]);
       }
-    }
+    });
   }
 
   return newBoard;

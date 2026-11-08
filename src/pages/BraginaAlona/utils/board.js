@@ -15,18 +15,24 @@ export function isInBounds(row, col, rows, cols) {
   return row >= 0 && row < rows && col >= 0 && col < cols;
 }
 
-export function countAdjacentMines(minePositions, row, col, rows, cols) {
-  return DIRECTIONS.filter(([rowOffset, colOffset]) => {
-    const neighbourRow = row + rowOffset;
-    const neighbourCol = col + colOffset;
+export function getNeighbourPositions(row, col, rows, cols) {
+  return DIRECTIONS
+    .map(([rowOffset, colOffset]) => [
+      row + rowOffset,
+      col + colOffset,
+    ])
+    .filter(([neighbourRow, neighbourCol]) =>
+      isInBounds(neighbourRow, neighbourCol, rows, cols),
+    );
+}
 
-    return (
-      isInBounds(neighbourRow, neighbourCol, rows, cols) &&
+export function countAdjacentMines(minePositions, row, col, rows, cols) {
+  return getNeighbourPositions(row, col, rows, cols).filter(
+    ([neighbourRow, neighbourCol]) =>
       minePositions.some(
         (mine) => mine.row === neighbourRow && mine.col === neighbourCol,
-      )
-    );
-  }).length;
+      ),
+  ).length;
 }
 
 export function createBoard(rows, cols, minePositions) {

@@ -1,7 +1,13 @@
 import CellButton from './CellButton';
 import styles from './Board.module.css';
 
-function Board({ board, onReveal, onToggleFlag, disabled }) {
+function Board({
+  board,
+  onReveal,
+  onToggleFlag,
+  disabled,
+  explodedCell,
+}) {
   return (
     <div
       className={styles.board}
@@ -18,6 +24,7 @@ function Board({ board, onReveal, onToggleFlag, disabled }) {
             onReveal={onReveal}
             onToggleFlag={onToggleFlag}
             disabled={disabled}
+            explodedCell={explodedCell}
           />
         )),
       )}
