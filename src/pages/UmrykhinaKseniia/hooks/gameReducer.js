@@ -1,4 +1,5 @@
 import {
+  CELL_STATE,
   GAME_ACTION,
   GAME_CONFIG,
   GAME_STATUS,
@@ -22,7 +23,10 @@ function isGameOver(gameStatus) {
 }
 
 function handleReveal(state, { row, col }) {
-  if (isGameOver(state.gameStatus)) {
+  if (
+    isGameOver(state.gameStatus) ||
+    state.board[row][col].state !== CELL_STATE.CLOSED
+  ) {
     return state;
   }
 
@@ -31,10 +35,6 @@ function handleReveal(state, { row, col }) {
     ? state.board
     : placeMines(state.board, state.config.mineCount, row, col);
   const revealedBoard = revealCell(preparedBoard, row, col);
-
-  if (revealedBoard === preparedBoard && preparedBoard === state.board) {
-    return state;
-  }
 
   if (hasRevealedMine(revealedBoard)) {
     return {
