@@ -6,8 +6,11 @@ import Game from './pages/Game';
 import MockGame from './pages/MockGame';
 import ZabavaArtem from './pages/ZabavaArtem';
 import Minesweeper from './pages/KharynaSerhii';
+import VasylchenkoAlina from './pages/VasylchenkoAlina/Minesweeper';
 import HavrasPavlo from './pages/HavrasPavlo';
 import ShevchenkoAnastasiia from './pages/ShevchenkoAnastasiia';
+import HrabovyiIvan from './pages/HrabovyiIvan';
+import KorzhykAnton from './pages/KorzhykAnton';
 
 function App() {
   return (
@@ -19,11 +22,14 @@ function App() {
         <Route path="mock-game" element={<MockGame />} />
         <Route path="zabava-artem" element={<ZabavaArtem />} />
         <Route path="kharyna-serhii" element={<Minesweeper />} />
+        <Route path="vasylchenko-alina" element={<VasylchenkoAlina />} />
         <Route path="havras-pavlo" element={<HavrasPavlo />} />
         <Route
           path="shevchenko-anastasiia"
           element={<ShevchenkoAnastasiia />}
         />
+        <Route path="hrabovyi-ivan" element={<HrabovyiIvan />} />
+        <Route path="korzhyk-anton" element={<KorzhykAnton />} />
       </Route>
     </Routes>
   );

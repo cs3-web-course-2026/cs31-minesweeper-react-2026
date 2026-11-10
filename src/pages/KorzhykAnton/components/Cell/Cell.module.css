@@ -1,0 +1,85 @@
+/* ---------- Closed (default) ---------- */
+.cell {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  font-family: var(--font-ui);
+  font-size: calc(var(--cell-size) * 0.5);
+  font-weight: 800;
+  line-height: 1;
+  background: var(--color-cell-closed);
+  border: 3px solid;
+  border-color: var(--color-cell-closed-light) var(--color-cell-closed-dark)
+    var(--color-cell-closed-dark) var(--color-cell-closed-light);
+  border-radius: 3px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Перекриває глобальний button:hover сайту, щоб клітинка зберігала свій вигляд */
+.cell:hover {
+  background: var(--color-cell-closed);
+  border-color: var(--color-cell-closed-light) var(--color-cell-closed-dark)
+    var(--color-cell-closed-dark) var(--color-cell-closed-light);
+  filter: brightness(1.1);
+  transform: none;
+}
+
+.cell:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 1px;
+}
+
+/* ---------- Opened ---------- */
+.opened {
+  background: var(--color-cell-opened);
+  border: 1px solid var(--color-cell-opened-border);
+  cursor: default;
+}
+
+.opened:hover {
+  background: var(--color-cell-opened);
+  border-color: var(--color-cell-opened-border);
+  filter: none;
+}
+
+.cell[data-count="1"] { color: #1f5fd1; }
+.cell[data-count="2"] { color: #1c8a3a; }
+.cell[data-count="3"] { color: #d1301f; }
+.cell[data-count="4"] { color: #2a2a8f; }
+.cell[data-count="5"] { color: #8a2a1c; }
+.cell[data-count="6"] { color: #138085; }
+.cell[data-count="7"] { color: #222; }
+.cell[data-count="8"] { color: #6b6b6b; }
+
+/* ---------- Flagged ---------- */
+.flagged::before {
+  content: "🚩";
+  font-size: calc(var(--cell-size) * 0.45);
+}
+
+/* Прапорець на клітинці без міни (показується після програшу) */
+.flagWrong {
+  background: var(--color-cell-wrong);
+  border-color: var(--color-cell-wrong);
+}
+
+.flagWrong::after {
+  content: "✕";
+  position: absolute;
+  font-size: calc(var(--cell-size) * 0.6);
+  color: #b3261e;
+}
+
+/* ---------- Mine ---------- */
+.mine::before {
+  content: "💣";
+  font-size: calc(var(--cell-size) * 0.5);
+}
+
+/* Міна, на яку натиснув гравець */
+.exploded {
+  background: var(--color-cell-exploded);
+  border-color: var(--color-cell-exploded);
+}

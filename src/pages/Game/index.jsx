@@ -109,6 +109,15 @@ function Game() {
       status: 'Complete',
     },
     {
+      id: 15,
+      title: 'Зелений сапер',
+      description: 'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
+      author: 'Vasylchenko Alina',
+      link: 'vasylchenko-alina',
+      difficulty: 'Beginner',
+      status: 'Complete',
+    },
+    {
       id: 7,
       title: 'Minesweeper by Pavlo Havras',
       description:
@@ -119,14 +128,34 @@ function Game() {
       status: 'Complete',
     },
     {
-      id: 8,
-      title: 'Minesweeper with Difficulty Levels',
-      description:
+        id: 16,
+        title: 'Minesweeper by Ivan Hrabovyi',
+        description:
+        'React Minesweeper with a safe first click, flood-fill reveal, flags, timer, and win/lose detection.',
+        author: 'Ivan Hrabovyi',
+        link: 'hrabovyi-ivan',
+        difficulty: 'Intermediate',
+        status: 'Complete',
+    },
+    {
+        id: 17,
+        title: 'Сапер на React',
+        description:
+        'React-версія гри: таймер, лічильник прапорців, рекурсивне відкриття порожніх клітинок, визначення перемоги та поразки.',
+        author: 'Korzhyk Anton',
+        link: 'korzhyk-anton',
+        difficulty: 'Intermediate',
+        status: 'Complete',
+    },
+    {
+        id: 18,
+        title: 'Minesweeper with Difficulty Levels',
+        description:
         'Three difficulty levels, safe first click, best times saved per level, built from small components with hooks and CSS Modules',
-      author: 'Anastasiia Shevchenko',
-      link: 'shevchenko-anastasiia',
-      difficulty: 'Intermediate',
-      status: 'Complete',
+        author: 'Anastasiia Shevchenko',
+        link: 'shevchenko-anastasiia',
+        difficulty: 'Intermediate',
+        status: 'Complete',
     },
   ];
 
