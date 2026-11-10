@@ -64,7 +64,7 @@ const reveal = (row, col) => {
 
   const flag = (row, col) => {
     if (isFinished) return;
-    setBoard(toggleFlag(board, row, col));
+    setBoard((prevBoard) => toggleFlag(prevBoard, row, col));
   };
 
   return { board, status, difficulty, gameId, minesLeft, reveal, flag, restart };
