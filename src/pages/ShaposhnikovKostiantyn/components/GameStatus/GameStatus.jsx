@@ -15,7 +15,7 @@ export default function GameStatus({ status }) {
       <p
           role="status"
           aria-live="polite"
-          className={styles.status}
+          className={`${styles.status} ${styles[status] ?? ''}`.trim()}
       >
         {message}
       </p>
