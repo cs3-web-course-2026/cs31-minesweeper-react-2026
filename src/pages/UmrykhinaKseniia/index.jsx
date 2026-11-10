@@ -1,4 +1,7 @@
+import { useCallback, useState } from 'react';
+
 import Board from './components/Board';
+import FlagModeToggle from './components/FlagModeToggle';
 import GameStatus from './components/GameStatus';
 import MineCounter from './components/MineCounter';
 import RestartButton from './components/RestartButton';
@@ -17,6 +20,12 @@ function UmrykhinaKseniia() {
     toggleFlag,
     restart,
   } = useGameState();
+  const [isFlagMode, setIsFlagMode] = useState(false);
+
+  const handleFlagModeToggle = useCallback(
+    () => setIsFlagMode((previousMode) => !previousMode),
+    [],
+  );
 
   return (
     <main className={styles.game}>
@@ -29,12 +38,24 @@ function UmrykhinaKseniia() {
           <Timer elapsedSeconds={elapsedSeconds} />
         </header>
 
-        <Board board={board} onReveal={revealCell} onFlag={toggleFlag} />
+        <Board
+          board={board}
+          onReveal={isFlagMode ? toggleFlag : revealCell}
+          onFlag={toggleFlag}
+        />
 
         <GameStatus gameStatus={gameStatus} />
+
+        <FlagModeToggle
+          isFlagMode={isFlagMode}
+          onToggle={handleFlagModeToggle}
+        />
       </section>
 
-      <p className={styles.hint}>Left click - open, right click or F key - flag</p>
+      <p className={styles.hint}>
+        Left click - open, right click or F key - flag. On touch screens, turn
+        on flag mode to flag by tapping.
+      </p>
     </main>
   );
 }
