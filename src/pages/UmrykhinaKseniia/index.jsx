@@ -34,7 +34,7 @@ function UmrykhinaKseniia() {
         <GameStatus gameStatus={gameStatus} />
       </section>
 
-      <p className={styles.hint}>Left click - open, right click - flag</p>
+      <p className={styles.hint}>Left click - open, right click or F key - flag</p>
     </main>
   );
 }

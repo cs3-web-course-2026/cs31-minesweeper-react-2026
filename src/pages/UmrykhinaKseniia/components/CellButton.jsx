@@ -6,6 +6,7 @@ import styles from './CellButton.module.css';
 
 const FLAG_SYMBOL = '\u{1F6A9}';
 const MINE_SYMBOL = '\u{1F4A3}';
+const FLAG_KEY = 'f';
 
 function getCellSymbol(cell) {
   if (cell.state === CELL_STATE.FLAGGED) {
@@ -57,6 +58,22 @@ function CellButton({ cell, row, col, onReveal, onFlag }) {
     onFlag(row, col);
   };
 
+  const handleKeyDown = (event) => {
+    const isPlainFlagKey =
+      event.key.toLowerCase() === FLAG_KEY &&
+      !event.repeat &&
+      !event.ctrlKey &&
+      !event.metaKey &&
+      !event.altKey;
+
+    if (!isPlainFlagKey) {
+      return;
+    }
+
+    event.preventDefault();
+    onFlag(row, col);
+  };
+
   return (
     <button
       type="button"
@@ -64,6 +81,7 @@ function CellButton({ cell, row, col, onReveal, onFlag }) {
       aria-label={`Row ${row + 1}, column ${col + 1}, ${getCellDescription(cell)}`}
       onClick={handleClick}
       onContextMenu={handleContextMenu}
+      onKeyDown={handleKeyDown}
     >
       {getCellSymbol(cell)}
     </button>
