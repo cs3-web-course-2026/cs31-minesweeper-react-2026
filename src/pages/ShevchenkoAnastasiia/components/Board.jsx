@@ -2,7 +2,7 @@ import CellButton from './CellButton';
 
 import styles from './Board.module.css';
 
-function Board({ board, status, onCellOpen, onCellFlag }) {
+function Board({ board, status, onCellSelect, onCellFlag }) {
   const boardStyle = {
     '--board-rows': board.length,
     '--board-cols': board[0].length,
@@ -19,7 +19,7 @@ function Board({ board, status, onCellOpen, onCellFlag }) {
               row={row}
               col={col}
               status={status}
-              onOpen={onCellOpen}
+              onSelect={onCellSelect}
               onFlag={onCellFlag}
             />
           )),

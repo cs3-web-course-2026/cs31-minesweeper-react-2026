@@ -15,7 +15,7 @@ const VIEW_CLASS = {
   [CELL_VIEW.MINE_CLICKED]: styles.mineClicked,
 };
 
-function CellButton({ cell, row, col, status, onOpen, onFlag }) {
+function CellButton({ cell, row, col, status, onSelect, onFlag }) {
   const { view, symbol, description } = getCellView(cell, status);
   const numberClass =
     view === CELL_VIEW.OPEN && symbol ? styles[`number${symbol}`] : '';
@@ -23,7 +23,7 @@ function CellButton({ cell, row, col, status, onOpen, onFlag }) {
     .filter(Boolean)
     .join(' ');
 
-  const handleClick = () => onOpen(row, col);
+  const handleClick = () => onSelect(row, col);
 
   const handleContextMenu = (event) => {
     event.preventDefault();

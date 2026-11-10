@@ -14,6 +14,11 @@ export const CELL_SYMBOL = {
   MINE: '💣',
 };
 
+export const FLAG_MODE_TEXT = {
+  ACTIVE: 'Режим прапорця: увімкнено',
+  INACTIVE: 'Режим прапорця: вимкнено',
+};
+
 export const STATUS_FACE = {
   [GAME_STATUS.IDLE]: '🙂',
   [GAME_STATUS.PLAYING]: '🙂',
@@ -23,7 +28,7 @@ export const STATUS_FACE = {
 
 export const STATUS_MESSAGE = {
   [GAME_STATUS.IDLE]:
-    'Відкрийте будь-яку клітинку — перший хід завжди безпечний. Права кнопка миші ставить прапорець.',
+    'Відкрийте будь-яку клітинку — перший хід завжди безпечний. Прапорець ставиться правою кнопкою миші або в режимі прапорця.',
   [GAME_STATUS.PLAYING]: '',
   [GAME_STATUS.WON]: '🎉 Перемога! Всі безпечні клітинки відкрито.',
   [GAME_STATUS.LOST]: '💥 Ви підірвалися на міні. Спробуйте ще раз!',

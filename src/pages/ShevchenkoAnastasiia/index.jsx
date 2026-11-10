@@ -1,5 +1,8 @@
+import { useState } from 'react';
+
 import Board from './components/Board';
 import DifficultySelector from './components/DifficultySelector';
+import FlagModeToggle from './components/FlagModeToggle';
 import GameHeader from './components/GameHeader';
 import GameStatus from './components/GameStatus';
 import { useGameState } from './hooks/useGameState';
@@ -16,14 +19,19 @@ function Game() {
     elapsedSeconds,
     flagsLeft,
     bestTime,
-    tick,
+    updateElapsed,
     openCell,
     toggleCellFlag,
     restart,
     changeDifficulty,
   } = useGameState();
 
-  useTimer(status === GAME_STATUS.PLAYING, tick);
+  const [isFlagMode, setIsFlagMode] = useState(false);
+
+  useTimer(status === GAME_STATUS.PLAYING, updateElapsed);
+
+  const handleCellSelect = isFlagMode ? toggleCellFlag : openCell;
+  const handleFlagModeToggle = () => setIsFlagMode((isActive) => !isActive);
 
   return (
     <section
@@ -44,10 +52,12 @@ function Game() {
         onRestart={restart}
       />
 
+      <FlagModeToggle isActive={isFlagMode} onToggle={handleFlagModeToggle} />
+
       <Board
         board={board}
         status={status}
-        onCellOpen={openCell}
+        onCellSelect={handleCellSelect}
         onCellFlag={toggleCellFlag}
       />
 

@@ -70,15 +70,17 @@ function handleToggleFlag(state, { row, col }) {
   return board === state.board ? state : { ...state, board };
 }
 
-function handleTick(state) {
-  if (state.status !== GAME_STATUS.PLAYING) {
+function handleSetElapsed(state, { seconds }) {
+  const elapsedSeconds = Math.min(seconds, MAX_TIMER_SECONDS);
+
+  if (
+    state.status !== GAME_STATUS.PLAYING ||
+    elapsedSeconds === state.elapsedSeconds
+  ) {
     return state;
   }
 
-  return {
-    ...state,
-    elapsedSeconds: Math.min(state.elapsedSeconds + 1, MAX_TIMER_SECONDS),
-  };
+  return { ...state, elapsedSeconds };
 }
 
 function gameReducer(state, action) {
@@ -87,8 +89,8 @@ function gameReducer(state, action) {
       return handleRevealCell(state, action);
     case GAME_ACTION.TOGGLE_FLAG:
       return handleToggleFlag(state, action);
-    case GAME_ACTION.TICK:
-      return handleTick(state);
+    case GAME_ACTION.SET_ELAPSED:
+      return handleSetElapsed(state, action);
     case GAME_ACTION.RESTART:
       return createInitialState(state.difficulty, state.bestTimes);
     case GAME_ACTION.CHANGE_DIFFICULTY:
@@ -115,7 +117,10 @@ export function useGameState() {
     (row, col) => dispatch({ type: GAME_ACTION.TOGGLE_FLAG, row, col }),
     [],
   );
-  const tick = useCallback(() => dispatch({ type: GAME_ACTION.TICK }), []);
+  const updateElapsed = useCallback(
+    (seconds) => dispatch({ type: GAME_ACTION.SET_ELAPSED, seconds }),
+    [],
+  );
   const restart = useCallback(
     () => dispatch({ type: GAME_ACTION.RESTART }),
     [],
@@ -130,7 +135,7 @@ export function useGameState() {
     ...state,
     flagsLeft: state.minesCount - countFlags(state.board),
     bestTime: state.bestTimes[state.difficulty] ?? null,
-    tick,
+    updateElapsed,
     openCell,
     toggleCellFlag,
     restart,

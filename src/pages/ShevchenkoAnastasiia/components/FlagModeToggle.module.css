@@ -1,0 +1,11 @@
+.toggle {
+  padding: 0.5rem 0.75rem;
+  font-weight: 700;
+}
+
+.active,
+.active:hover {
+  color: var(--color-on-accent);
+  background: var(--gradient-gold);
+  border-color: var(--color-accent-border);
+}
