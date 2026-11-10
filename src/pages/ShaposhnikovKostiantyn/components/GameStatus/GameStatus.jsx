@@ -12,12 +12,12 @@ export default function GameStatus({ status }) {
   const message = MESSAGES[status] || '';
 
   return (
-    <p
-      role="status"
-      aria-live="polite"
-      className={styles.status}
-    >
-      {message}
-    </p>
+      <p
+          role="status"
+          aria-live="polite"
+          className={styles.status}
+      >
+        {message}
+      </p>
   );
 }
