@@ -10,6 +10,12 @@ const MESSAGES = {
 
 export default function GameStatus({ status }) {
   return (
-    <p className={`${styles.status} ${styles[status]}`}>{MESSAGES[status]}</p>
-  );
+      <p
+          role="status"
+          aria-live="polite"
+          className={styles.status}
+      >
+        {message}
+      </p>
+);
 }
