@@ -15,7 +15,8 @@ export default function Minesweeper() {
     <div className={styles.page}>
       <header className={styles.panel}>
         <GameStatus status={status} />
-        <span className={styles.counter} aria-label="Залишилось мін">
+        <span className={styles.counter}>
+          <span className={styles.visuallyHidden}>Залишилось мін: </span>
           💣 {minesLeft}
         </span>
         <Timer key={gameId} isRunning={status === STATUS.PLAYING} />
