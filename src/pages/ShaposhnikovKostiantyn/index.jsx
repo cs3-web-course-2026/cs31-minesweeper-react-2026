@@ -12,23 +12,16 @@ export default function Minesweeper() {
     useMinesweeper();
 
   return (
-     <div className={styles.page}>
-       <header className={styles.panel}>
--          <GameStatus status={status} />
--          <span className={styles.counter} aria-label="Залишилось мін">
--              💣 {minesLeft}
--          </span>
--          <Timer key={gameId} isRunning={status === STATUS.PLAYING} />
--          <DifficultySelect value={difficulty} onChange={restart} />
--          <RestartButton status={status} onClick={() => restart()} />
-+        <GameStatus status={status} />
-+        <span className={styles.counter} aria-label="Залишилось мін">
-+          💣 {minesLeft}
-+        </span>
-+        <Timer key={gameId} isRunning={status === STATUS.PLAYING} />
-+        <DifficultySelect value={difficulty} onChange={restart} />
-+        <RestartButton status={status} onClick={() => restart()} />
-       </header>
+    <div className={styles.page}>
+      <header className={styles.panel}>
+        <GameStatus status={status} />
+        <span className={styles.counter} aria-label="Залишилось мін">
+          💣 {minesLeft}
+        </span>
+        <Timer key={gameId} isRunning={status === STATUS.PLAYING} />
+        <DifficultySelect value={difficulty} onChange={restart} />
+        <RestartButton status={status} onClick={() => restart()} />
+      </header>
 
       <section className={styles.boardArea} aria-label="Ігрове поле">
         <Board board={board} onReveal={reveal} onFlag={flag} />
