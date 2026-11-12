@@ -1,50 +1,91 @@
-.game {
-  --cell-size: 2.5rem;
-  --cell-number-1: #4f9cf9;
-  --cell-number-2: #4fc27a;
-  --cell-number-3: #e0524f;
-  --cell-number-4: #9b6bf2;
-  --cell-number-5: #e08a3c;
-  --cell-number-6: #3cc4c4;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  padding: 2rem 1rem;
-}
+import { memo } from 'react';
 
-.title {
-  margin: 0;
-  color: var(--color-text);
-}
+import { CELL_STATE } from '../constants/game';
+import styles from './CellButton.module.css';
 
-.panel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: var(--color-surface-1, rgb(255 255 255 / 6%));
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-}
+const FLAG_SYMBOL = '\u{1F6A9}';
+const MINE_SYMBOL = '\u{1F4A3}';
+const FLAG_KEY = 'f';
 
-.statusBar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 1rem;
-}
-
-.hint {
-  margin: 0;
-  color: var(--color-text-muted);
-  font-size: 0.875rem;
-}
-
-@media (width <= 480px) {
-  .game {
-    --cell-size: 1.9rem;
+function getCellSymbol(cell) {
+  if (cell.state === CELL_STATE.FLAGGED) {
+    return FLAG_SYMBOL;
   }
+
+  if (cell.state === CELL_STATE.OPEN && cell.hasMine) {
+    return MINE_SYMBOL;
+  }
+
+  if (cell.state === CELL_STATE.OPEN && cell.adjacentMines > 0) {
+    return cell.adjacentMines;
+  }
+
+  return '';
 }
+
+function getCellDescription(cell) {
+  if (cell.state === CELL_STATE.FLAGGED) {
+    return 'flagged';
+  }
+
+  if (cell.state === CELL_STATE.CLOSED) {
+    return 'closed';
+  }
+
+  if (cell.hasMine) {
+    return 'mine';
+  }
+
+  return `open, ${cell.adjacentMines} adjacent mines`;
+}
+
+function CellButton({ cell, row, col, onReveal, onFlag }) {
+  const isOpen = cell.state === CELL_STATE.OPEN;
+
+  const cellClassName = [
+    styles.cell,
+    isOpen ? styles.open : styles.closed,
+    isOpen && cell.hasMine ? styles.mine : '',
+    isOpen && cell.adjacentMines > 0 ? styles[`number${cell.adjacentMines}`] : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  const handleClick = () => onReveal(row, col);
+
+  const handleContextMenu = (event) => {
+    event.preventDefault();
+    onFlag(row, col);
+  };
+
+  const handleKeyDown = (event) => {
+    const isPlainFlagKey =
+      event.key.toLowerCase() === FLAG_KEY &&
+      !event.repeat &&
+      !event.ctrlKey &&
+      !event.metaKey &&
+      !event.altKey;
+
+    if (!isPlainFlagKey) {
+      return;
+    }
+
+    event.preventDefault();
+    onFlag(row, col);
+  };
+
+  return (
+    <button
+      type="button"
+      className={cellClassName}
+      aria-label={`Row ${row + 1}, column ${col + 1}, ${getCellDescription(cell)}`}
+      onClick={handleClick}
+      onContextMenu={handleContextMenu}
+      onKeyDown={handleKeyDown}
+    >
+      {getCellSymbol(cell)}
+    </button>
+  );
+}
+
+export default memo(CellButton);
