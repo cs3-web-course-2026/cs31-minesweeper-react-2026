@@ -11,6 +11,7 @@ import {
   revealAllMines,
   revealCell,
   toggleFlag,
+  getShuffledCells,
 } from './gameLogic';
 
 const createBoard = (difficultyKey) => {
@@ -56,7 +57,7 @@ const reveal = (row, col) => {
 
   let current = board;
   if (status === STATUS.IDLE) {
-    current = placeMines(board, mines, row, col);
+    current = placeMines(board, mines, row, col, getShuffledCells(board));
     setStatus(STATUS.PLAYING);
   }
   finishIfNeeded(revealCell(current, row, col));

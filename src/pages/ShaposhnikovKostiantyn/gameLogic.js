@@ -49,23 +49,30 @@ export function getNeighbors(board, row, col) {
   return result;
 }
 
-// Міни розставляються після першого кліку, щоб перший хід ніколи не був програшним.
-export function placeMines(board, mines, safeRow, safeCol) {
-  const next = cloneBoard(board);
-  const candidates = [];
-  next.forEach((line, rowIndex) =>
-    line.forEach((_, colIndex) => {
-      if (rowIndex !== safeRow || colIndex !== safeCol) {
-        candidates.push([rowIndex, colIndex]);
-      }
-    }),
+// Усі клітинки поля у випадковому порядку (алгоритм Фішера—Єйтса).
+export function getShuffledCells(board) {
+  const cells = board.flatMap((line, rowIndex) =>
+    line.map((_, colIndex) => [rowIndex, colIndex]),
   );
-
-  for (let mineIndex = 0; mineIndex < mines; mineIndex += 1) {
-    const candidateIndex = Math.floor(Math.random() * candidates.length);
-    const [rowIndex, colIndex] = candidates.splice(candidateIndex, 1)[0];
-    next[rowIndex][colIndex].isMine = true;
+  for (let index = cells.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [cells[index], cells[swapIndex]] = [cells[swapIndex], cells[index]];
   }
+  return cells;
+}
+
+// Міни розставляються після першого кліку, щоб перший хід ніколи не був програшним.
+// Клітинки для мін беруться лише з candidates (у порядку списку), безпечна клітинка пропускається.
+export function placeMines(board, mines, safeRow, safeCol, candidates) {
+  const next = cloneBoard(board);
+  candidates
+    .filter(
+      ([rowIndex, colIndex]) => rowIndex !== safeRow || colIndex !== safeCol,
+    )
+    .slice(0, mines)
+    .forEach(([rowIndex, colIndex]) => {
+      next[rowIndex][colIndex].isMine = true;
+    });
 
   next.forEach((line, rowIndex) =>
     line.forEach((cell, colIndex) => {
