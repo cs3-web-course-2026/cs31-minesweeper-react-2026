@@ -40,27 +40,27 @@
 }
 
 .number1 {
-  color: #4f9cf9;
+  color: var(--cell-number-1, #4f9cf9);
 }
 
 .number2 {
-  color: #4fc27a;
+  color: var(--cell-number-2, #4fc27a);
 }
 
 .number3 {
-  color: #e0524f;
+  color: var(--cell-number-3, #e0524f);
 }
 
 .number4 {
-  color: #9b6bf2;
+  color: var(--cell-number-4, #9b6bf2);
 }
 
 .number5 {
-  color: #e08a3c;
+  color: var(--cell-number-5, #e08a3c);
 }
 
 .number6 {
-  color: #3cc4c4;
+  color: var(--cell-number-6, #3cc4c4);
 }
 
 .number7 {
