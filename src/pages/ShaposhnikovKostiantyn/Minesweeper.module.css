@@ -12,11 +12,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 8px 24px;
   padding: 8px 16px;
-  min-width: 260px;
   background: #e5e7eb;
   border-radius: 8px;
+  flex-wrap: wrap;
+  box-sizing: border-box;, width: 100%;
+  max-width: 360px;
 }
 
 .counter {

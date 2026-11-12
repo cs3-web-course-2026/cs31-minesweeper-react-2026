@@ -7,7 +7,7 @@ export default function Board({ board, onReveal, onFlag }) {
   return (
     <div
       className={styles.board}
-      style={{ gridTemplateColumns: `repeat(${cols}, 32px)` }}
+      style={{ '--cols': cols }}
       onContextMenu={(event) => event.preventDefault()}
     >
       {board.map((line, row) =>

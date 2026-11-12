@@ -8,19 +8,21 @@ function getContent({ isRevealed, isFlagged, isMine, neighborMines }) {
 }
 
 function getStateLabel({ isRevealed, isFlagged, isMine, neighborMines }) {
-  if (isFlagged) return 'прапорець';
+  if (isFlagged) return 'позначена прапорцем';
   if (!isRevealed) return 'закрита';
   if (isMine) return 'міна';
-  return neighborMines > 0 ? `мін поруч: ${neighborMines}` : 'порожня';
+  return neighborMines > 0
+      ? `відкрита, мін поруч: ${neighborMines}`
+      : 'відкрита, порожня';
 }
 
-export default function Cell({ cell, row, col, onReveal, onFlag }) {
-  const className = [
-    styles.cell,
-    cell.isRevealed ? styles.revealed : styles.hidden,
-    cell.isExploded ? styles.exploded : '',
-    cell.isRevealed && !cell.isMine ? styles[`n${cell.neighborMines}`] : '',
-  ].join(' ');
+ export default function Cell({ cell, row, col, onReveal, onFlag }) {
+   const className = [
+     styles.cell,
+     cell.isRevealed ? styles.revealed : styles.hidden,
+     cell.isExploded ? styles.exploded : '',
+     cell.isRevealed && !cell.isMine ? styles[`n${cell.neighborMines}`] : '',
+   ].join(' ');
 
   const handleContextMenu = (event) => {
     event.preventDefault();
