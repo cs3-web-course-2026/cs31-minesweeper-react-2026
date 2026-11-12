@@ -17,7 +17,8 @@
   background: #e5e7eb;
   border-radius: 8px;
   flex-wrap: wrap;
-  box-sizing: border-box;, width: 100%;
+  box-sizing: border-box;
+  width: 100%;
   max-width: 360px;
 }
 

@@ -1,6 +1,7 @@
 .board {
   --cell-size: 32px;
   --cols: 1;
+
   display: grid;
   grid-template-columns: repeat(var(--cols), var(--cell-size));
   gap: 2px;
