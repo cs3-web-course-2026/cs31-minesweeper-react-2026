@@ -1,0 +1,14 @@
+.board {
+  --cell-size: 44px;
+  --cols: 1;
+
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--cell-size));
+  gap: 2px;
+  padding: 8px;
+  background: #9ca3af;
+  border-radius: 8px;
+  user-select: none;
+  max-width: 100%;
+  overflow-x: auto;
+}

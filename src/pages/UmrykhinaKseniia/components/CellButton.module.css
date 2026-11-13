@@ -1,0 +1,72 @@
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--cell-size, 2.5rem);
+  height: var(--cell-size, 2.5rem);
+  padding: 0;
+  font-family: var(--font-cell, inherit);
+  font-size: var(--cell-font-size, 1.1rem);
+  font-weight: 700;
+  border: 1px solid var(--cell-border);
+  border-radius: var(--cell-radius, 6px);
+  cursor: pointer;
+  user-select: none;
+}
+
+.closed {
+  background: linear-gradient(
+    to bottom,
+    var(--cell-hidden-top),
+    var(--cell-hidden-bottom)
+  );
+}
+
+.closed:hover {
+  background: linear-gradient(
+    to bottom,
+    var(--cell-hidden-hover-top),
+    var(--cell-hidden-hover-bottom)
+  );
+}
+
+.open {
+  background: var(--color-surface-2, rgb(255 255 255 / 4%));
+  cursor: default;
+}
+
+.mine {
+  background: var(--cell-mine);
+}
+
+.number1 {
+  color: var(--cell-number-1, #4f9cf9);
+}
+
+.number2 {
+  color: var(--cell-number-2, #4fc27a);
+}
+
+.number3 {
+  color: var(--cell-number-3, #e0524f);
+}
+
+.number4 {
+  color: var(--cell-number-4, #9b6bf2);
+}
+
+.number5 {
+  color: var(--cell-number-5, #e08a3c);
+}
+
+.number6 {
+  color: var(--cell-number-6, #3cc4c4);
+}
+
+.number7 {
+  color: var(--color-text);
+}
+
+.number8 {
+  color: var(--color-text-muted);
+}

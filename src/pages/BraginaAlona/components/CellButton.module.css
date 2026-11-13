@@ -1,0 +1,80 @@
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 1px solid #d9d1f0;
+  border-radius: 6px;
+  background: #e9e2fb;
+  color: #55418d;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.cell:focus-visible {
+  outline: 3px solid #8b65d6;
+  outline-offset: 2px;
+}
+
+.cell:disabled {
+  cursor: default;
+}
+
+.cell:hover:not(:disabled) {
+  background: #d8ccf5;
+  transform: scale(1.04);
+}
+
+.open {
+  background: #f7f4fd;
+  border-color: #e5def2;
+}
+
+.flagged {
+  background: #dcd0f7;
+}
+
+.mine {
+  background: #f7caca;
+}
+
+.explodedMine {
+  background: #e34b4b;
+  border: 2px solid #a90000;
+  color: #fff;
+  box-shadow: inset 0 0 0 2px #fff;
+}
+
+.number1 {
+  color: #3975cf;
+}
+
+.number2 {
+  color: #31945d;
+}
+
+.number3 {
+  color: #d34d59;
+}
+
+.number4 {
+  color: #7950b5;
+}
+
+.number5,
+.number6,
+.number7,
+.number8 {
+  color: #67436d;
+}
+
+@media (width <= 480px) {
+  .cell {
+    font-size: 13px;
+    border-radius: 4px;
+  }
+}
