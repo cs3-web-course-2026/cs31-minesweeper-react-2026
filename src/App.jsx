@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Game from './pages/Game';
+import UmrykhinaKseniia from './pages/UmrykhinaKseniia';
 import MockGame from './pages/MockGame';
 import ZabavaArtem from './pages/ZabavaArtem';
 import Minesweeper from './pages/KharynaSerhii';
@@ -25,6 +26,7 @@ function App() {
         <Route path="havras-pavlo" element={<HavrasPavlo />} />
         <Route path="hrabovyi-ivan" element={<HrabovyiIvan />} />
         <Route path="korzhyk-anton" element={<KorzhykAnton />} />
+        <Route path="umrykhina-kseniia" element={<UmrykhinaKseniia />} />
       </Route>
     </Routes>
   );

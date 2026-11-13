@@ -1,0 +1,14 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.row {
+  display: flex;
+  gap: 2px;
+}
+
+.gridCell {
+  display: contents;
+}

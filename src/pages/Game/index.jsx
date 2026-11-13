@@ -147,6 +147,16 @@ function Game() {
       difficulty: 'Intermediate',
       status: 'Complete',
     },
+    {
+      id: 118,
+      title: 'Minesweeper by Kseniia Umrykhina',
+      description:
+        'React Minesweeper with a safe first click, flood-fill reveal, flags, timer, and win/lose detection.',
+      author: 'Umrykhina Kseniia',
+      link: 'umrykhina-kseniia',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
   ];
 
   return (
