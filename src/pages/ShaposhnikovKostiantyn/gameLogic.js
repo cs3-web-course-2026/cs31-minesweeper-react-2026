@@ -50,12 +50,13 @@ export function getNeighbors(board, row, col) {
 }
 
 // Усі клітинки поля у випадковому порядку (алгоритм Фішера—Єйтса).
-export function getShuffledCells(board) {
+export function getShuffledCells(board, randomSamples = []) {
   const cells = board.flatMap((line, rowIndex) =>
     line.map((_, colIndex) => [rowIndex, colIndex]),
   );
   for (let index = cells.length - 1; index > 0; index -= 1) {
-    const swapIndex = Math.floor(Math.random() * (index + 1));
+    const sample = randomSamples[cells.length - 1 - index] ?? 0;
+    const swapIndex = Math.floor(sample * (index + 1));
     [cells[index], cells[swapIndex]] = [cells[swapIndex], cells[index]];
   }
   return cells;

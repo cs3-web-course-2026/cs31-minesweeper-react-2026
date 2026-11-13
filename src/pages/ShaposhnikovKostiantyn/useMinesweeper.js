@@ -52,20 +52,28 @@ export default function useMinesweeper(initialDifficulty = 'beginner') {
     }
   };
 
-const reveal = (row, col) => {
-  if (isFinished || board[row][col].isFlagged) return;
+  const reveal = (row, col) => {
+    if (isFinished || board[row][col].isFlagged) return;
 
-  let current = board;
-  if (status === STATUS.IDLE) {
-    current = placeMines(board, mines, row, col, getShuffledCells(board));
-    setStatus(STATUS.PLAYING);
-  }
-  finishIfNeeded(revealCell(current, row, col));
-};
+    let current = board;
+    if (status === STATUS.IDLE) {
+      const totalCells = board.length * board[0].length;
+      const randomSamples = Array.from({ length: totalCells }, () => Math.random());
+      current = placeMines(
+        board,
+        mines,
+        row,
+        col,
+        getShuffledCells(board, randomSamples),
+      );
+      setStatus(STATUS.PLAYING);
+    }
+    finishIfNeeded(revealCell(current, row, col));
+  };
 
   const flag = (row, col) => {
     if (isFinished) return;
-    setBoard((prevBoard) => toggleFlag(prevBoard, row, col));
+    setBoard((previousBoard) => toggleFlag(previousBoard, row, col));
   };
 
   return { board, status, difficulty, gameId, minesLeft, reveal, flag, restart };
