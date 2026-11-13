@@ -14,7 +14,7 @@
   gap: clamp(4px, 1.2vw, 8px);
 }
 
-@media (max-width: 420px) {
+@media (width <= 420px) {
   .board {
     padding: 12px;
   }

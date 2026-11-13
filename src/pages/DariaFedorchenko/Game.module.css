@@ -21,10 +21,9 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-
   background: var(--navy);
   color: var(--cream);
-  font-family: 'Outfit', system-ui, sans-serif;
+  font-family: Outfit, system-ui, sans-serif;
 }
 
 .gameInfo {
@@ -36,7 +35,6 @@
   gap: 12px;
   padding: 14px 18px;
   box-sizing: border-box;
-
   background: var(--blue);
   border: 1px solid color-mix(in srgb, var(--cream) 12%, transparent);
   border-radius: var(--radius-l);
@@ -50,7 +48,6 @@
   gap: 8px;
   min-width: 84px;
   padding: 8px 12px;
-
   background: var(--navy);
   border-radius: var(--radius-m);
   font-variant-numeric: tabular-nums;
@@ -90,7 +87,6 @@
   justify-content: center;
   gap: 16px;
   padding: 16px;
-
   background: color-mix(in srgb, var(--navy) 75%, transparent);
   backdrop-filter: blur(3px);
   border-radius: var(--radius-l);
@@ -140,12 +136,13 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
 
-@media (max-width: 420px) {
+@media (width <= 420px) {
   .game {
     padding: 25px 10px;
   }
