@@ -1,6 +1,6 @@
 .cell {
-  width: var(--cell-size, 32px);
-  height: var(--cell-size, 32px);
+  width: var(--cell-size, 44px);
+  height: var(--cell-size, 44px);
   padding: 0;
   font-size: 16px;
   font-weight: 700;

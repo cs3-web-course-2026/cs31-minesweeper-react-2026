@@ -1,5 +1,5 @@
 .board {
-  --cell-size: 32px;
+  --cell-size: 44px;
   --cols: 1;
 
   display: grid;
