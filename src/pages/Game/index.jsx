@@ -109,6 +109,16 @@ function Game() {
       status: 'Complete',
     },
     {
+      id: 19,
+      title: 'Minesweeper by Kostiantyn Shaposhnikov',
+      description:
+        'A React implementation with CSS Modules, a timer, flagging, difficulty levels, and win/lose detection.',
+      author: 'Kostiantyn Shaposhnikov',
+      link: 'shaposhnikov-kostiantyn',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
+    {
       id: 14,
       title: 'Minesweeper by Alona Bragina',
       description:
