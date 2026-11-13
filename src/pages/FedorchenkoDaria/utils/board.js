@@ -1,11 +1,11 @@
-import { ROWS, COLS, MINES_COUNT } from '../constants/game';
+import { ROWS, COLS, MINES_COUNT, CELL_STATE } from '../constants/game';
 
 export function createBoard() {
   const board = Array.from({ length: ROWS }, () =>
     Array.from({ length: COLS }, () => ({
       isMine: false,
       neighborMines: 0,
-      state: 'closed',
+      state: CELL_STATE.CLOSED,
     })),
   );
 

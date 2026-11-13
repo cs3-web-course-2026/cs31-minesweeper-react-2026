@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { createBoard } from '../utils/board';
 import { checkVictory, getRemainingMines } from '../utils/check';
 import { revealCells } from '../utils/reveal';
-import { GAME_STATUS } from '../constants/game';
+import { revealMinesOnLoss, toggleCellFlag } from '../utils/transitions';
+import { GAME_STATUS, CELL_STATE, TIMER_INTERVAL } from '../constants/game';
 
 export default function useGameState() {
   const [board, setBoard] = useState(() => createBoard());
@@ -15,7 +16,7 @@ export default function useGameState() {
 
     const interval = setInterval(() => {
       setTime((previousTime) => previousTime + 1);
-    }, 1000);
+    }, TIMER_INTERVAL);
 
     return () => clearInterval(interval);
   }, [status]);
@@ -25,22 +26,10 @@ export default function useGameState() {
 
     const currentCell = board[row][col];
 
-    if (currentCell.state !== 'closed') return;
-
-    const newBoard = board.map((boardRow) =>
-      boardRow.map((cell) => ({ ...cell })),
-    );
+    if (currentCell.state !== CELL_STATE.CLOSED) return;
 
     if (currentCell.isMine) {
-      newBoard[row][col].state = 'opened';
-
-      newBoard.forEach((boardRow) => {
-        boardRow.forEach((cell) => {
-          if (cell.isMine) {
-            cell.state = 'opened';
-          }
-        });
-      });
+      const newBoard = revealMinesOnLoss(board);
 
       setExplodedCell({ row, col });
       setBoard(newBoard);
@@ -48,7 +37,8 @@ export default function useGameState() {
       return;
     }
 
-    revealCells(newBoard, row, col);
+    const newBoard = revealCells(board, row, col);
+
     setBoard(newBoard);
 
     if (checkVictory(newBoard)) {
@@ -59,24 +49,11 @@ export default function useGameState() {
   function toggleFlag(row, col) {
     if (status !== GAME_STATUS.PLAYING) return;
 
-    const currentCell = board[row][col];
+    const newBoard = toggleCellFlag(board, row, col);
 
-    if (currentCell.state === 'opened') return;
-
-    const flagsLeft = getRemainingMines(board);
-
-    if (currentCell.state === 'closed' && flagsLeft <= 0) {
-      return;
+    if (newBoard !== board) {
+      setBoard(newBoard);
     }
-
-    const newBoard = board.map((boardRow) =>
-      boardRow.map((cell) => ({ ...cell })),
-    );
-
-    newBoard[row][col].state =
-      currentCell.state === 'flagged' ? 'closed' : 'flagged';
-
-    setBoard(newBoard);
   }
 
   function restartGame() {

@@ -7,3 +7,11 @@ export const GAME_STATUS = {
   WIN: 'win',
   LOSE: 'lose',
 };
+
+export const CELL_STATE = {
+  CLOSED: 'closed',
+  OPENED: 'opened',
+  FLAGGED: 'flagged',
+};
+
+export const TIMER_INTERVAL = 1000;

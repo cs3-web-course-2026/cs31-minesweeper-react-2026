@@ -1,13 +1,14 @@
-import { MINES_COUNT } from '../constants/game';
+import { MINES_COUNT, CELL_STATE } from '../constants/game';
 
 export function checkVictory(board) {
   return board.every((row) =>
-    row.every((cell) => cell.isMine || cell.state === 'opened'),
+    row.every((cell) => cell.isMine || cell.state === CELL_STATE.OPENED),
   );
 }
 
 export function countFlags(board) {
-  return board.flat().filter((cell) => cell.state === 'flagged').length;
+  return board.flat().filter((cell) => cell.state === CELL_STATE.FLAGGED)
+    .length;
 }
 
 export function getRemainingMines(board) {

@@ -1,3 +1,4 @@
+import { CELL_STATE } from '../constants/game';
 import { getNeighborPositions } from './board';
 
 export function revealCells(board, row, col) {
@@ -8,11 +9,11 @@ export function revealCells(board, row, col) {
   function reveal(rowIndex, colIndex) {
     const cell = updatedBoard[rowIndex][colIndex];
 
-    if (cell.state !== 'closed') {
+    if (cell.state !== CELL_STATE.CLOSED) {
       return;
     }
 
-    cell.state = 'opened';
+    cell.state = CELL_STATE.OPENED;
 
     if (cell.isMine || cell.neighborMines !== 0) {
       return;
@@ -21,7 +22,7 @@ export function revealCells(board, row, col) {
     const neighbors = getNeighborPositions(rowIndex, colIndex);
 
     neighbors.forEach(([neighborRow, neighborCol]) => {
-      if (updatedBoard[neighborRow][neighborCol].state === 'closed') {
+      if (updatedBoard[neighborRow][neighborCol].state === CELL_STATE.CLOSED) {
         reveal(neighborRow, neighborCol);
       }
     });

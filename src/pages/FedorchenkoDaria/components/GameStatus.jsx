@@ -1,24 +1,37 @@
 import styles from '../Game.module.css';
 
 export default function GameStatus({ status, onRestart }) {
-  if (status === 'playing') return null;
-
   const won = status === 'win';
+  const hasFinished = status !== 'playing';
 
+  let resultMessage = '';
+
+  if (won) {
+    resultMessage = 'Перемога!';
+  } else if (hasFinished) {
+    resultMessage = 'Ви підірвалися на міні!';
+  }
   return (
-    <div
-      className={styles.overlay}
-      data-status={status}
-      role="status"
-      aria-live="assertive"
-      aria-atomic="true"
-    >
-      <div className={styles.result}>
-        <h2>{won ? 'Перемога!' : 'Ви підірвалися на міні!'}</h2>
-        <button type="button" onClick={onRestart}>
-          Грати знову
-        </button>
-      </div>
-    </div>
+    <>
+      <p
+        className={styles.srOnly}
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {resultMessage}
+      </p>
+
+      {hasFinished && (
+        <div className={styles.overlay} data-status={status}>
+          <div className={styles.result}>
+            <h2>{resultMessage}</h2>
+            <button type="button" onClick={onRestart}>
+              Грати знову
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 }

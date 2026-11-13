@@ -92,8 +92,7 @@ function Game() {
     {
       id: 5,
       title: 'Сапер',
-      description:
-        'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
+      description: 'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
       author: 'Kharyna Serhii',
       link: 'kharyna-serhii',
       difficulty: 'Beginner',
@@ -132,8 +131,7 @@ function Game() {
     {
       id: 15,
       title: 'Зелений сапер',
-      description:
-        'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
+      description: 'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
       author: 'Vasylchenko Alina',
       link: 'vasylchenko-alina',
       difficulty: 'Beginner',
