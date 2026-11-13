@@ -1,0 +1,55 @@
+.restartButton {
+    display: inline-flex;
+    min-width: 190px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border: 1px solid #fff0b5;
+    border-radius: 999px;
+    background: linear-gradient(
+            110deg,
+            #ffe9a5 0%,
+            #f3c958 50%,
+            #c9992c 100%
+    );
+    box-shadow:
+            0 8px 24px rgb(255 216 107 / 18%),
+            inset 0 1px 0 rgb(255 255 255 / 60%);
+    color: #302044;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+            box-shadow 200ms ease,
+            transform 200ms ease,
+            filter 200ms ease;
+}
+
+.restartButton:hover {
+    box-shadow:
+            0 10px 32px rgb(255 216 107 / 38%),
+            0 0 18px rgb(255 216 107 / 18%);
+    filter: brightness(1.07);
+    transform: translateY(-2px);
+}
+
+.restartButton:active {
+    transform: translateY(1px);
+}
+
+.restartButton:focus-visible {
+    outline: 3px solid #ffe397;
+    outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .restartButton {
+        transition: none;
+    }
+
+    .restartButton:hover,
+    .restartButton:active {
+        transform: none;
+    }
+}
