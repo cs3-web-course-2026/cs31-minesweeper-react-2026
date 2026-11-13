@@ -9,9 +9,6 @@
   --radius-m: 12px;
   --radius-l: 20px;
 
-  --gap: clamp(4px, 1.2vw, 8px);
-  --cell-size: clamp(34px, 9vw, 52px);
-
   width: 100%;
   min-height: 100vh;
   box-sizing: border-box;
@@ -73,10 +70,6 @@
   max-width: 100%;
 }
 
-.instructions {
-  display: none;
-}
-
 .overlay {
   position: absolute;
   inset: 0;
@@ -106,10 +99,6 @@
   color: var(--cream);
   font-size: 1.6rem;
   font-weight: 800;
-}
-
-.result p {
-  display: none;
 }
 
 .result button {

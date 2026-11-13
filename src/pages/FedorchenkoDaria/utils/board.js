@@ -1,11 +1,11 @@
-import { ROWS, COLS, MINES_COUNT } from "../constants/game";
+import { ROWS, COLS, MINES_COUNT } from '../constants/game';
 
 export function createBoard() {
   const board = Array.from({ length: ROWS }, () =>
     Array.from({ length: COLS }, () => ({
       isMine: false,
       neighborMines: 0,
-      state: "closed",
+      state: 'closed',
     })),
   );
 
@@ -25,7 +25,8 @@ export function createBoard() {
     for (let col = 0; col < COLS; col++) {
       if (!board[row][col].isMine) {
         board[row][col].neighborMines = getNeighborPositions(row, col).filter(
-          ([r, c]) => board[r][c].isMine,
+          ([neighborRow, neighborCol]) =>
+            board[neighborRow][neighborCol].isMine,
         ).length;
       }
     }
@@ -37,16 +38,18 @@ export function createBoard() {
 export function getNeighborPositions(row, col) {
   const positions = [];
 
-  for (let r = row - 1; r <= row + 1; r++) {
-    for (let c = col - 1; c <= col + 1; c++) {
-      if (
-        r >= 0 &&
-        r < ROWS &&
-        c >= 0 &&
-        c < COLS &&
-        (r !== row || c !== col)
-      ) {
-        positions.push([r, c]);
+  for (let neighborRow = row - 1; neighborRow <= row + 1; neighborRow++) {
+    for (let neighborCol = col - 1; neighborCol <= col + 1; neighborCol++) {
+      const isInsideBoard =
+        neighborRow >= 0 &&
+        neighborRow < ROWS &&
+        neighborCol >= 0 &&
+        neighborCol < COLS;
+
+      const isNotCurrentCell = neighborRow !== row || neighborCol !== col;
+
+      if (isInsideBoard && isNotCurrentCell) {
+        positions.push([neighborRow, neighborCol]);
       }
     }
   }

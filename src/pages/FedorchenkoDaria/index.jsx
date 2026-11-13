@@ -16,6 +16,7 @@ function FlagIcon() {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      aria-hidden="true"
     >
       <path d="M4 22V4a1 1 0 0 1 .4-.8A6 6 0 0 1 8 2c3 0 5 2 7.333 2q2 0 3.067-.8A1 1 0 0 1 20 4v10a1 1 0 0 1-.4.8A6 6 0 0 1 16 16c-3 0-5-2-8-2a6 6 0 0 0-4 1.528" />
     </svg>
@@ -33,6 +34,7 @@ function ClockIcon() {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
+      aria-hidden="true"
     >
       <line x1="10" x2="14" y1="2" y2="2" />
       <line x1="12" x2="15" y1="14" y2="11" />
@@ -56,14 +58,19 @@ export default function FedorchenkoDaria() {
   return (
     <main className={styles.game}>
       <header className={styles.gameInfo}>
-        <div className={styles.counter} aria-label="кількість прапорців">
+        <div className={styles.counter}>
           <FlagIcon />
-          <strong>{String(remainingMines).padStart(3, '0')}</strong>
+          <strong
+            aria-label={`${remainingMines} remaining mines`}
+            aria-live="polite"
+          >
+            {String(remainingMines).padStart(3, '0')}
+          </strong>
         </div>
 
         <RestartButton onRestart={restartGame} />
 
-        <div className={styles.counter} aria-label="час гри">
+        <div className={styles.counter}>
           <ClockIcon />
           <Timer time={time} />
         </div>

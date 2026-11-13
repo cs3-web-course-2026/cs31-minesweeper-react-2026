@@ -14,7 +14,7 @@ import HavrasPavlo from './pages/HavrasPavlo';
 import HrabovyiIvan from './pages/HrabovyiIvan';
 import BraginaAlona from './pages/BraginaAlona';
 import KorzhykAnton from './pages/KorzhykAnton';
-import DariaFedorchenko from './pages/DariaFedorchenko';
+import DariaFedorchenko from './pages/FedorchenkoDaria';
 
 function App() {
   return (

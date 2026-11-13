@@ -1,7 +1,9 @@
 .board {
+  --board-gap: clamp(4px, 1.2vw, 8px);
+
   display: flex;
   flex-direction: column;
-  gap: clamp(4px, 1.2vw, 8px);
+  gap: var(--board-gap);
   padding: 16px;
   background: #243447;
   border: 1px solid color-mix(in srgb, #e2e2d2 12%, transparent);
@@ -11,7 +13,7 @@
 
 .row {
   display: flex;
-  gap: clamp(4px, 1.2vw, 8px);
+  gap: var(--board-gap);
 }
 
 @media (width <= 420px) {
