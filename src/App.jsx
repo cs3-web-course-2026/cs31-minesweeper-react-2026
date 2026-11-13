@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Game from './pages/Game';
+import UmrykhinaKseniia from './pages/UmrykhinaKseniia';
 import MockGame from './pages/MockGame';
 import ZabavaArtem from './pages/ZabavaArtem';
 import Minesweeper from './pages/KharynaSerhii';
@@ -10,6 +11,7 @@ import ShaposhnikovKostiantyn from './pages/ShaposhnikovKostiantyn';
 import VasylchenkoAlina from './pages/VasylchenkoAlina/Minesweeper';
 import HavrasPavlo from './pages/HavrasPavlo';
 import HrabovyiIvan from './pages/HrabovyiIvan';
+import BraginaAlona from './pages/BraginaAlona';
 import KorzhykAnton from './pages/KorzhykAnton';
 
 function App() {
@@ -29,7 +31,9 @@ function App() {
         <Route path="vasylchenko-alina" element={<VasylchenkoAlina />} />
         <Route path="havras-pavlo" element={<HavrasPavlo />} />
         <Route path="hrabovyi-ivan" element={<HrabovyiIvan />} />
+        <Route path="bragina-alona" element={<BraginaAlona />} />
         <Route path="korzhyk-anton" element={<KorzhykAnton />} />
+        <Route path="umrykhina-kseniia" element={<UmrykhinaKseniia />} />
       </Route>
     </Routes>
   );

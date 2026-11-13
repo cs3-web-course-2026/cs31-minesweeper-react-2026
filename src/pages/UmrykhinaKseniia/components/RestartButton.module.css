@@ -1,0 +1,14 @@
+.restartButton {
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  font-size: 1.6rem;
+  background: var(--color-accent-dim);
+  border: 1px solid var(--color-accent-border);
+  border-radius: var(--radius-icon, 50%);
+  cursor: pointer;
+}
+
+.restartButton:hover {
+  background: var(--color-accent);
+}

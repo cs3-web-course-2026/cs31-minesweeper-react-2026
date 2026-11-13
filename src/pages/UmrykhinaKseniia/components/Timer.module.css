@@ -1,0 +1,11 @@
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 4.5rem;
+  justify-content: flex-end;
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 700;
+}

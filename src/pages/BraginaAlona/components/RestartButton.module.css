@@ -1,0 +1,21 @@
+.button {
+  padding: 11px 22px;
+  border: none;
+  border-radius: 10px;
+  background: #7655b5;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background: #604194;
+  transform: translateY(-2px);
+}
+
+.button:focus-visible {
+  outline: 3px solid #a58bd8;
+  outline-offset: 3px;
+}
