@@ -10,6 +10,7 @@ import Minesweeper from './pages/KharynaSerhii';
 import VasylchenkoAlina from './pages/VasylchenkoAlina/Minesweeper';
 import HavrasPavlo from './pages/HavrasPavlo';
 import HrabovyiIvan from './pages/HrabovyiIvan';
+import BraginaAlona from './pages/BraginaAlona';
 import KorzhykAnton from './pages/KorzhykAnton';
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="vasylchenko-alina" element={<VasylchenkoAlina />} />
         <Route path="havras-pavlo" element={<HavrasPavlo />} />
         <Route path="hrabovyi-ivan" element={<HrabovyiIvan />} />
+        <Route path="bragina-alona" element={<BraginaAlona />} />
         <Route path="korzhyk-anton" element={<KorzhykAnton />} />
         <Route path="umrykhina-kseniia" element={<UmrykhinaKseniia />} />
       </Route>

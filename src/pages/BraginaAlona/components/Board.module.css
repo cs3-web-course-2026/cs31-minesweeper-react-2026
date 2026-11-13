@@ -1,0 +1,19 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 5px;
+  width: min(100%, 440px);
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #ded5f1;
+  border-radius: 12px;
+  background: #d7ccef;
+  box-shadow: 0 5px 20px rgb(80 55 130 / 10%);
+}
+
+@media (width <= 480px) {
+  .board {
+    gap: 3px;
+    padding: 6px;
+  }
+}
