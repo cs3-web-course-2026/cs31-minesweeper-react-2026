@@ -39,6 +39,9 @@ export default function CellButton({
       className={`${styles.cell} ${
         cell.state === 'opened' ? styles.opened : ''
       } ${isExploded ? styles.exploded : ''}`}
+      data-count={
+        cell.state === 'opened' && !cell.isMine ? cell.neighborMines : undefined
+      }
       onClick={() => onOpen(row, col)}
       onContextMenu={(event) => {
         event.preventDefault();
