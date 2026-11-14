@@ -109,6 +109,26 @@ function Game() {
       status: 'Complete',
     },
     {
+      id: 19,
+      title: 'Minesweeper by Kostiantyn Shaposhnikov',
+      description:
+        'A React implementation with CSS Modules, a timer, flagging, difficulty levels, and win/lose detection.',
+      author: 'Kostiantyn Shaposhnikov',
+      link: 'shaposhnikov-kostiantyn',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
+    {
+      id: 14,
+      title: 'Minesweeper by Alona Bragina',
+      description:
+        'A React implementation with a timer, flagging, flood-fill reveal, and win/lose detection.',
+      author: 'Alona Bragina',
+      link: 'bragina-alona',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+     },
+     {
       id: 15,
       title: 'Зелений сапер',
       description: 'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
@@ -128,6 +148,16 @@ function Game() {
       status: 'Complete',
     },
     {
+      id: 8,
+      title: 'Minesweeper by Anna Isaieva',
+      description:
+        'A React Minesweeper game with flood-fill reveal, flagging, timer, and win/loss detection.',
+      author: 'Anna Isaieva',
+      link: 'isaieva-anna',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+      },
+    {
       id: 16,
       title: 'Minesweeper by Ivan Hrabovyi',
       description:
@@ -144,6 +174,16 @@ function Game() {
         'React-версія гри: таймер, лічильник прапорців, рекурсивне відкриття порожніх клітинок, визначення перемоги та поразки.',
       author: 'Korzhyk Anton',
       link: 'korzhyk-anton',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
+    {
+      id: 118,
+      title: 'Minesweeper by Kseniia Umrykhina',
+      description:
+        'React Minesweeper with a safe first click, flood-fill reveal, flags, timer, and win/lose detection.',
+      author: 'Umrykhina Kseniia',
+      link: 'umrykhina-kseniia',
       difficulty: 'Intermediate',
       status: 'Complete',
     },
