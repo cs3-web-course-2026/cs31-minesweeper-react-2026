@@ -187,6 +187,16 @@ function Game() {
       difficulty: 'Intermediate',
       status: 'Complete',
     },
+    {
+      id: 18,
+      title: 'Minesweeper with Difficulty Levels',
+      description:
+        'Three difficulty levels, safe first click, best times saved per level, built from small components with hooks and CSS Modules',
+      author: 'Anastasiia Shevchenko',
+      link: 'shevchenko-anastasiia',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
   ];
 
   return (

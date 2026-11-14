@@ -1,0 +1,28 @@
+.scrollArea {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding: 0.75rem;
+  overflow-x: auto;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+}
+
+.board {
+  --cell-size: 2.25rem;
+  --cell-font-size: 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(var(--board-cols), var(--cell-size));
+  grid-template-rows: repeat(var(--board-rows), var(--cell-size));
+  gap: 3px;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+@media (width <= 480px) {
+  .board {
+    --cell-size: 1.75rem;
+    --cell-font-size: 0.8rem;
+  }
+}

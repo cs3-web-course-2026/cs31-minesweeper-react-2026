@@ -1,0 +1,108 @@
+.cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  padding: 0;
+  color: var(--color-text);
+  font-family: var(--font-cell);
+  font-size: var(--cell-font-size);
+  font-weight: 700;
+  background-color: var(--cell-fill, transparent);
+  border-color: var(--cell-edge, var(--cell-border));
+  border-radius: var(--cell-radius);
+  user-select: none;
+}
+
+.cell:hover {
+  background-color: var(--cell-fill, transparent);
+  border-color: var(--cell-edge, var(--cell-border));
+  transform: none;
+}
+
+.cell:disabled {
+  cursor: default;
+}
+
+.closed,
+.flagged {
+  background-image: linear-gradient(
+    145deg,
+    var(--cell-hidden-top),
+    var(--cell-hidden-bottom)
+  );
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 18%);
+  cursor: pointer;
+}
+
+.flagged {
+  --cell-edge: var(--cell-flag);
+}
+
+.closed:hover:not(:disabled),
+.flagged:hover:not(:disabled) {
+  --cell-edge: var(--color-accent);
+
+  background-image: linear-gradient(
+    145deg,
+    var(--cell-hidden-hover-top),
+    var(--cell-hidden-hover-bottom)
+  );
+  transform: scale(1.06);
+}
+
+.flaggedCorrectly {
+  box-shadow: inset 0 0 0 2px var(--color-success);
+}
+
+.open,
+.mine {
+  --cell-fill: var(--cell-revealed);
+
+  box-shadow: inset 0 1px 3px rgb(0 0 0 / 22%);
+}
+
+.mineClicked {
+  --cell-fill: var(--cell-mine);
+  --cell-edge: var(--cell-mine);
+}
+
+.number1 {
+  color: var(--color-num-1);
+}
+
+.number2 {
+  color: var(--color-num-2);
+}
+
+.number3 {
+  color: var(--color-num-3);
+}
+
+.number4 {
+  color: var(--color-num-4);
+}
+
+.number5 {
+  color: var(--color-num-5);
+}
+
+.number6 {
+  color: var(--color-num-6);
+}
+
+.number7 {
+  color: var(--color-num-7);
+}
+
+.number8 {
+  color: var(--color-num-8);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .closed:hover:not(:disabled),
+  .flagged:hover:not(:disabled) {
+    transform: none;
+  }
+}
