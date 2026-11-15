@@ -30,10 +30,6 @@ export default function HaponenkoMariia() {
   };
 
   useEffect(() => {
-    handleRestart();
-  }, []);
-
-  useEffect(() => {
     let timer;
     if (status === GAME_STATUS.PROCESS && !isFirstClick) {
       timer = setInterval(() => {
