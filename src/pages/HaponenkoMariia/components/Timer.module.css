@@ -1,0 +1,12 @@
+.timer {
+  font-size: 50px;
+  font-weight: 400;
+  background-color: #f6b7db;
+  padding: 5px 15px;
+  border-radius: 8px;
+  min-width: 70px;
+  text-align: center;
+  color: #d32f2f;
+  border: 2px inset #7b7b7b;
+  font-family: 'VT323', monospace;
+}

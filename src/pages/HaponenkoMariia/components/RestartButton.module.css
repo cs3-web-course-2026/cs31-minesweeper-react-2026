@@ -1,0 +1,22 @@
+.startButton {
+  padding: 5px;
+  height: 90px;
+  width: 90px;
+  background: #c0f1ce;
+  border: 3px outset #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 3px 6px 0 rgb(2 54 32 / 50%);
+}
+
+.startButton:active {
+  transform: translateY(2px);
+  box-shadow: 1px 2px 0 rgb(2 54 32 / 50%);
+}
+
+.btnImg {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+}

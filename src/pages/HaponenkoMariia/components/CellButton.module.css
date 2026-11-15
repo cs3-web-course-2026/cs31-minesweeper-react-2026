@@ -1,0 +1,96 @@
+.cell {
+  width: 45px;
+  height: 45px;
+  background-color: #c0f1ce;
+  border: 3px solid;
+  border-color: #fff #7b7b7b #7b7b7b #fff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+  font-family: 'VT323', monospace;
+}
+
+.cellClosed:active {
+  transform: translateY(1px);
+}
+
+.cellOpened {
+  background-color: #f6b7db;
+  border: 1px solid #7b7b7b;
+  cursor: default;
+}
+
+.cellSafe {
+  background-image: url('../pictures/safe_cell.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.cellMine {
+  background-image: url('../pictures/mine_cell.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #f6b7db;
+  box-shadow: -1px -1px 4px rgb(2 54 32 / 50%);
+}
+
+.cellMineExploded {
+  background-image: url('../pictures/mine_cell.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #664759;
+  box-shadow: -1px -1px 4px rgb(2 54 32 / 50%);
+}
+
+.cellFlagged {
+  background-image: url('../pictures/flagged_cell.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.cellFlaggedWrong {
+  background-image: url('../pictures/flagged_wrong_cell.png');
+  background-size: cover;
+  background-position: center;
+  background-color: #f6b7db;
+  box-shadow: -1px -1px 4px rgb(2 54 32 / 50%);
+}
+
+.val1 {
+  color: blue;
+}
+
+.val2 {
+  color: green;
+}
+
+.val3 {
+  color: red;
+}
+
+.val4 {
+  color: purple;
+}
+
+.val5 {
+  color: maroon;
+}
+
+.val6 {
+  color: rgb(7 142 129);
+}
+
+.val7 {
+  color: black;
+}
+
+.val8 {
+  color: brown;
+}
