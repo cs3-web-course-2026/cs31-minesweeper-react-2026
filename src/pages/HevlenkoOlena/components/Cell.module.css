@@ -1,0 +1,98 @@
+.tile {
+  position: relative;
+  width: var(--tile-size, 34px);
+  height: var(--tile-size, 34px);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: bold;
+  user-select: none;
+}
+
+.closed,
+.flagged {
+  background-color: #c6c6c6;
+  border: 2px solid;
+  border-color: #fff #7b7b7b #7b7b7b #fff;
+  cursor: pointer;
+}
+
+.closed:hover {
+  background-color: #d3d3d3;
+}
+
+.open,
+.mine {
+  background-color: #bcbcbc;
+  border: 1px solid #7b7b7b;
+  cursor: default;
+}
+
+.num1 {
+  color: #0000e6;
+}
+
+.num2 {
+  color: #005c00;
+}
+
+.num3 {
+  color: #a80000;
+}
+
+.num4 {
+  color: #00007a;
+}
+
+.num5 {
+  color: #7a0000;
+}
+
+.num6 {
+  color: #004f4f;
+}
+
+.num7 {
+  color: #111;
+}
+
+.num8 {
+  color: #4a4a4a;
+}
+
+.flagged::before {
+  content: '🚩';
+  font-size: 15px;
+}
+
+.defused {
+  background-color: #c8e6c9;
+  border-color: #388e3c #1b5e20 #1b5e20 #388e3c;
+}
+
+.wrong::after {
+  content: '❌';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 16px;
+}
+
+.mine::before {
+  content: '💣';
+  font-size: 15px;
+}
+
+.boom {
+  background-color: #e53935;
+}
+
+@media (width <= 420px) {
+  .tile {
+    font-size: 14px;
+  }
+}

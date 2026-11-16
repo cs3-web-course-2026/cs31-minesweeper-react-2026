@@ -1,0 +1,15 @@
+.gridField {
+  --tile-size: 34px;
+
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 10), var(--tile-size));
+  grid-template-rows: repeat(var(--rows, 10), var(--tile-size));
+  border: 3px solid;
+  border-color: #7b7b7b #fff #fff #7b7b7b;
+}
+
+@media (width <= 420px) {
+  .gridField {
+    --tile-size: 26px;
+  }
+}
