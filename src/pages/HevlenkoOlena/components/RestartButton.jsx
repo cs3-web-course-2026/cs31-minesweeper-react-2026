@@ -1,9 +1,10 @@
+import { GAME_STATUS } from '../utils/gameLogic';
 import styles from './RestartButton.module.css';
 
 const STATUS_FACES = {
-  process: '🙂',
-  win: '😎',
-  lose: '😵',
+  [GAME_STATUS.PROCESS]: '🙂',
+  [GAME_STATUS.WIN]: '😎',
+  [GAME_STATUS.LOSE]: '😵',
 };
 
 export default function RestartButton({ status, onRestart }) {

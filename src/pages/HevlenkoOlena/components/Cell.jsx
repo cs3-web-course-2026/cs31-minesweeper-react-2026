@@ -1,3 +1,4 @@
+import { CELL_STATE, CELL_TYPE } from '../utils/gameLogic';
 import styles from './Cell.module.css';
 
 export default function Cell({
@@ -13,18 +14,18 @@ export default function Cell({
   let content = '';
   let ariaLabel = `Рядок ${row + 1}, стовпець ${col + 1}: закрита клітинка`;
 
-  if (cell.state === 'flagged') {
+  if (cell.state === CELL_STATE.FLAGGED) {
     classNames.push(styles.flagged);
-    if (isGameOver && cell.type === 'mine') {
+    if (isGameOver && cell.type === CELL_TYPE.MINE) {
       classNames.push(styles.defused);
       ariaLabel = `Рядок ${row + 1}, стовпець ${col + 1}: знешкоджена міна`;
-    } else if (isGameOver && cell.type !== 'mine') {
+    } else if (isGameOver && cell.type !== CELL_TYPE.MINE) {
       classNames.push(styles.wrong);
       ariaLabel = `Рядок ${row + 1}, стовпець ${col + 1}: помилковий прапорець`;
     } else {
       ariaLabel = `Рядок ${row + 1}, стовпець ${col + 1}: прапорець`;
     }
-  } else if (isGameOver && cell.type === 'mine') {
+  } else if (isGameOver && cell.type === CELL_TYPE.MINE) {
     classNames.push(styles.mine);
     if (isExploded) {
       classNames.push(styles.boom);
@@ -32,7 +33,7 @@ export default function Cell({
     } else {
       ariaLabel = `Рядок ${row + 1}, стовпець ${col + 1}: міна`;
     }
-  } else if (cell.state === 'opened') {
+  } else if (cell.state === CELL_STATE.OPENED) {
     classNames.push(styles.open);
     if (cell.neighborMines > 0) {
       classNames.push(styles[`num${cell.neighborMines}`]);

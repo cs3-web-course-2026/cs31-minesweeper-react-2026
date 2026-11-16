@@ -3,14 +3,16 @@ import Board from './components/Board';
 import CounterDisplay from './components/CounterDisplay';
 import RestartButton from './components/RestartButton';
 import {
+  CELL_STATE,
   DEFAULT_COLS,
   DEFAULT_MINES,
   DEFAULT_ROWS,
+  GAME_STATUS,
   checkWinCondition,
-  cloneField,
   countFlags,
   generateField,
   revealCells,
+  toggleFlag,
 } from './utils/gameLogic';
 import styles from './MinesweeperGame.module.css';
 
@@ -18,13 +20,13 @@ export default function MinesweeperGame() {
   const [field, setField] = useState(() =>
     generateField(DEFAULT_ROWS, DEFAULT_COLS, DEFAULT_MINES),
   );
-  const [status, setStatus] = useState('process'); // 'process' | 'win' | 'lose'
+  const [status, setStatus] = useState(GAME_STATUS.PROCESS);
   const [gameTime, setGameTime] = useState(0);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
   const [explodedCell, setExplodedCell] = useState(null);
 
   useEffect(() => {
-    if (!isTimerRunning || status !== 'process') {
+    if (!isTimerRunning || status !== GAME_STATUS.PROCESS) {
       return undefined;
     }
 
@@ -36,12 +38,16 @@ export default function MinesweeperGame() {
   }, [isTimerRunning, status]);
 
   const handleOpenCell = (row, col) => {
-    if (status !== 'process') {
+    if (status !== GAME_STATUS.PROCESS) {
       return;
     }
 
     const targetCell = field[row]?.[col];
-    if (!targetCell || targetCell.state === 'opened' || targetCell.state === 'flagged') {
+    if (
+      !targetCell ||
+      targetCell.state === CELL_STATE.OPENED ||
+      targetCell.state === CELL_STATE.FLAGGED
+    ) {
       return;
     }
 
@@ -53,25 +59,25 @@ export default function MinesweeperGame() {
     setField(nextField);
 
     if (hitMine) {
-      setStatus('lose');
+      setStatus(GAME_STATUS.LOSE);
       setExplodedCell({ row, col });
       setIsTimerRunning(false);
       return;
     }
 
     if (checkWinCondition(nextField)) {
-      setStatus('win');
+      setStatus(GAME_STATUS.WIN);
       setIsTimerRunning(false);
     }
   };
 
   const handleToggleFlag = (row, col) => {
-    if (status !== 'process') {
+    if (status !== GAME_STATUS.PROCESS) {
       return;
     }
 
     const targetCell = field[row]?.[col];
-    if (!targetCell || targetCell.state === 'opened') {
+    if (!targetCell || targetCell.state === CELL_STATE.OPENED) {
       return;
     }
 
@@ -79,15 +85,12 @@ export default function MinesweeperGame() {
       setIsTimerRunning(true);
     }
 
-    const nextField = cloneField(field);
-    nextField[row][col].state =
-      nextField[row][col].state === 'flagged' ? 'closed' : 'flagged';
-    setField(nextField);
+    setField((prevField) => toggleFlag(prevField, row, col));
   };
 
   const handleRestart = () => {
     setField(generateField(DEFAULT_ROWS, DEFAULT_COLS, DEFAULT_MINES));
-    setStatus('process');
+    setStatus(GAME_STATUS.PROCESS);
     setGameTime(0);
     setIsTimerRunning(false);
     setExplodedCell(null);
@@ -97,10 +100,10 @@ export default function MinesweeperGame() {
 
   let messageText = '';
   const messageClasses = [styles.gameMessage];
-  if (status === 'win') {
+  if (status === GAME_STATUS.WIN) {
     messageText = 'Перемога! Усі безпечні клітинки відкрито.';
     messageClasses.push(styles.isWin);
-  } else if (status === 'lose') {
+  } else if (status === GAME_STATUS.LOSE) {
     messageText = 'Гру завершено! Ви натрапили на міну.';
     messageClasses.push(styles.isLose);
   }

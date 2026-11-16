@@ -1,4 +1,8 @@
 .tile {
+  --tile-font-size: 1.0625rem;
+  --tile-icon-size: 0.9375rem;
+  --tile-cross-size: 1rem;
+
   position: relative;
   width: var(--tile-size, 34px);
   height: var(--tile-size, 34px);
@@ -7,7 +11,7 @@
   align-items: center;
   justify-content: center;
   font-family: inherit;
-  font-size: 17px;
+  font-size: var(--tile-font-size);
   font-weight: bold;
   user-select: none;
 }
@@ -65,7 +69,7 @@
 
 .flagged::before {
   content: '🚩';
-  font-size: 15px;
+  font-size: var(--tile-icon-size);
 }
 
 .defused {
@@ -79,12 +83,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 16px;
+  font-size: var(--tile-cross-size);
 }
 
 .mine::before {
   content: '💣';
-  font-size: 15px;
+  font-size: var(--tile-icon-size);
 }
 
 .boom {
@@ -93,6 +97,8 @@
 
 @media (width <= 420px) {
   .tile {
-    font-size: 14px;
+    --tile-font-size: 0.875rem;
+    --tile-icon-size: 0.8125rem;
+    --tile-cross-size: 0.875rem;
   }
 }

@@ -1,4 +1,5 @@
 import Cell from './Cell';
+import { GAME_STATUS } from '../utils/gameLogic';
 import styles from './Board.module.css';
 
 export default function Board({
@@ -10,7 +11,7 @@ export default function Board({
 }) {
   const rows = field.length;
   const cols = field[0]?.length ?? 0;
-  const isGameOver = status !== 'process';
+  const isGameOver = status !== GAME_STATUS.PROCESS;
 
   return (
     <section
