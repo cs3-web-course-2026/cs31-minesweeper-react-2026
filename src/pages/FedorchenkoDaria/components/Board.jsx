@@ -12,20 +12,21 @@ export default function Board({ board, status, explodedCell, onOpen, onFlag }) {
         <div
           className={styles.row}
           key={rowIndex}
-          role="grid"
+          role="row"
           aria-label={`Row ${rowIndex + 1}`}
         >
           {row.map((cell, colIndex) => (
-            <CellButton
-              key={`${rowIndex}-${colIndex}`}
-              cell={cell}
-              row={rowIndex}
-              col={colIndex}
-              status={status}
-              explodedCell={explodedCell}
-              onOpen={onOpen}
-              onFlag={onFlag}
-            />
+            <div key={`${rowIndex}-${colIndex}`} role="gridcell">
+              <CellButton
+                cell={cell}
+                row={rowIndex}
+                col={colIndex}
+                status={status}
+                explodedCell={explodedCell}
+                onOpen={onOpen}
+                onFlag={onFlag}
+              />
+            </div>
           ))}
         </div>
       ))}
