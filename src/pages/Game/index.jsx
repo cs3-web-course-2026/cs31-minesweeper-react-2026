@@ -187,6 +187,16 @@ function Game() {
       difficulty: 'Intermediate',
       status: 'Complete',
     },
+    {
+      id: 119,
+      title: 'Minesweeper by Olena Hevlenko',
+      description:
+        'Classic retro Minesweeper built with React and CSS Modules featuring recursive reveal, flags, timer, and win/lose detection.',
+      author: 'Hevlenko Olena',
+      link: 'hevlenko-olena',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
   ];
 
   return (

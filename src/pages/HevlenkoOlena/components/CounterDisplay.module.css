@@ -1,0 +1,26 @@
+.lcdDisplay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 68px;
+  padding: 3px 6px;
+  background-color: #111;
+  color: #ff2a2a;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: 2px solid;
+  border-color: #7b7b7b #fff #fff #7b7b7b;
+}
+
+.lcdIcon {
+  font-size: 15px;
+}
+
+@media (width <= 420px) {
+  .lcdDisplay {
+    font-size: 16px;
+    min-width: 54px;
+  }
+}
