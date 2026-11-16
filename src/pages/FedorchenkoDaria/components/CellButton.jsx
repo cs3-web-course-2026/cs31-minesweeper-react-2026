@@ -1,4 +1,5 @@
 import styles from './CellButton.module.css';
+import { CELL_STATE, GAME_STATUS } from '../constants';
 
 export default function CellButton({
   cell,
@@ -14,10 +15,10 @@ export default function CellButton({
   let content = '';
   let cellDescription = 'closed';
 
-  if (cell.state === 'flagged') {
+  if (cell.state === CELL_STATE.FLAGGED) {
     content = '🚩';
     cellDescription = 'flagged';
-  } else if (cell.state === 'opened') {
+  } else if (cell.state === CELL_STATE.OPENED) {
     cellDescription = 'opened';
 
     if (cell.isMine) {
@@ -37,17 +38,19 @@ export default function CellButton({
     <button
       type="button"
       className={`${styles.cell} ${
-        cell.state === 'opened' ? styles.opened : ''
+        cell.state === CELL_STATE.OPENED ? styles.opened : ''
       } ${isExploded ? styles.exploded : ''}`}
       data-count={
-        cell.state === 'opened' && !cell.isMine ? cell.neighborMines : undefined
+        cell.state === CELL_STATE.OPENED && !cell.isMine
+          ? cell.neighborMines
+          : undefined
       }
       onClick={() => onOpen(row, col)}
       onContextMenu={(event) => {
         event.preventDefault();
         onFlag(row, col);
       }}
-      disabled={status !== 'playing'}
+      disabled={status !== GAME_STATUS.PLAYING}
       aria-label={ariaLabel}
     >
       {content}

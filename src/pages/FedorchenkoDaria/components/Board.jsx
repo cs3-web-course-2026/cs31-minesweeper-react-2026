@@ -5,14 +5,14 @@ export default function Board({ board, status, explodedCell, onOpen, onFlag }) {
   return (
     <div
       className={styles.board}
-      role="group"
+      role="grid"
       aria-label="Minesweeper game board"
     >
       {board.map((row, rowIndex) => (
         <div
           className={styles.row}
           key={rowIndex}
-          role="group"
+          role="grid"
           aria-label={`Row ${rowIndex + 1}`}
         >
           {row.map((cell, colIndex) => (

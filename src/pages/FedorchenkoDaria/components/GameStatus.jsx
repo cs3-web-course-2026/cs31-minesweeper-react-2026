@@ -1,8 +1,9 @@
-import styles from '../Game.module.css';
+import styles from './GameStatus.module.css';
+import { GAME_STATUS } from '../constants';
 
 export default function GameStatus({ status, onRestart }) {
-  const won = status === 'win';
-  const hasFinished = status !== 'playing';
+  const won = status === GAME_STATUS.WIN;
+  const hasFinished = status !== GAME_STATUS.PLAYING;
 
   let resultMessage = '';
 
@@ -11,6 +12,7 @@ export default function GameStatus({ status, onRestart }) {
   } else if (hasFinished) {
     resultMessage = 'Ви підірвалися на міні!';
   }
+
   return (
     <>
       <p
