@@ -7,14 +7,15 @@ import inProgressImg from '../pictures/inProgress.png';
 import winImg from '../pictures/WIN.png';
 import gameOverImg from '../pictures/GAMEOVER.png';
 
-export default function RestartButton({ gameStatus, gameTime, onRestart }) {
+export default function RestartButton({ status, gameTime, onRestart }) {
   let btnImage = startImg;
   let statusText = 'Game in progress';
 
-  if (gameStatus === GAME_STATUS.WIN) {
+  // Використовуємо правильну назву змінної: status замість gameStatus
+  if (status === GAME_STATUS.WIN) {
     btnImage = winImg;
     statusText = 'You Won!';
-  } else if (gameStatus === GAME_STATUS.LOSE) {
+  } else if (status === GAME_STATUS.LOSE) {
     btnImage = gameOverImg;
     statusText = 'Game Over!';
   } else if (gameTime > 0) {
