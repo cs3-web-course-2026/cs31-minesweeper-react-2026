@@ -1,5 +1,5 @@
 import styles from './CellButton.module.css';
-import { CELL_STATE, GAME_STATUS } from '../constants';
+import { CELL_STATE, GAME_STATUS } from '../constants/game';
 
 export default function CellButton({
   cell,

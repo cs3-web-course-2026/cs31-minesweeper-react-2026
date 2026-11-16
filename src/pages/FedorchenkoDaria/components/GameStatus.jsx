@@ -1,5 +1,5 @@
 import styles from './GameStatus.module.css';
-import { GAME_STATUS } from '../constants';
+import { GAME_STATUS } from '../constants/game';
 
 export default function GameStatus({ status, onRestart }) {
   const won = status === GAME_STATUS.WIN;
