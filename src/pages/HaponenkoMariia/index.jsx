@@ -3,11 +3,14 @@ import {
   GAME_STATUS,
   CELL_STATE,
   CELL_TYPE,
-  ROWS,
-  COLS,
   MINES_COUNT,
 } from './constants/game';
-import { initEmptyBoard, generateMines } from './utils/board';
+import {
+  initEmptyBoard,
+  generateMines,
+  revealAllMines,
+  toggleFlagCell,
+} from './utils/board';
 import { revealCell } from './utils/reveal';
 import { checkWinCondition } from './utils/checks';
 import GameStatus from './components/GameStatus';
@@ -15,7 +18,8 @@ import Board from './components/Board';
 import styles from './Minesweeper.module.css';
 
 export default function HaponenkoMariia() {
-  const [board, setBoard] = useState([]);
+  // Виправляємо ініціалізацію: передаємо функцію initEmptyBoard одразу в стейт
+  const [board, setBoard] = useState(() => initEmptyBoard());
   const [status, setStatus] = useState(GAME_STATUS.PROCESS);
   const [flagsCount, setFlagsCount] = useState(0);
   const [gameTime, setGameTime] = useState(0);
@@ -39,56 +43,49 @@ export default function HaponenkoMariia() {
     return () => clearInterval(timer);
   }, [status, isFirstClick]);
 
-  const handleCellClick = (row, col) => {
+  const handleCellClick = (rowIndex, colIndex) => {
     if (status !== GAME_STATUS.PROCESS) return;
     if (
-      board[row][col].state === CELL_STATE.FLAGGED ||
-      board[row][col].state === CELL_STATE.OPENED
+      board[rowIndex][colIndex].state === CELL_STATE.FLAGGED ||
+      board[rowIndex][colIndex].state === CELL_STATE.OPENED
     )
       return;
 
-    let activeBoard = board.map((r) => r.map((c) => ({ ...c })));
+    let activeBoard = board.map((row) => row.map((cell) => ({ ...cell })));
 
     if (isFirstClick) {
       setIsFirstClick(false);
-      activeBoard = generateMines(activeBoard, row, col);
+      activeBoard = generateMines(activeBoard, rowIndex, colIndex);
     }
 
-    revealCell(activeBoard, row, col);
+    const updatedBoard = revealCell(activeBoard, rowIndex, colIndex);
 
-    if (activeBoard[row][col].type === CELL_TYPE.MINE) {
-      for (let r = 0; r < ROWS; r++) {
-        for (let c = 0; c < COLS; c++) {
-          if (activeBoard[r][c].type === CELL_TYPE.MINE) {
-            activeBoard[r][c].state = CELL_STATE.OPENED;
-          }
-        }
-      }
-      setBoard(activeBoard);
+    if (updatedBoard[rowIndex][colIndex].type === CELL_TYPE.MINE) {
+      // Виносимо логіку відкриття мін у чисту утиліту revealAllMines
+      const lostBoard = revealAllMines(updatedBoard);
+      setBoard(lostBoard);
       setStatus(GAME_STATUS.LOSE);
-    } else if (checkWinCondition(activeBoard)) {
-      setBoard(activeBoard);
+    } else if (checkWinCondition(updatedBoard)) {
+      setBoard(updatedBoard);
       setStatus(GAME_STATUS.WIN);
     } else {
-      setBoard(activeBoard);
+      setBoard(updatedBoard);
     }
   };
 
-  const handleCellContext = (row, col) => {
+  const handleCellContext = (rowIndex, colIndex) => {
     if (status !== GAME_STATUS.PROCESS) return;
-    const activeBoard = board.map((r) => r.map((c) => ({ ...c })));
-    const cell = activeBoard[row][col];
 
-    if (cell.state === CELL_STATE.OPENED) return;
+    // Виносимо логіку роботи з прапорцями в чисту утиліту toggleFlagCell
+    const { newBoard, newFlagsCount } = toggleFlagCell(
+      board,
+      rowIndex,
+      colIndex,
+      flagsCount,
+    );
 
-    if (cell.state === CELL_STATE.CLOSED) {
-      cell.state = CELL_STATE.FLAGGED;
-      setFlagsCount((prev) => prev + 1);
-    } else if (cell.state === CELL_STATE.FLAGGED) {
-      cell.state = CELL_STATE.CLOSED;
-      setFlagsCount((prev) => prev - 1);
-    }
-    setBoard(activeBoard);
+    setBoard(newBoard);
+    setFlagsCount(newFlagsCount);
   };
 
   return (

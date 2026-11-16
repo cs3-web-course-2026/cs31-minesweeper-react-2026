@@ -7,15 +7,33 @@ import inProgressImg from '../pictures/inProgress.png';
 import winImg from '../pictures/WIN.png';
 import gameOverImg from '../pictures/GAMEOVER.png';
 
-export default function RestartButton({ status, gameTime, onRestart }) {
+export default function RestartButton({ gameStatus, gameTime, onRestart }) {
   let btnImage = startImg;
-  if (status === GAME_STATUS.WIN) btnImage = winImg;
-  else if (status === GAME_STATUS.LOSE) btnImage = gameOverImg;
-  else if (gameTime > 0) btnImage = inProgressImg;
+  let statusText = 'Game in progress';
+
+  if (gameStatus === GAME_STATUS.WIN) {
+    btnImage = winImg;
+    statusText = 'You Won!';
+  } else if (gameStatus === GAME_STATUS.LOSE) {
+    btnImage = gameOverImg;
+    statusText = 'Game Over!';
+  } else if (gameTime > 0) {
+    btnImage = inProgressImg;
+  }
 
   return (
-    <button type="button" className={styles.startButton} onClick={onRestart}>
-      <img src={btnImage} alt="Game status" className={styles.btnImg} />
-    </button>
+    <div className={styles.container}>
+      <button
+        type="button"
+        className={styles.startButton}
+        onClick={onRestart}
+        aria-label="Restart game"
+      >
+        <img src={btnImage} alt="Game status" className={styles.btnImg} />
+      </button>
+      <span role="status" aria-live="polite" className={styles.srOnly}>
+        {statusText}
+      </span>
+    </div>
   );
 }

@@ -9,11 +9,12 @@ import {
 export function checkWinCondition(currentBoard) {
   let safeOpened = 0;
   const targetSafe = ROWS * COLS - MINES_COUNT;
-  for (let r = 0; r < ROWS; r++) {
-    for (let c = 0; c < COLS; c++) {
+
+  for (let rowIndex = 0; rowIndex < ROWS; rowIndex++) {
+    for (let colIndex = 0; colIndex < COLS; colIndex++) {
       if (
-        currentBoard[r][c].type === CELL_TYPE.EMPTY &&
-        currentBoard[r][c].state === CELL_STATE.OPENED
+        currentBoard[rowIndex][colIndex].type === CELL_TYPE.EMPTY &&
+        currentBoard[rowIndex][colIndex].state === CELL_STATE.OPENED
       ) {
         safeOpened++;
       }

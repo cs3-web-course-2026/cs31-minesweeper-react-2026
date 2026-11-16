@@ -4,8 +4,8 @@ import { CELL_STATE, CELL_TYPE, GAME_STATUS } from '../constants/game';
 
 export default function CellButton({
   cellData,
-  row,
-  col,
+  row: rowIndex,
+  col: colIndex,
   gameStatus,
   onClick,
   onContextMenu,
@@ -23,7 +23,7 @@ export default function CellButton({
     } else if (neighborMines > 0) {
       className += ` ${styles['val' + neighborMines]}`;
     } else {
-      className += ` ${styles.cellSafe}`; // <-- Додано для порожніх відкритих клітинок із мавпочками
+      className += ` ${styles.cellSafe}`;
     }
   } else if (state === CELL_STATE.FLAGGED) {
     if (gameStatus === GAME_STATUS.LOSE && type !== CELL_TYPE.MINE) {
@@ -33,16 +33,30 @@ export default function CellButton({
     }
   }
 
+  // Динамічний розрахунок accessible name (1-based координати + поточний стан)
+  let ariaLabel = `Cell ${rowIndex + 1}, ${colIndex + 1} closed`;
+  if (state === CELL_STATE.OPENED) {
+    if (type === CELL_TYPE.MINE) {
+      ariaLabel = `Cell ${rowIndex + 1}, ${colIndex + 1} mine`;
+    } else if (neighborMines > 0) {
+      ariaLabel = `Cell ${rowIndex + 1}, ${colIndex + 1} with ${neighborMines} neighboring mines`;
+    } else {
+      ariaLabel = `Cell ${rowIndex + 1}, ${colIndex + 1} empty opened`;
+    }
+  } else if (state === CELL_STATE.FLAGGED) {
+    ariaLabel = `Cell ${rowIndex + 1}, ${colIndex + 1} flagged`;
+  }
+
   return (
     <button
       type="button"
       className={className}
-      onClick={() => onClick(row, col)}
-      onContextMenu={(e) => {
-        e.preventDefault();
-        onContextMenu(row, col);
+      onClick={() => onClick(rowIndex, colIndex)}
+      onContextMenu={(event) => {
+        event.preventDefault();
+        onContextMenu(rowIndex, colIndex);
       }}
-      aria-label={`Cell ${row} ${col}`}
+      aria-label={ariaLabel}
     >
       {state === CELL_STATE.OPENED &&
       type === CELL_TYPE.EMPTY &&

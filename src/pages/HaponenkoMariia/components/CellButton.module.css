@@ -1,6 +1,6 @@
 .cell {
-  width: 45px;
-  height: 45px;
+  width: clamp(30px, 8vw, 45px);
+  height: clamp(30px, 8vw, 45px);
   background-color: #c0f1ce;
   border: 3px solid;
   border-color: #fff #7b7b7b #7b7b7b #fff;
@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: clamp(16px, 4vw, 24px);
   font-weight: bold;
   cursor: pointer;
   padding: 0;
