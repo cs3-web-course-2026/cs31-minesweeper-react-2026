@@ -1,0 +1,118 @@
+.cell {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-width: 0;
+  aspect-ratio: 1;
+  padding: 0;
+  border-radius: 0.35rem;
+  background: var(--cell-background);
+  color: var(--game-text);
+  font-family: inherit;
+  font-size: clamp(0.8rem, 3vw, 1.35rem);
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color 140ms ease,
+    transform 140ms ease;
+}
+
+.closed {
+  --cell-background: #b9cde0;
+  --cell-border-color: #d9e6f1 #88a4bb #88a4bb #d9e6f1;
+
+  border: 0.15rem solid;
+  border-color: var(--cell-border-color);
+}
+
+.opened {
+  --cell-background: #e7eef5;
+  --cell-border-color: #d5e1eb;
+
+  border: 1px solid var(--cell-border-color);
+}
+
+.flagged {
+  font-size: clamp(0.85rem, 3vw, 1.5rem);
+}
+
+.correctFlag {
+  --cell-background: #d8b6b3;
+  --cell-border-color: #c99591;
+}
+
+.exploded {
+  --cell-background: #e36b67;
+  --cell-border-color: #c84e4a;
+}
+
+.cell:focus-visible {
+  z-index: 1;
+  outline: 0.18rem solid var(--game-accent);
+  outline-offset: 0.08rem;
+}
+
+.cell:disabled,
+.cell[aria-disabled='true'] {
+  cursor: default;
+  opacity: 1;
+}
+
+.cell:hover {
+  border-color: var(--cell-border-color);
+  background: var(--cell-background);
+  transform: none;
+}
+
+.closed:enabled:hover {
+  --cell-background: #a5c2d9;
+  --cell-border-color: #88a4bb;
+}
+
+.cell:enabled:active {
+  transform: translateY(0.1rem);
+}
+
+.numberOne {
+  color: #24649e;
+}
+
+.numberTwo {
+  color: #28713e;
+}
+
+.numberThree {
+  color: #a83f35;
+}
+
+.numberFour {
+  color: #6b48a0;
+}
+
+.numberFive {
+  color: #8b382d;
+}
+
+.numberSix {
+  color: #176e75;
+}
+
+.numberSeven {
+  color: #303030;
+}
+
+.numberEight {
+  color: #626262;
+}
+
+.wrongFlag {
+  color: #9e2222;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cell {
+    transition: none;
+  }
+}

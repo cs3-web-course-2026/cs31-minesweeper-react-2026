@@ -1,0 +1,32 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 5.5rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 0.75rem;
+  background: #edf4fa;
+  text-align: center;
+}
+
+.label {
+  color: var(--game-muted);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.value {
+  color: var(--game-accent);
+  font-size: 1.15rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (width <= 420px) {
+  .panel {
+    min-width: 4rem;
+    padding-inline: 0.4rem;
+  }
+}

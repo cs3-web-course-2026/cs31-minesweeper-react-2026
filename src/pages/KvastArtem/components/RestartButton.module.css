@@ -1,0 +1,35 @@
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid transparent;
+  border-radius: 0.9rem;
+  background: #fff;
+  color: var(--game-text);
+  box-shadow: 0 0.35rem 0.75rem rgb(61 86 111 / 18%);
+  font-size: 1.7rem;
+  line-height: 1.2;
+}
+
+.button:hover {
+  border-color: var(--game-accent);
+  background: #fff;
+  transform: translateY(-0.1rem);
+}
+
+.button:focus-visible {
+  outline: 0.18rem solid var(--game-accent);
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}

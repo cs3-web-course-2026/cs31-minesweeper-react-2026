@@ -14,6 +14,7 @@ import HavrasPavlo from './pages/HavrasPavlo';
 import HrabovyiIvan from './pages/HrabovyiIvan';
 import BraginaAlona from './pages/BraginaAlona';
 import KorzhykAnton from './pages/KorzhykAnton';
+import KvastArtem from './pages/KvastArtem';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path="bragina-alona" element={<BraginaAlona />} />
         <Route path="korzhyk-anton" element={<KorzhykAnton />} />
         <Route path="umrykhina-kseniia" element={<UmrykhinaKseniia />} />
+        <Route path="kvast-artem" element={<KvastArtem />} />
       </Route>
     </Routes>
   );

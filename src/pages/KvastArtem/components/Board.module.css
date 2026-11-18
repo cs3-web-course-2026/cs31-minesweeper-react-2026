@@ -1,0 +1,15 @@
+.board {
+  display: grid;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(var(--board-columns), minmax(0, 1fr));
+  gap: 0.25rem;
+}
+
+.gridCell {
+  min-width: 0;
+}

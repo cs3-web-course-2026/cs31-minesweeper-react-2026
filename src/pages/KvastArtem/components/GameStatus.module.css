@@ -1,0 +1,15 @@
+.message {
+  min-height: 2.5em;
+  margin: 1.25rem 0 0;
+  color: var(--game-muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.won {
+  color: #28713e;
+}
+
+.lost {
+  color: #9e2222;
+}
