@@ -1,0 +1,100 @@
+.game {
+  --game-text: #213547;
+  --game-muted: #526779;
+  --game-accent: #356d9c;
+
+  box-sizing: border-box;
+  width: min(100%, 40rem);
+  margin: 0 auto;
+  padding: clamp(0.85rem, 4vw, 2rem);
+  border: 1px solid rgb(255 255 255 / 75%);
+  border-radius: 1.25rem;
+  background: #f7fbff;
+  color: var(--game-text);
+  box-shadow: 0 1rem 2.5rem rgb(61 86 111 / 22%);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.game * {
+  box-sizing: border-box;
+}
+
+.title {
+  margin: 0;
+  color: var(--game-text);
+  font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: normal;
+  text-align: center;
+}
+
+.description {
+  margin: 0.4rem 0 1.25rem;
+  color: var(--game-muted);
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.controlsHelp {
+  margin: 1rem 0 0;
+  color: var(--game-muted);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.helpSummary {
+  width: fit-content;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.helpText {
+  margin: 0.7rem 0 0;
+  color: var(--game-muted);
+}
+
+.touchControls {
+  display: none;
+}
+
+.modeButton {
+  width: 100%;
+  border-color: #b9cde0;
+  border-radius: 0.5rem;
+  background: #edf4fa;
+  color: var(--game-text);
+  font-size: 0.85rem;
+}
+
+.modeButton:hover,
+.modeButton[aria-pressed='true'] {
+  border-color: var(--game-accent);
+  background: #dce8f3;
+  transform: none;
+}
+
+.modeButton:focus-visible {
+  outline-color: var(--game-accent);
+}
+
+.touchHint {
+  margin: 0.4rem 0 0.9rem;
+  color: var(--game-muted);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+@media (width <= 600px), (any-pointer: coarse) {
+  .touchControls {
+    display: block;
+  }
+}

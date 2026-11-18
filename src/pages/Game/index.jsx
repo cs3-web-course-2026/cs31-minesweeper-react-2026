@@ -187,6 +187,16 @@ function Game() {
       difficulty: 'Intermediate',
       status: 'Complete',
     },
+    {
+      id: 119,
+      title: 'Сапер — Кваст Артем',
+      description:
+        'React-версія Сапера: поле 10 × 10, 15 мін, рекурсивне відкриття, прапорці, таймер та керування клавіатурою і дотиком.',
+      author: 'Кваст Артем',
+      link: 'kvast-artem',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
   ];
 
   return (
