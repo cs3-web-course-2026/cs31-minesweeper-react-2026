@@ -9,7 +9,11 @@ export default function useTimer(status, roundId, dispatch) {
     }
 
     const timerId = setInterval(() => {
-      dispatch({ type: GAME_ACTION.TICK, roundId });
+      dispatch({
+        type: GAME_ACTION.TICK,
+        roundId,
+        timestamp: performance.now(),
+      });
     }, TIMER_INTERVAL_MS);
 
     return () => clearInterval(timerId);

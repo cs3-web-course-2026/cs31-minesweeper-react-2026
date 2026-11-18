@@ -20,6 +20,7 @@ export default function CellButton({
   col,
   status,
   isFinished,
+  flagMode,
   tabIndex,
   buttonRef,
   onReveal,
@@ -63,8 +64,27 @@ export default function CellButton({
         : `відкрита клітинка, мін поруч: ${cell.neighborMines}`;
   }
 
+  function handleClick(event) {
+    if (isFinished || isOpened) {
+      return;
+    }
+
+    if (flagMode && event.detail > 0) {
+      onFlag(row, col);
+
+      return;
+    }
+
+    onReveal(row, col);
+  }
+
   function handleContextMenu(event) {
     event.preventDefault();
+
+    if (isFinished || isOpened) {
+      return;
+    }
+
     onFlag(row, col);
   }
 
@@ -75,9 +95,8 @@ export default function CellButton({
       className={classes}
       aria-label={`Рядок ${row + 1}, стовпець ${col + 1}: ${description}`}
       aria-disabled={isOpened || isFinished}
-      disabled={isFinished}
       tabIndex={tabIndex}
-      onClick={() => onReveal(row, col)}
+      onClick={handleClick}
       onContextMenu={handleContextMenu}
       onFocus={() => onCellFocus(row, col)}
       onKeyDown={(event) => onCellKeyDown(event, row, col)}

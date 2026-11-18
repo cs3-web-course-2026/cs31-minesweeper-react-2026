@@ -18,13 +18,17 @@ export default function useGameState() {
 
   useTimer(state.status, state.roundId, dispatch);
 
-  const sendCellAction = useCallback((type, row, col) => {
-    // Випадковість виникає лише під час дії гравця; reducer залишається чистим.
-    const randomValues = Array.from({ length: GAME_CONFIG.minesCount }, () =>
-      Math.random(),
-    );
-    dispatch({ type, row, col, randomValues });
-  }, []);
+  const sendCellAction = useCallback(
+    (type, row, col) => {
+      // Випадковість і час надходять з обробника дії; reducer залишається чистим.
+      const randomValues =
+        type === GAME_ACTION.REVEAL && !state.minesPlaced
+          ? Array.from({ length: GAME_CONFIG.minesCount }, () => Math.random())
+          : [];
+      dispatch({ type, row, col, randomValues, timestamp: performance.now() });
+    },
+    [state.minesPlaced],
+  );
 
   const reveal = useCallback(
     (row, col) => {

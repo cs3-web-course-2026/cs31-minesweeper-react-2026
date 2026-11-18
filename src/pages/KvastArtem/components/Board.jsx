@@ -47,7 +47,7 @@ export default function Board({
     if (event.code === 'KeyF') {
       event.preventDefault();
 
-      if (!event.repeat) {
+      if (!event.repeat && !isFinished) {
         onFlag(row, col);
       }
     }
@@ -92,7 +92,8 @@ export default function Board({
                 buttonRef={(element) => {
                   cellRefs.current[row * cols + col] = element;
                 }}
-                onReveal={flagMode ? onFlag : onReveal}
+                flagMode={flagMode}
+                onReveal={onReveal}
                 onFlag={onFlag}
                 onCellFocus={handleCellFocus}
                 onCellKeyDown={handleCellKeyDown}

@@ -30,7 +30,11 @@ export function createEmptyBoard(rows, cols) {
   );
 }
 
-export function createBoard({ rows, cols, minesCount }, randomValues) {
+export function createBoard(
+  { rows, cols, minesCount },
+  randomValues,
+  safeCell = null,
+) {
   const cellsCount = rows * cols;
 
   if (
@@ -45,26 +49,43 @@ export function createBoard({ rows, cols, minesCount }, randomValues) {
     throw new RangeError('Некоректний розмір поля або кількість мін.');
   }
 
-  if (
-    randomValues.length !== minesCount ||
-    randomValues.some(
-      (value) => !Number.isFinite(value) || value < 0 || value >= 1,
-    )
-  ) {
+  if (!Array.isArray(randomValues) || randomValues.length !== minesCount) {
     throw new RangeError(
       'Для кожної міни потрібне число від 0 включно до 1 невключно.',
     );
   }
 
+  for (let sampleIndex = 0; sampleIndex < minesCount; sampleIndex++) {
+    const value = randomValues[sampleIndex];
+
+    if (
+      !Object.hasOwn(randomValues, sampleIndex) ||
+      !Number.isFinite(value) ||
+      value < 0 ||
+      value >= 1
+    ) {
+      throw new RangeError(
+        'Випадкові числа не можуть містити пропуски або некоректні значення.',
+      );
+    }
+  }
+
   const board = createEmptyBoard(rows, cols);
+
+  if (safeCell !== null && !isInBounds(board, safeCell.row, safeCell.col)) {
+    throw new RangeError('Безпечна клітинка повинна належати полю.');
+  }
+
+  const safePosition =
+    safeCell === null ? -1 : safeCell.row * cols + safeCell.col;
   const positions = Array.from(
     { length: cellsCount },
     (_, position) => position,
-  );
+  ).filter((position) => position !== safePosition);
 
   randomValues.forEach((value, mineIndex) => {
     const selectedIndex =
-      mineIndex + Math.floor(value * (cellsCount - mineIndex));
+      mineIndex + Math.floor(value * (positions.length - mineIndex));
     [positions[mineIndex], positions[selectedIndex]] = [
       positions[selectedIndex],
       positions[mineIndex],

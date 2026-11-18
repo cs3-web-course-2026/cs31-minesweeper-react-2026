@@ -18,7 +18,8 @@ export const GAME_ACTION = {
   TOGGLE_FLAG_MODE: 'toggleFlagMode',
 };
 export const GAME_CONFIG = { rows: 10, cols: 10, minesCount: 15 };
-export const TIMER_INTERVAL_MS = 1000;
+export const MILLISECONDS_PER_SECOND = 1000;
+export const TIMER_INTERVAL_MS = MILLISECONDS_PER_SECOND;
 export const NEIGHBOUR_OFFSETS = [
   [-1, -1],
   [-1, 0],

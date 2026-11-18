@@ -1,4 +1,6 @@
 .cell {
+  --cell-transition-duration: 140ms;
+
   display: grid;
   place-items: center;
   width: 100%;
@@ -15,8 +17,8 @@
   cursor: pointer;
   user-select: none;
   transition:
-    background-color 140ms ease,
-    transform 140ms ease;
+    background-color var(--cell-transition-duration) ease,
+    transform var(--cell-transition-duration) ease;
 }
 
 .closed {
@@ -54,7 +56,6 @@
   outline-offset: 0.08rem;
 }
 
-.cell:disabled,
 .cell[aria-disabled='true'] {
   cursor: default;
   opacity: 1;
@@ -66,12 +67,12 @@
   transform: none;
 }
 
-.closed:enabled:hover {
+.closed:not([aria-disabled='true']):hover {
   --cell-background: #a5c2d9;
   --cell-border-color: #88a4bb;
 }
 
-.cell:enabled:active {
+.cell:not([aria-disabled='true']):active {
   transform: translateY(0.1rem);
 }
 

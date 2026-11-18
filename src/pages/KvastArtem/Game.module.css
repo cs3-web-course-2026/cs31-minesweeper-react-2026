@@ -51,6 +51,17 @@
   text-align: center;
 }
 
+.helpSummary {
+  width: fit-content;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.helpText {
+  margin: 0.7rem 0 0;
+  color: var(--game-muted);
+}
+
 .touchControls {
   display: none;
 }
@@ -82,11 +93,7 @@
   text-align: center;
 }
 
-@media (width <= 600px), (hover: none) and (pointer: coarse) {
-  .controlsHelp {
-    display: none;
-  }
-
+@media (width <= 600px), (any-pointer: coarse) {
   .touchControls {
     display: block;
   }

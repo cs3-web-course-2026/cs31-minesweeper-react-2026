@@ -22,6 +22,7 @@ export default function KvastArtem() {
     toggleFlagMode,
   } = useGameState();
 
+  // Спільний Layout уже надає єдиний main; гра є іменованою областю всередині.
   return (
     <section className={styles.game} lang="uk" aria-labelledby={titleId}>
       <h1 className={styles.title} id={titleId}>
@@ -63,12 +64,18 @@ export default function KvastArtem() {
         onFlag={flag}
       />
       <GameStatus status={state.status} />
-      <p className={styles.controlsHelp}>
-        Лівий клік — відкрити. Правий клік — прапорець.
-        <br />
-        Стрілки ↑ ↓ ← → — вибір клітинки; Enter або пробіл — відкрити; F —
-        прапорець.
-      </p>
+      <details className={styles.controlsHelp}>
+        <summary className={styles.helpSummary}>Керування</summary>
+        <p className={styles.helpText}>
+          {state.flagMode
+            ? 'Лівий клац або дотик — прапорець. Вимкніть режим прапорця, щоб відкривати клітинки.'
+            : 'Лівий клац або дотик — відкрити клітинку.'}{' '}
+          Правий клац — прапорець.
+          <br />
+          Стрілки ↑ ↓ ← → — вибір клітинки; Enter або пробіл — відкрити
+          незалежно від режиму; F — прапорець.
+        </p>
+      </details>
     </section>
   );
 }
