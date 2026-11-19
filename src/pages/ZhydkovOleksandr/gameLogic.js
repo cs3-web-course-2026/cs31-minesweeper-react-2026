@@ -27,15 +27,15 @@ function getNeighbors(board, row, col) {
     }));
 }
 
-export function generateField(rows, cols, minesCount) {
+export function generateField(rows, cols, minesCount, random = Math.random) {
   const board = Array.from({ length: rows }, () =>
     Array.from({ length: cols }, createCell),
   );
 
   let placedMines = 0;
   while (placedMines < minesCount) {
-    const row = Math.floor(Math.random() * rows);
-    const col = Math.floor(Math.random() * cols);
+    const row = Math.floor(random() * rows);
+    const col = Math.floor(random() * cols);
 
     if (board[row][col].type === CELL_TYPE.MINE) continue;
 
@@ -63,8 +63,8 @@ export function countNeighbourMines(board) {
   return nextBoard;
 }
 
-export const createBoard = (rows, cols, minesCount) =>
-  countNeighbourMines(generateField(rows, cols, minesCount));
+export const createBoard = (rows, cols, minesCount, random = Math.random) =>
+  countNeighbourMines(generateField(rows, cols, minesCount, random));
 
 function revealCell(board, row, col) {
   const cell = board[row][col];

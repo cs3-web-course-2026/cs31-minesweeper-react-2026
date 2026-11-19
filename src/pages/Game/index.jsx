@@ -188,7 +188,7 @@ function Game() {
       status: 'Complete',
     },
     {
-      id: 20,
+      id: 220,
       title: 'Minesweeper by Oleksandr Zhydkov',
       description:
         'React Minesweeper with CSS Modules, a custom useMinesweeper hook, flood-fill reveal, flags, timer, and win/lose detection.',
