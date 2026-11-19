@@ -11,10 +11,10 @@
   padding: 0;
 }
 
-.message[data-status="win"] {
+.message[data-status='win'] {
   background-color: var(--color-success);
 }
 
-.message[data-status="lose"] {
+.message[data-status='lose'] {
   background-color: var(--color-danger);
 }

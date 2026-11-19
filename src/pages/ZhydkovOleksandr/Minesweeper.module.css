@@ -39,9 +39,10 @@
   padding: 0.75rem;
   background-color: var(--color-panel);
   border: 4px solid;
-  border-color: var(--color-light) var(--color-shadow) var(--color-shadow) var(--color-light);
+  border-color: var(--color-light) var(--color-shadow) var(--color-shadow)
+    var(--color-light);
   border-radius: 6px;
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
 }
 
 .game *,
@@ -52,6 +53,8 @@
 
 .title {
   margin: 0 0 0.75rem;
+  font-family: inherit;
+  letter-spacing: normal;
   color: var(--color-title);
   font-size: var(--title-font-size);
   text-align: center;
@@ -65,7 +68,8 @@
   margin-bottom: 0.75rem;
   padding: 0.5rem;
   border: 3px solid;
-  border-color: var(--color-shadow) var(--color-light) var(--color-light) var(--color-shadow);
+  border-color: var(--color-shadow) var(--color-light) var(--color-light)
+    var(--color-shadow);
 }
 
 @media (width <= 400px) {

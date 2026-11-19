@@ -14,7 +14,8 @@ const createGameState = () => ({
   gameTime: INITIAL_GAME_TIME,
 });
 
-const createNewBoard = () => createBoard(SETTINGS.rows, SETTINGS.cols, SETTINGS.minesCount);
+const createNewBoard = () =>
+  createBoard(SETTINGS.rows, SETTINGS.cols, SETTINGS.minesCount);
 
 export function useMinesweeper() {
   const [gameState, setGameState] = useState(createGameState);
@@ -46,7 +47,10 @@ export function useMinesweeper() {
 
     const result = openCell(board, row, col);
     setBoard(result.board);
-    setGameState((previousState) => ({ ...previousState, status: result.status }));
+    setGameState((previousState) => ({
+      ...previousState,
+      status: result.status,
+    }));
     setHasStarted(true);
   };
 

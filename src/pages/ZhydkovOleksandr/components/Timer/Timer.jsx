@@ -1,4 +1,5 @@
-import Counter, { formatCounter } from '../Counter/Counter';
+import Counter from '../Counter/Counter';
+import { formatCounter } from '../../formatCounter';
 
 export default function Timer({ seconds }) {
   return (

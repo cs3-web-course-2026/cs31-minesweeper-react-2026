@@ -6,7 +6,11 @@ export const TIMER_INTERVAL_MS = 1000;
 export const INITIAL_GAME_TIME = 0;
 
 export const GAME_STATUS = { PROCESS: 'process', WIN: 'win', LOSE: 'lose' };
-export const CELL_STATE = { CLOSED: 'closed', OPENED: 'opened', FLAGGED: 'flagged' };
+export const CELL_STATE = {
+  CLOSED: 'closed',
+  OPENED: 'opened',
+  FLAGGED: 'flagged',
+};
 export const CELL_TYPE = { EMPTY: 'empty', MINE: 'mine' };
 
 export const CELL_LABEL = {
@@ -25,7 +29,12 @@ export const SMILEYS = {
 };
 
 export const NEIGHBOR_OFFSETS = [
-  [-1, -1], [-1, 0], [-1, 1],
-  [0, -1], [0, 1],
-  [1, -1], [1, 0], [1, 1],
+  [-1, -1],
+  [-1, 0],
+  [-1, 1],
+  [0, -1],
+  [0, 1],
+  [1, -1],
+  [1, 0],
+  [1, 1],
 ];

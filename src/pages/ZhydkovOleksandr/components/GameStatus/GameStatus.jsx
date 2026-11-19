@@ -12,7 +12,12 @@ const getMessage = (status, gameTime) => {
 
 export default function GameStatus({ status, gameTime }) {
   return (
-    <p className={styles.message} role="status" aria-live="polite" data-status={status}>
+    <p
+      className={styles.message}
+      role="status"
+      aria-live="polite"
+      data-status={status}
+    >
       {getMessage(status, gameTime)}
     </p>
   );

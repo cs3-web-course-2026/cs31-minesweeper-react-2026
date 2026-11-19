@@ -1,4 +1,9 @@
-import { CELL_STATE, CELL_TYPE, GAME_STATUS, NEIGHBOR_OFFSETS } from './constants';
+import {
+  CELL_STATE,
+  CELL_TYPE,
+  GAME_STATUS,
+  NEIGHBOR_OFFSETS,
+} from './constants';
 
 const createCell = () => ({
   type: CELL_TYPE.EMPTY,
@@ -7,17 +12,25 @@ const createCell = () => ({
   exploded: false,
 });
 
-const cloneBoard = (board) => board.map((rowCells) => rowCells.map((cell) => ({ ...cell })));
+const cloneBoard = (board) =>
+  board.map((rowCells) => rowCells.map((cell) => ({ ...cell })));
 
 function getNeighbors(board, row, col) {
-  return NEIGHBOR_OFFSETS
-    .map(([rowOffset, colOffset]) => ({ row: row + rowOffset, col: col + colOffset }))
+  return NEIGHBOR_OFFSETS.map(([rowOffset, colOffset]) => ({
+    row: row + rowOffset,
+    col: col + colOffset,
+  }))
     .filter((position) => board[position.row]?.[position.col] !== undefined)
-    .map((position) => ({ ...position, cell: board[position.row][position.col] }));
+    .map((position) => ({
+      ...position,
+      cell: board[position.row][position.col],
+    }));
 }
 
 export function generateField(rows, cols, minesCount) {
-  const board = Array.from({ length: rows }, () => Array.from({ length: cols }, createCell));
+  const board = Array.from({ length: rows }, () =>
+    Array.from({ length: cols }, createCell),
+  );
 
   let placedMines = 0;
   while (placedMines < minesCount) {
@@ -41,8 +54,9 @@ export function countNeighbourMines(board) {
     rowCells.forEach((cell, col) => {
       if (cell.type === CELL_TYPE.MINE) return;
 
-      cell.neighborMines = getNeighbors(nextBoard, row, col)
-        .filter((neighbor) => neighbor.cell.type === CELL_TYPE.MINE).length;
+      cell.neighborMines = getNeighbors(nextBoard, row, col).filter(
+        (neighbor) => neighbor.cell.type === CELL_TYPE.MINE,
+      ).length;
     });
   });
 
@@ -61,12 +75,17 @@ function revealCell(board, row, col) {
   if (cell.neighborMines !== 0) return;
 
   getNeighbors(board, row, col).forEach((neighbor) =>
-    revealCell(board, neighbor.row, neighbor.col)
+    revealCell(board, neighbor.row, neighbor.col),
   );
 }
 
 const isAllSafeCellsOpened = (board) =>
-  board.flat().every((cell) => cell.type === CELL_TYPE.MINE || cell.state === CELL_STATE.OPENED);
+  board
+    .flat()
+    .every(
+      (cell) =>
+        cell.type === CELL_TYPE.MINE || cell.state === CELL_STATE.OPENED,
+    );
 
 function revealMines(board) {
   board.flat().forEach((cell) => {
@@ -83,7 +102,8 @@ function flagMines(board) {
 }
 
 export const getFlagsLeft = (board, minesCount) =>
-  minesCount - board.flat().filter((cell) => cell.state === CELL_STATE.FLAGGED).length;
+  minesCount -
+  board.flat().filter((cell) => cell.state === CELL_STATE.FLAGGED).length;
 
 // Повертає { board, status }: нове поле та новий статус гри
 export function openCell(board, row, col) {
@@ -111,12 +131,15 @@ export function openCell(board, row, col) {
 
 export function toggleFlag(board, row, col, minesCount) {
   const { state } = board[row][col];
-  const canAddFlag = state === CELL_STATE.CLOSED && getFlagsLeft(board, minesCount) > 0;
+  const canAddFlag =
+    state === CELL_STATE.CLOSED && getFlagsLeft(board, minesCount) > 0;
   const canRemoveFlag = state === CELL_STATE.FLAGGED;
 
   if (!canAddFlag && !canRemoveFlag) return board;
 
   const nextBoard = cloneBoard(board);
-  nextBoard[row][col].state = canRemoveFlag ? CELL_STATE.CLOSED : CELL_STATE.FLAGGED;
+  nextBoard[row][col].state = canRemoveFlag
+    ? CELL_STATE.CLOSED
+    : CELL_STATE.FLAGGED;
   return nextBoard;
 }

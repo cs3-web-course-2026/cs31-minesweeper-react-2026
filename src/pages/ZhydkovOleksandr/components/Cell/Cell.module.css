@@ -1,12 +1,16 @@
 .cell {
+  --cell-bg: var(--color-closed);
+  --cell-fg: var(--color-cell-text);
+
   display: flex;
   align-items: center;
   justify-content: center;
   aspect-ratio: 1;
   min-width: 0;
   padding: 0;
-  background-color: var(--color-closed);
-  color: var(--color-cell-text);
+  background-color: var(--cell-bg);
+  background-image: none;
+  color: var(--cell-fg);
   font-family: inherit;
   font-size: var(--cell-font-size);
   font-weight: 700;
@@ -15,7 +19,22 @@
   touch-action: manipulation;
   user-select: none;
   border: var(--bevel) solid;
-  border-color: var(--color-light) var(--color-shadow) var(--color-shadow) var(--color-light);
+  border-color: var(--color-light) var(--color-shadow) var(--color-shadow)
+    var(--color-light);
+  border-radius: 0;
+}
+
+/* Глобальні стилі шаблону для button:hover не повинні змінювати вигляд клітинки */
+.cell.cell:hover,
+.cell.cell:active,
+.cell.cell:focus {
+  background-color: var(--cell-bg);
+  background-image: none;
+  color: var(--cell-fg);
+  box-shadow: none;
+  transform: none;
+  transition: none;
+  filter: none;
 }
 
 .cell:focus-visible {
@@ -24,22 +43,23 @@
 }
 
 .closed:hover {
-  background-color: var(--color-closed-hover);
+  --cell-bg: var(--color-closed-hover);
 }
 
 .opened {
-  background-color: var(--color-opened);
+  --cell-bg: var(--color-opened);
+
   cursor: default;
   border: 1px solid var(--color-shadow);
 }
 
 .mine::before {
-  content: "💣";
+  content: '💣';
   font-size: var(--icon-font-size);
 }
 
 .flagged::before {
-  content: "🚩";
+  content: '🚩';
   font-size: var(--icon-font-size);
 }
 
@@ -48,21 +68,44 @@
 }
 
 .wrongFlag::after {
-  content: "✖";
+  content: '✖';
   position: absolute;
   color: var(--color-danger);
   font-size: 1.3em;
 }
 
 .exploded {
-  background-color: var(--color-danger);
+  --cell-bg: var(--color-danger);
 }
 
-.n1 { color: var(--color-n1); }
-.n2 { color: var(--color-n2); }
-.n3 { color: var(--color-n3); }
-.n4 { color: var(--color-n4); }
-.n5 { color: var(--color-n5); }
-.n6 { color: var(--color-n6); }
-.n7 { color: var(--color-n7); }
-.n8 { color: var(--color-n8); }
+.n1 {
+  --cell-fg: var(--color-n1);
+}
+
+.n2 {
+  --cell-fg: var(--color-n2);
+}
+
+.n3 {
+  --cell-fg: var(--color-n3);
+}
+
+.n4 {
+  --cell-fg: var(--color-n4);
+}
+
+.n5 {
+  --cell-fg: var(--color-n5);
+}
+
+.n6 {
+  --cell-fg: var(--color-n6);
+}
+
+.n7 {
+  --cell-fg: var(--color-n7);
+}
+
+.n8 {
+  --cell-fg: var(--color-n8);
+}

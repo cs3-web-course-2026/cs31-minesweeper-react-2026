@@ -1,4 +1,10 @@
-import { CELL_LABEL, CELL_STATE, CELL_TYPE, GAME_STATUS, TAB_INDEX } from '../../constants';
+import {
+  CELL_LABEL,
+  CELL_STATE,
+  CELL_TYPE,
+  GAME_STATUS,
+  TAB_INDEX,
+} from '../../constants';
 import styles from './Cell.module.css';
 
 function getCellView(cell, status) {
@@ -10,7 +16,8 @@ function getCellView(cell, status) {
 
   if (cell.state === CELL_STATE.FLAGGED) {
     label = CELL_LABEL.FLAGGED;
-    if (isGameOver && cell.type === CELL_TYPE.MINE) classNames.push(styles.mine);
+    if (isGameOver && cell.type === CELL_TYPE.MINE)
+      classNames.push(styles.mine);
     if (status === GAME_STATUS.LOSE && cell.type === CELL_TYPE.EMPTY) {
       classNames.push(styles.wrongFlag);
     }
