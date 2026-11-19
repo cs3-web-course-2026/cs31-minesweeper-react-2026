@@ -1,0 +1,85 @@
+.game {
+  --bevel: 3px;
+  --gap: 2px;
+  --game-max-width: 30rem;
+  --restart-button-size: 3rem;
+  --restart-font-size: 1.7rem;
+  --title-font-size: clamp(1.2rem, 5vw, 1.6rem);
+  --counter-font-size: clamp(1.1rem, 5vw, 1.8rem);
+  --cell-font-size: clamp(0.9rem, 4.6vw, 1.7rem);
+  --icon-font-size: 0.85em;
+
+  --color-panel: #c0c0c0;
+  --color-light: #fff;
+  --color-shadow: #7b7b7b;
+  --color-closed: #c0c0c0;
+  --color-closed-hover: #d0d0d0;
+  --color-opened: #d6d6d6;
+  --color-danger: #c62828;
+  --color-success: #2e7d32;
+  --color-focus: #1e88e5;
+  --color-display-bg: #1a0000;
+  --color-display-text: #ff3b30;
+  --color-title: #222;
+  --color-cell-text: #000;
+  --color-message-text: #fff;
+
+  --color-n1: #1a2fd0;
+  --color-n2: #0e6a0e;
+  --color-n3: #b01010;
+  --color-n4: #0b1f8a;
+  --color-n5: #7a0f0f;
+  --color-n6: #0a6262;
+  --color-n7: #000;
+  --color-n8: #555;
+
+  box-sizing: border-box;
+  width: min(100%, var(--game-max-width));
+  margin: 1rem auto;
+  padding: 0.75rem;
+  background-color: var(--color-panel);
+  border: 4px solid;
+  border-color: var(--color-light) var(--color-shadow) var(--color-shadow) var(--color-light);
+  border-radius: 6px;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.game *,
+.game *::before,
+.game *::after {
+  box-sizing: border-box;
+}
+
+.title {
+  margin: 0 0 0.75rem;
+  color: var(--color-title);
+  font-size: var(--title-font-size);
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  border: 3px solid;
+  border-color: var(--color-shadow) var(--color-light) var(--color-light) var(--color-shadow);
+}
+
+@media (width <= 400px) {
+  .game {
+    --bevel: 2px;
+    --gap: 1px;
+    --restart-button-size: 2.5rem;
+    --restart-font-size: 1.4rem;
+
+    padding: 0.5rem;
+  }
+
+  .header {
+    gap: 0.25rem;
+    padding: 0.375rem;
+  }
+}

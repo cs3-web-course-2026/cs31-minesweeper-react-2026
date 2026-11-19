@@ -1,0 +1,18 @@
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.125rem 0.5rem;
+  background-color: var(--color-display-bg);
+  color: var(--color-display-text);
+  font-family: "Courier New", monospace;
+  font-size: var(--counter-font-size);
+  font-weight: 700;
+  letter-spacing: 2px;
+  border: 2px solid;
+  border-color: var(--color-shadow) var(--color-light) var(--color-light) var(--color-shadow);
+}
+
+.icon {
+  font-size: 0.8em;
+}
