@@ -11,7 +11,6 @@ export default function RestartButton({ status, gameTime, onRestart }) {
   let btnImage = startImg;
   let statusText = 'Game in progress';
 
-  // Використовуємо правильну назву змінної: status замість gameStatus
   if (status === GAME_STATUS.WIN) {
     btnImage = winImg;
     statusText = 'You Won!';
