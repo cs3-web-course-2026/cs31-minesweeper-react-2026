@@ -187,6 +187,16 @@ function Game() {
       difficulty: 'Intermediate',
       status: 'Complete',
     },
+    {
+      id: 120,
+      title: 'Minesweeper by Mariia Haponenko',
+      description:
+        'A React implementation with component architecture, CSS Modules, timer, flagging, and win/lose detection.',
+      author: 'Mariia Haponenko',
+      link: 'haponenko-mariia',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
   ];
 
   return (
