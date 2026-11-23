@@ -1,0 +1,20 @@
+.message {
+  margin: 0 0 0.75rem;
+  padding: 0.5rem;
+  color: var(--color-message-text);
+  font-weight: 700;
+  text-align: center;
+}
+
+.message:empty {
+  margin: 0;
+  padding: 0;
+}
+
+.message[data-status='win'] {
+  background-color: var(--color-success);
+}
+
+.message[data-status='lose'] {
+  background-color: var(--color-danger);
+}
