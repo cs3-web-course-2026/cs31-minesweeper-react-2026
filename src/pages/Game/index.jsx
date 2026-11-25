@@ -193,7 +193,7 @@ function Game() {
       id: 20,
       title: 'Minesweeper by Daria Fedorchenko',
       description:
-        'A React Minesweeper implementation with CSS Modules, a timer, flagging, recursive reveal, and win/lose detection.',
+        'A React Minesweeper implementation with css Modules, a timer, flagging, recursive reveal, and win/lose detection.',
       author: 'Daria Fedorchenko',
       link: 'fedorchenko-daria',
       difficulty: 'Intermediate',
