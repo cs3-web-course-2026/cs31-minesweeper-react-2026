@@ -196,6 +196,12 @@ function Game() {
         'A React Minesweeper implementation with css Modules, a timer, flagging, recursive reveal, and win/lose detection.',
       author: 'Daria Fedorchenko',
       link: 'fedorchenko-daria',
+      id: 220,
+      title: 'Minesweeper by Oleksandr Zhydkov',
+      description:
+        'React Minesweeper with CSS Modules, a custom useMinesweeper hook, flood-fill reveal, flags, timer, and win/lose detection.',
+      author: 'Zhydkov Oleksandr',
+      link: 'zhydkov-oleksandr',
       difficulty: 'Intermediate',
       status: 'Complete',
     },
