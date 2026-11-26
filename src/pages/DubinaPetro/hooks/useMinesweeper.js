@@ -1,6 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { COLS, GAME_STATUS, MINES_COUNT, ROWS } from '../constants';
+import {
+  CELL_STATE,
+  CELL_TYPE,
+  COLS,
+  GAME_STATUS,
+  MINES_COUNT,
+  ROWS,
+} from '../constants';
 import {
   generateBoard,
   getFlagsCount,
@@ -56,11 +63,11 @@ export function useMinesweeper() {
 
       const cell = previousGame.board[row][col];
 
-      if (cell.state !== 'closed') {
+      if (cell.state !== CELL_STATE.CLOSED) {
         return previousGame;
       }
 
-      if (cell.type === 'mine') {
+      if (cell.type === CELL_TYPE.MINE) {
         return {
           ...previousGame,
           board: revealMines(previousGame.board),

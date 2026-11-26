@@ -13,3 +13,8 @@ export const CELL_STATE = Object.freeze({
   OPENED: 'opened',
   FLAGGED: 'flagged',
 });
+
+export const CELL_TYPE = Object.freeze({
+  EMPTY: 'empty',
+  MINE: 'mine',
+});

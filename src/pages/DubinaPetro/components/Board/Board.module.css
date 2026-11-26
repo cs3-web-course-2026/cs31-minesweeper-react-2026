@@ -9,6 +9,10 @@
   border-radius: 3px;
 }
 
+.row {
+  display: contents;
+}
+
 @media (width <= 480px) {
   .board {
     grid-template-columns: repeat(var(--board-columns), minmax(var(--cell-min-mobile), 1fr));

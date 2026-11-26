@@ -1,25 +1,27 @@
-import { CELL_STATE } from '../../constants';
+import { CELL_STATE, CELL_TYPE } from '../../constants';
 import flagImage from '../../assets/flag.png';
 import mineHitImage from '../../assets/mine-hit.png';
 import mineImage from '../../assets/mine.png';
 import styles from './Cell.module.css';
 
-function getCellLabel(cell) {
+function getCellLabel(cell, row, col) {
+  const position = `Row ${row + 1}, column ${col + 1}`;
+
   if (cell.state === CELL_STATE.FLAGGED) {
-    return 'Cell marked with a flag';
+    return `${position}, cell marked with a flag`;
   }
 
   if (cell.state === CELL_STATE.CLOSED) {
-    return 'Closed cell';
+    return `${position}, closed cell`;
   }
 
-  if (cell.type === 'mine') {
-    return 'Mine';
+  if (cell.type === CELL_TYPE.MINE) {
+    return `${position}, mine`;
   }
 
   return cell.neighborMines > 0
-    ? `Opened cell: ${cell.neighborMines}`
-    : 'Opened empty cell';
+    ? `${position}, opened cell with ${cell.neighborMines} neighboring mines`
+    : `${position}, opened empty cell`;
 }
 
 function getCellContent(cell) {
@@ -27,7 +29,7 @@ function getCellContent(cell) {
     return '';
   }
 
-  if (cell.type === 'mine') {
+  if (cell.type === CELL_TYPE.MINE) {
     return '';
   }
 
@@ -49,7 +51,7 @@ function Cell({ cell, col, disabled, isExploded, onOpen, onToggleFlag, row }) {
     classNames.push(styles.flagged);
   }
 
-  if (isOpened && cell.type === 'mine') {
+  if (isOpened && cell.type === CELL_TYPE.MINE) {
     classNames.push(styles.mine);
   }
 
@@ -73,8 +75,10 @@ function Cell({ cell, col, disabled, isExploded, onOpen, onToggleFlag, row }) {
       type="button"
       className={classNames.join(' ')}
       disabled={disabled}
-      aria-label={getCellLabel(cell)}
+      aria-label={getCellLabel(cell, row, col)}
       role="gridcell"
+      aria-rowindex={row + 1}
+      aria-colindex={col + 1}
       data-row={row}
       data-col={col}
       style={imageStyles}
@@ -82,6 +86,12 @@ function Cell({ cell, col, disabled, isExploded, onOpen, onToggleFlag, row }) {
       onContextMenu={(event) => {
         event.preventDefault();
         onToggleFlag();
+      }}
+      onKeyDown={(event) => {
+        if (event.key.toLowerCase() === 'f') {
+          event.preventDefault();
+          onToggleFlag();
+        }
       }}
     >
       {content}

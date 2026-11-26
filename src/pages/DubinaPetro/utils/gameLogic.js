@@ -1,8 +1,14 @@
-import { CELL_STATE, COLS, MINES_COUNT, ROWS } from '../constants';
+import {
+  CELL_STATE,
+  CELL_TYPE,
+  COLS,
+  MINES_COUNT,
+  ROWS,
+} from '../constants';
 
 function createEmptyCell() {
   return {
-    type: 'empty',
+    type: CELL_TYPE.EMPTY,
     neighborMines: 0,
     state: CELL_STATE.CLOSED,
   };
@@ -40,22 +46,22 @@ export function generateBoard(rows = ROWS, cols = COLS, minesCount = MINES_COUNT
     const row = Math.floor(Math.random() * rows);
     const col = Math.floor(Math.random() * cols);
 
-    if (board[row][col].type === 'mine') {
+    if (board[row][col].type === CELL_TYPE.MINE) {
       continue;
     }
 
-    board[row][col] = { ...board[row][col], type: 'mine' };
+    board[row][col] = { ...board[row][col], type: CELL_TYPE.MINE };
     placedMines += 1;
   }
 
   return board.map((boardRow, row) => (
     boardRow.map((cell, col) => {
-      if (cell.type === 'mine') {
+      if (cell.type === CELL_TYPE.MINE) {
         return cell;
       }
 
       const neighborMines = getNeighbours(row, col, rows, cols)
-        .filter(([neighbourRow, neighbourCol]) => board[neighbourRow][neighbourCol].type === 'mine')
+        .filter(([neighbourRow, neighbourCol]) => board[neighbourRow][neighbourCol].type === CELL_TYPE.MINE)
         .length;
 
       return { ...cell, neighborMines };
@@ -68,11 +74,13 @@ export function getFlagsCount(board) {
 }
 
 export function hasWon(board) {
-  return board.flat().every((cell) => cell.type === 'mine' || cell.state === CELL_STATE.OPENED);
+  return board.flat().every((cell) => cell.type === CELL_TYPE.MINE || cell.state === CELL_STATE.OPENED);
 }
 
 // відкриває клітинку та порожню область без зміни попереднього стану
 export function revealCells(board, startRow, startCol) {
+  const rows = board.length;
+  const cols = board[0].length;
   const nextBoard = board.map((row) => row.map((cell) => ({ ...cell })));
   const cellsToOpen = [[startRow, startCol]];
   const visited = new Set();
@@ -89,8 +97,8 @@ export function revealCells(board, startRow, startCol) {
     visited.add(cellKey);
     cell.state = CELL_STATE.OPENED;
 
-    if (cell.type === 'empty' && cell.neighborMines === 0) {
-      getNeighbours(row, col).forEach((neighbour) => cellsToOpen.push(neighbour));
+    if (cell.type === CELL_TYPE.EMPTY && cell.neighborMines === 0) {
+      getNeighbours(row, col, rows, cols).forEach((neighbour) => cellsToOpen.push(neighbour));
     }
   }
 
@@ -99,7 +107,7 @@ export function revealCells(board, startRow, startCol) {
 
 export function revealMines(board) {
   return board.map((row) => row.map((cell) => (
-    cell.type === 'mine' ? { ...cell, state: CELL_STATE.OPENED } : cell
+    cell.type === CELL_TYPE.MINE ? { ...cell, state: CELL_STATE.OPENED } : cell
   )));
 }
 
@@ -110,22 +118,21 @@ export function toggleCellFlag(board, row, col, minesCount = MINES_COUNT) {
     return board;
   }
 
-  const canAddFlag = getFlagsCount(board) < minesCount;
-  let nextState = CELL_STATE.CLOSED;
-
   if (target.state === CELL_STATE.FLAGGED) {
-    nextState = CELL_STATE.CLOSED;
-  } else if (canAddFlag) {
-    nextState = CELL_STATE.FLAGGED;
+    return board.map((boardRow, rowIndex) => (
+      boardRow.map((cell, colIndex) => (
+        rowIndex === row && colIndex === col ? { ...cell, state: CELL_STATE.CLOSED } : cell
+      ))
+    ));
   }
 
-  if (nextState === target.state) {
+  if (getFlagsCount(board) >= minesCount) {
     return board;
   }
 
   return board.map((boardRow, rowIndex) => (
     boardRow.map((cell, colIndex) => (
-      rowIndex === row && colIndex === col ? { ...cell, state: nextState } : cell
+      rowIndex === row && colIndex === col ? { ...cell, state: CELL_STATE.FLAGGED } : cell
     ))
   ));
 }
