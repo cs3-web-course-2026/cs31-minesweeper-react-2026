@@ -202,7 +202,7 @@ function Game() {
       title: 'Classic Minesweeper by Petro Dubina',
       description:
         'A React implementation of classic Minesweeper with a timer, flags, and recursive cell reveal.',
-      author: 'Dubina Petro',
+      author: 'Petro Dubina',
       link: 'dubina-petro',
       difficulty: 'Intermediate',
       status: 'Complete',
