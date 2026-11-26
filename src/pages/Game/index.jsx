@@ -127,8 +127,8 @@ function Game() {
       link: 'bragina-alona',
       difficulty: 'Intermediate',
       status: 'Complete',
-     },
-     {
+    },
+    {
       id: 15,
       title: 'Зелений сапер',
       description: 'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
@@ -156,7 +156,7 @@ function Game() {
       link: 'isaieva-anna',
       difficulty: 'Intermediate',
       status: 'Complete',
-      },
+    },
     {
       id: 16,
       title: 'Minesweeper by Ivan Hrabovyi',
@@ -194,6 +194,16 @@ function Game() {
         'React Minesweeper with CSS Modules, a custom useMinesweeper hook, flood-fill reveal, flags, timer, and win/lose detection.',
       author: 'Zhydkov Oleksandr',
       link: 'zhydkov-oleksandr',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
+    {
+      id: 221,
+      title: 'Minesweeper: Minions Edition',
+      description:
+        'React Minesweeper with CSS Modules, custom hooks, custom minion icons, flood-fill reveal, flags, timer, and win/lose detection.',
+      author: 'Borysenko Kira',
+      link: 'borysenko-kira',
       difficulty: 'Intermediate',
       status: 'Complete',
     },
