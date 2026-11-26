@@ -6,7 +6,7 @@ function Counter({ className, isLive = false, label, value }) {
   return (
     <div className={[styles.counter, className].filter(Boolean).join(' ')} aria-label={`${label}: ${formattedValue}`}>
       <span className={styles.label}>{label}</span>
-      <output className={styles.value} aria-live={isLive ? 'polite' : undefined}>{formattedValue}</output>
+      <output className={styles.value} aria-live={isLive ? 'polite' : 'off'}>{formattedValue}</output>
     </div>
   );
 }

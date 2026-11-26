@@ -24,7 +24,7 @@ function DubinaPetro() {
     <main className={styles.page}>
       <section className={styles.game} aria-labelledby="game-title">
         <h1 id="game-title" className={styles.title}>Minesweeper</h1>
-        <div className={styles.header}>
+        <header className={styles.header}>
           <Counter className={styles.timer} label="Time" value={gameTime} />
           <ResultIndicator
             className={styles.loss}
@@ -38,7 +38,7 @@ function DubinaPetro() {
             label="WIN"
           />
           <Counter className={styles.mines} isLive label="Mines" value={flagsLeft} />
-        </div>
+        </header>
 
         <Board
           board={board}
