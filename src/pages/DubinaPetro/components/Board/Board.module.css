@@ -1,0 +1,16 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(var(--board-columns), minmax(var(--cell-min), 1fr));
+  width: 100%;
+  padding: 3px;
+  background: #c0c0c0;
+  border: 6px solid;
+  border-color: #777 #fff #fff #777;
+  border-radius: 3px;
+}
+
+@media (width <= 480px) {
+  .board {
+    grid-template-columns: repeat(var(--board-columns), minmax(var(--cell-min-mobile), 1fr));
+  }
+}
