@@ -81,10 +81,6 @@ export default function MinesweeperGame() {
       return;
     }
 
-    if (!isTimerRunning) {
-      setIsTimerRunning(true);
-    }
-
     setField((prevField) => toggleFlag(prevField, row, col));
   };
 
