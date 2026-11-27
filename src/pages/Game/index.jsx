@@ -92,7 +92,8 @@ function Game() {
     {
       id: 5,
       title: 'Сапер',
-      description: 'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
+      description:
+        'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
       author: 'Kharyna Serhii',
       link: 'kharyna-serhii',
       difficulty: 'Beginner',
@@ -127,11 +128,12 @@ function Game() {
       link: 'bragina-alona',
       difficulty: 'Intermediate',
       status: 'Complete',
-     },
-     {
+    },
+    {
       id: 15,
       title: 'Зелений сапер',
-      description: 'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
+      description:
+        'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
       author: 'Vasylchenko Alina',
       link: 'vasylchenko-alina',
       difficulty: 'Beginner',
@@ -156,7 +158,7 @@ function Game() {
       link: 'isaieva-anna',
       difficulty: 'Intermediate',
       status: 'Complete',
-      },
+    },
     {
       id: 16,
       title: 'Minesweeper by Ivan Hrabovyi',
@@ -194,6 +196,16 @@ function Game() {
         'React Minesweeper with CSS Modules, a custom useMinesweeper hook, flood-fill reveal, flags, timer, and win/lose detection.',
       author: 'Zhydkov Oleksandr',
       link: 'zhydkov-oleksandr',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
+    {
+      id: 221,
+      title: 'Minesweeper by Valeriia Khomychenko',
+      description:
+        'A React Minesweeper implementation with CSS Modules, safe first click, recursive reveal, timer, flagging, and win/lose detection.',
+      author: 'Valeriia Khomychenko',
+      link: 'khomychenko-valeriia',
       difficulty: 'Intermediate',
       status: 'Complete',
     },

@@ -1,0 +1,81 @@
+.cell {
+  width: 34px;
+  height: 34px;
+  border: 2px solid #4a5568;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background-color 0.15s ease,
+    transform 0.1s ease;
+  padding: 0;
+}
+
+.closed {
+  background-color: #2d3748;
+  color: #f7fafc;
+}
+
+.closed:hover {
+  background-color: #3c485e;
+}
+
+.closed:focus-visible {
+  outline: 2px solid #f6ad55;
+  outline-offset: -2px;
+}
+
+.flagged {
+  background-color: #2c5282;
+}
+
+.open {
+  background-color: #1a202c;
+  border-color: #2d3748;
+  cursor: default;
+}
+
+.mine {
+  background-color: #742a2a;
+}
+
+.exploded {
+  background-color: #c53030;
+}
+
+.val1 {
+  color: #63b3ed;
+}
+
+.val2 {
+  color: #68d391;
+}
+
+.val3 {
+  color: #fc8181;
+}
+
+.val4 {
+  color: #b794f4;
+}
+
+.val5 {
+  color: #f6ad55;
+}
+
+.val6 {
+  color: #4fd1c5;
+}
+
+.val7 {
+  color: #f687b3;
+}
+
+.val8 {
+  color: #cbd5e0;
+}
