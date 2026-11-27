@@ -86,11 +86,29 @@ export function checkWinCondition(currentBoard) {
   return safeOpened === targetSafe;
 }
 
+export function countFlaggedCells(currentBoard) {
+  let flaggedCount = 0;
+
+  for (const row of currentBoard) {
+    for (const cell of row) {
+      if (cell.state === CELL_STATE.FLAGGED) {
+        flaggedCount += 1;
+      }
+    }
+  }
+
+  return flaggedCount;
+}
+
 export function revealAllMines(currentBoard) {
   return currentBoard.map((row) =>
     row.map((cell) => {
       if (cell.type === CELL_TYPE.MINE) {
-        return { ...cell, state: CELL_STATE.OPENED };
+        return {
+          ...cell,
+          wasFlagged: cell.state === CELL_STATE.FLAGGED,
+          state: CELL_STATE.OPENED,
+        };
       }
       return { ...cell };
     }),

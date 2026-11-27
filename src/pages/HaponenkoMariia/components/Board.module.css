@@ -1,16 +1,8 @@
 .board {
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  gap: 2px;
+  grid-template-columns: repeat(var(--board-cols, 9), var(--cell-size, clamp(24px, 7.5vw, 45px)));
+  gap: var(--board-gap, 2px);
   background-color: #7b7b7b;
-  border: 3px inset #fff;
-  padding: 2px;
-}
-
-@media (width <= 380px) {
-  .board {
-    gap: 1px;
-    padding: 1px;
-    border-width: 2px;
-  }
+  border: var(--board-border-width, 3px) inset #fff;
+  padding: var(--board-padding, 2px);
 }

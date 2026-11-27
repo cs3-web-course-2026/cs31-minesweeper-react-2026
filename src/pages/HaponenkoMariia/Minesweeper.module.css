@@ -14,10 +14,68 @@
 }
 
 .minesweeper {
+  --board-cols: 9;
+  --board-gap: 2px;
+  --board-padding: 2px;
+  --board-border-width: 3px;
+  --cell-size: clamp(24px, 7.5vw, 45px);
+  --cell-font-size: clamp(14px, 4vw, 24px);
+  --cell-border-width: 3px;
+  --cell-radius: 6px;
+  --hud-gap: 40px;
+  --hud-padding: 10px;
+  --hud-margin-bottom: 20px;
+  --hud-font-size: 50px;
+  --hud-padding-x: 15px;
+  --hud-padding-y: 5px;
+  --hud-radius: 8px;
+  --restart-size: 90px;
+  --restart-padding: 5px;
+  --restart-radius: 10px;
+  --restart-shadow-y: 6px;
+
   box-sizing: border-box;
   max-width: 100%;
   background-color: #bdbdbd;
   padding: 15px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgb(2 54 32 / 30%);
+}
+
+@media (width <= 420px) {
+  .minesweeper {
+    --hud-gap: 8px;
+    --hud-padding: 8px;
+    --hud-margin-bottom: 12px;
+    --hud-font-size: 32px;
+    --hud-padding-x: 8px;
+    --hud-padding-y: 2px;
+    --hud-radius: 6px;
+    --restart-size: 56px;
+    --restart-padding: 4px;
+    --restart-radius: 8px;
+    --restart-shadow-y: 4px;
+  }
+}
+
+@media (width <= 380px) {
+  .minesweeper {
+    --board-gap: 1px;
+    --board-padding: 1px;
+    --board-border-width: 2px;
+    --cell-size: clamp(22px, 7.2vw, 30px);
+    --cell-font-size: clamp(13px, 3.8vw, 18px);
+    --cell-border-width: 2px;
+    --cell-radius: 4px;
+  }
+}
+
+@media (width <= 340px) {
+  .minesweeper {
+    --hud-gap: 6px;
+    --hud-padding: 6px;
+    --hud-font-size: 28px;
+    --hud-padding-x: 6px;
+    --restart-size: 48px;
+  }
 }

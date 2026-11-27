@@ -10,6 +10,7 @@ import {
   generateMines,
   revealAllMines,
   toggleFlagCell,
+  countFlaggedCells,
 } from './utils/board';
 import { revealCell } from './utils/reveal';
 import { checkWinCondition } from './utils/checks';
@@ -64,6 +65,7 @@ export default function HaponenkoMariia() {
       // Виносимо логіку відкриття мін у чисту утиліту revealAllMines
       const lostBoard = revealAllMines(updatedBoard);
       setBoard(lostBoard);
+      setFlagsCount(countFlaggedCells(lostBoard));
       setStatus(GAME_STATUS.LOSE);
     } else if (checkWinCondition(updatedBoard)) {
       setBoard(updatedBoard);
