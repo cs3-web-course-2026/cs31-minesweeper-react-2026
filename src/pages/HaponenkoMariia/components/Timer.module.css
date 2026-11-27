@@ -5,8 +5,25 @@
   padding: 5px 15px;
   border-radius: 8px;
   min-width: 70px;
+  box-sizing: border-box;
   text-align: center;
   color: #d32f2f;
   border: 2px inset #7b7b7b;
   font-family: 'VT323', monospace;
+}
+
+@media (width <= 420px) {
+  .timer {
+    min-width: 0;
+    padding: 2px 8px;
+    font-size: 32px;
+    border-radius: 6px;
+  }
+}
+
+@media (width <= 340px) {
+  .timer {
+    padding: 2px 6px;
+    font-size: 28px;
+  }
 }

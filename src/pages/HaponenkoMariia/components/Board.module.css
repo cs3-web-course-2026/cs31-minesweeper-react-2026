@@ -6,3 +6,11 @@
   border: 3px inset #fff;
   padding: 2px;
 }
+
+@media (width <= 380px) {
+  .board {
+    gap: 1px;
+    padding: 1px;
+    border-width: 2px;
+  }
+}

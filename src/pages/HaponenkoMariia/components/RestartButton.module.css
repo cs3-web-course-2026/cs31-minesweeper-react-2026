@@ -2,6 +2,8 @@
   padding: 5px;
   height: 90px;
   width: 90px;
+  flex-shrink: 0;
+  box-sizing: border-box;
   background: #c0f1ce;
   border: 3px outset #fff;
   border-radius: 10px;
@@ -30,4 +32,21 @@
   overflow: hidden;
   white-space: nowrap;
   border: 0;
+}
+
+@media (width <= 420px) {
+  .startButton {
+    width: 56px;
+    height: 56px;
+    padding: 4px;
+    border-radius: 8px;
+    box-shadow: 2px 4px 0 rgb(2 54 32 / 50%);
+  }
+}
+
+@media (width <= 340px) {
+  .startButton {
+    width: 48px;
+    height: 48px;
+  }
 }

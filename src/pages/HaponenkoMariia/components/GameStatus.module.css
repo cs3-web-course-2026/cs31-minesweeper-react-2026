@@ -3,9 +3,26 @@
   justify-content: space-between;
   align-items: center;
   gap: 40px;
+  max-width: 100%;
+  box-sizing: border-box;
   margin-bottom: 20px;
   background: #fff;
   padding: 10px;
   border: 3px inset #fff;
   border-radius: 8px;
+}
+
+@media (width <= 420px) {
+  .gameInfo {
+    gap: 8px;
+    padding: 8px;
+    margin-bottom: 12px;
+  }
+}
+
+@media (width <= 340px) {
+  .gameInfo {
+    gap: 6px;
+    padding: 6px;
+  }
 }
