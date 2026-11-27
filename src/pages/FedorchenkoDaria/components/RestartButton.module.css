@@ -1,0 +1,43 @@
+.restartButton {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #c51f5d;
+  color: #e2e2d2;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease;
+}
+
+.restartButton:hover {
+  background: #8d1d48;
+  transform: translateY(-1px);
+}
+
+.restartButton:focus-visible {
+  outline: 3px solid #e2e2d2;
+  outline-offset: 3px;
+}
+
+.restartButton:active {
+  transform: translateY(0) scale(0.95);
+}
+
+.restartButton svg {
+  width: 22px;
+  height: 22px;
+  fill: #e2e2d2;
+  stroke: #e2e2d2;
+  margin-left: 2px;
+  transition: transform 0.2s ease;
+}
+
+.restartButton:hover svg {
+  transform: scale(1.1);
+}

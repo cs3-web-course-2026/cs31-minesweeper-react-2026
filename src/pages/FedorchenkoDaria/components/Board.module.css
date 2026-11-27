@@ -1,0 +1,23 @@
+.board {
+  --board-gap: clamp(4px, 1.2vw, 8px);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--board-gap);
+  padding: 16px;
+  background: #243447;
+  border: 1px solid color-mix(in srgb, #e2e2d2 12%, transparent);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px -20px rgb(0 0 0 / 70%);
+}
+
+.row {
+  display: flex;
+  gap: var(--board-gap);
+}
+
+@media (width <= 420px) {
+  .board {
+    padding: 12px;
+  }
+}
