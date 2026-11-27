@@ -1,0 +1,27 @@
+.indicator {
+  display: grid;
+  place-items: center;
+  width: var(--result-width);
+  min-height: 58px;
+  padding: 4px;
+  color: #3f0000;
+  font-family: "Digital-7", "Courier New", Courier, monospace;
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  background: #000;
+  border: 3px solid;
+  border-color: #404040 #fff #fff #404040;
+}
+
+.active {
+  color: #f00;
+  text-shadow: 2px 0 #8b0000;
+}
+
+@media (width <= 480px) {
+  .indicator {
+    font-size: 1rem;
+  }
+}
