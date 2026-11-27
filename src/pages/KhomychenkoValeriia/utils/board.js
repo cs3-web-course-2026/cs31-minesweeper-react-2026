@@ -1,5 +1,9 @@
 import { CELL_STATE, CELL_TYPE } from '../constants/game';
 
+export function cloneBoard(board) {
+  return board.map((rowCells) => rowCells.map((cell) => ({ ...cell })));
+}
+
 export function createEmptyBoard(rows, cols) {
   const newBoard = [];
   for (let row = 0; row < rows; row += 1) {
@@ -40,42 +44,43 @@ export function getNeighbors(row, col, maxRows, maxCols) {
 }
 
 export function countNeighbourMines(targetBoard, rows, cols) {
+  const nextBoard = cloneBoard(targetBoard);
+
   for (let row = 0; row < rows; row += 1) {
     for (let col = 0; col < cols; col += 1) {
-      if (targetBoard[row][col].type === CELL_TYPE.MINE) continue;
+      if (nextBoard[row][col].type === CELL_TYPE.MINE) continue;
 
       let count = 0;
       const neighbors = getNeighbors(row, col, rows, cols);
       neighbors.forEach(([neighbourRow, neighbourCol]) => {
-        if (targetBoard[neighbourRow][neighbourCol].type === CELL_TYPE.MINE) {
+        if (nextBoard[neighbourRow][neighbourCol].type === CELL_TYPE.MINE) {
           count += 1;
         }
       });
-      targetBoard[row][col].neighborMines = count;
+      nextBoard[row][col].neighborMines = count;
     }
   }
+
+  return nextBoard;
 }
 
 export function generateField(rows, cols, minesCount) {
-  const newBoard = createEmptyBoard(rows, cols);
+  const emptyBoard = createEmptyBoard(rows, cols);
   let placed = 0;
+
   while (placed < minesCount) {
     const row = Math.floor(Math.random() * rows);
     const col = Math.floor(Math.random() * cols);
-    if (newBoard[row][col].type !== CELL_TYPE.MINE) {
-      newBoard[row][col].type = CELL_TYPE.MINE;
+    if (emptyBoard[row][col].type !== CELL_TYPE.MINE) {
+      emptyBoard[row][col].type = CELL_TYPE.MINE;
       placed += 1;
     }
   }
-  countNeighbourMines(newBoard, rows, cols);
-  return newBoard;
+
+  return countNeighbourMines(emptyBoard, rows, cols);
 }
 
-export function cloneBoard(board) {
-  return board.map((rowCells) => rowCells.map((cell) => ({ ...cell })));
-}
-
-export function revealRecursive(board, row, col, rows, cols) {
+function revealRecursiveInCopy(board, row, col, rows, cols) {
   if (row < 0 || row >= rows || col < 0 || col >= cols) return;
 
   const cell = board[row][col];
@@ -89,10 +94,82 @@ export function revealRecursive(board, row, col, rows, cols) {
     const neighbors = getNeighbors(row, col, rows, cols);
     neighbors.forEach(([neighbourRow, neighbourCol]) => {
       if (board[neighbourRow][neighbourCol].state === CELL_STATE.CLOSED) {
-        revealRecursive(board, neighbourRow, neighbourCol, rows, cols);
+        revealRecursiveInCopy(board, neighbourRow, neighbourCol, rows, cols);
       }
     });
   }
+}
+
+export function revealRecursive(board, row, col, rows, cols) {
+  const nextBoard = cloneBoard(board);
+  revealRecursiveInCopy(nextBoard, row, col, rows, cols);
+  return nextBoard;
+}
+
+export function prepareFirstOpenBoard(
+  currentBoard,
+  row,
+  col,
+  rows,
+  cols,
+  minesCount,
+) {
+  let nextBoard = cloneBoard(currentBoard);
+  let regenerated = false;
+
+  while (
+    nextBoard[row][col].type === CELL_TYPE.MINE ||
+    nextBoard[row][col].neighborMines > 0
+  ) {
+    nextBoard = generateField(rows, cols, minesCount);
+    regenerated = true;
+  }
+
+  return { board: nextBoard, regenerated };
+}
+
+export function revealMinesOnLoss(
+  currentBoard,
+  explodedRow,
+  explodedCol,
+  rows,
+  cols,
+) {
+  const nextBoard = cloneBoard(currentBoard);
+
+  for (let row = 0; row < rows; row += 1) {
+    for (let col = 0; col < cols; col += 1) {
+      if (nextBoard[row][col].type === CELL_TYPE.MINE) {
+        nextBoard[row][col].state = CELL_STATE.OPENED;
+        if (row === explodedRow && col === explodedCol) {
+          nextBoard[row][col].isExploded = true;
+        }
+      }
+    }
+  }
+
+  return nextBoard;
+}
+
+export function toggleFlagOnBoard(currentBoard, row, col, currentFlagsPlaced) {
+  const nextBoard = cloneBoard(currentBoard);
+  const targetCell = nextBoard[row][col];
+
+  if (targetCell.state === CELL_STATE.OPENED) {
+    return { board: nextBoard, flagsPlaced: currentFlagsPlaced };
+  }
+
+  if (targetCell.state === CELL_STATE.CLOSED) {
+    targetCell.state = CELL_STATE.FLAGGED;
+    return { board: nextBoard, flagsPlaced: currentFlagsPlaced + 1 };
+  }
+
+  if (targetCell.state === CELL_STATE.FLAGGED) {
+    targetCell.state = CELL_STATE.CLOSED;
+    return { board: nextBoard, flagsPlaced: currentFlagsPlaced - 1 };
+  }
+
+  return { board: nextBoard, flagsPlaced: currentFlagsPlaced };
 }
 
 export function checkWin(board, rows, cols, minesCount) {

@@ -5,11 +5,13 @@
   gap: 16px;
   padding: 24px 16px;
   max-width: 460px;
+  width: 100%;
+  box-sizing: border-box;
   margin: 24px auto;
   background-color: #1e2433;
   border-radius: 16px;
   border: 1px solid #2d3748;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 12px 30px rgb(0 0 0 / 35%);
 }
 
 .title {

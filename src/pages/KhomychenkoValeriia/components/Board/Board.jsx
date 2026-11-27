@@ -5,7 +5,9 @@ function Board({ board, cols, onOpenCell, onToggleFlag }) {
   return (
     <div
       className={styles.board}
-      style={{ gridTemplateColumns: `repeat(${cols}, 34px)` }}
+      style={{
+        gridTemplateColumns: `repeat(${cols}, var(--board-cell-size))`,
+      }}
     >
       {board.map((rowCells) =>
         rowCells.map((cell) => (

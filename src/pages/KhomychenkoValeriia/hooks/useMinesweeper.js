@@ -7,7 +7,9 @@ import {
 } from '../constants/game';
 import {
   generateField,
-  cloneBoard,
+  prepareFirstOpenBoard,
+  revealMinesOnLoss,
+  toggleFlagOnBoard,
   revealRecursive,
   checkWin,
 } from '../utils/board';
@@ -49,51 +51,49 @@ export function useMinesweeper() {
     (row, col) => {
       if (status !== GAME_STATUS.PROCESS) return;
 
-      let workingBoard = cloneBoard(board);
-      let targetCell = workingBoard[row][col];
-
+      const initialCell = board[row][col];
       if (
-        targetCell.state === CELL_STATE.OPENED ||
-        targetCell.state === CELL_STATE.FLAGGED
+        initialCell.state === CELL_STATE.OPENED ||
+        initialCell.state === CELL_STATE.FLAGGED
       ) {
         return;
       }
+
+      let workingBoard = board;
 
       if (isFirstClick) {
         setIsFirstClick(false);
         setIsRunning(true);
 
-        while (
-          workingBoard[row][col].type === CELL_TYPE.MINE ||
-          workingBoard[row][col].neighborMines > 0
-        ) {
-          workingBoard = generateField(ROWS, COLS, MINES_COUNT);
+        const prepared = prepareFirstOpenBoard(
+          workingBoard,
+          row,
+          col,
+          ROWS,
+          COLS,
+          MINES_COUNT,
+        );
+        workingBoard = prepared.board;
+
+        if (prepared.regenerated) {
+          setFlagsPlaced(0);
         }
-        setFlagsPlaced(0);
-        targetCell = workingBoard[row][col];
       }
 
+      const targetCell = workingBoard[row][col];
+
       if (targetCell.type === CELL_TYPE.MINE) {
-        for (let rIdx = 0; rIdx < ROWS; rIdx += 1) {
-          for (let cIdx = 0; cIdx < COLS; cIdx += 1) {
-            if (workingBoard[rIdx][cIdx].type === CELL_TYPE.MINE) {
-              workingBoard[rIdx][cIdx].state = CELL_STATE.OPENED;
-              if (rIdx === row && cIdx === col) {
-                workingBoard[rIdx][cIdx].isExploded = true;
-              }
-            }
-          }
-        }
-        setBoard(workingBoard);
+        const lostBoard = revealMinesOnLoss(workingBoard, row, col, ROWS, COLS);
+        setBoard(lostBoard);
         setStatus(GAME_STATUS.LOSE);
         setIsRunning(false);
         return;
       }
 
-      revealRecursive(workingBoard, row, col, ROWS, COLS);
-      setBoard(workingBoard);
+      const revealedBoard = revealRecursive(workingBoard, row, col, ROWS, COLS);
+      setBoard(revealedBoard);
 
-      if (checkWin(workingBoard, ROWS, COLS, MINES_COUNT)) {
+      if (checkWin(revealedBoard, ROWS, COLS, MINES_COUNT)) {
         setStatus(GAME_STATUS.WIN);
         setIsRunning(false);
       }
@@ -105,22 +105,11 @@ export function useMinesweeper() {
     (row, col) => {
       if (status !== GAME_STATUS.PROCESS) return;
 
-      const workingBoard = cloneBoard(board);
-      const targetCell = workingBoard[row][col];
-
-      if (targetCell.state === CELL_STATE.OPENED) return;
-
-      if (targetCell.state === CELL_STATE.CLOSED) {
-        targetCell.state = CELL_STATE.FLAGGED;
-        setFlagsPlaced((prev) => prev + 1);
-      } else if (targetCell.state === CELL_STATE.FLAGGED) {
-        targetCell.state = CELL_STATE.CLOSED;
-        setFlagsPlaced((prev) => prev - 1);
-      }
-
-      setBoard(workingBoard);
+      const result = toggleFlagOnBoard(board, row, col, flagsPlaced);
+      setBoard(result.board);
+      setFlagsPlaced(result.flagsPlaced);
     },
-    [board, status],
+    [board, status, flagsPlaced],
   );
 
   return {

@@ -1,6 +1,10 @@
 .cell {
-  width: 34px;
-  height: 34px;
+  --cell-size: 34px;
+  --cell-transition-bg: 0.15s;
+  --cell-transition-transform: 0.1s;
+
+  width: var(--cell-size);
+  height: var(--cell-size);
   border: 2px solid #4a5568;
   border-radius: 6px;
   font-size: 1rem;
@@ -11,8 +15,8 @@
   cursor: pointer;
   user-select: none;
   transition:
-    background-color 0.15s ease,
-    transform 0.1s ease;
+    background-color var(--cell-transition-bg) ease,
+    transform var(--cell-transition-transform) ease;
   padding: 0;
 }
 

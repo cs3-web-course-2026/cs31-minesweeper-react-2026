@@ -13,7 +13,11 @@ function GameStatus({ status }) {
     classNames.push(styles.lose);
   }
 
-  return <p className={classNames.join(' ')}>{message}</p>;
+  return (
+    <p role="status" aria-live="polite" className={classNames.join(' ')}>
+      {message}
+    </p>
+  );
 }
 
 export default GameStatus;
