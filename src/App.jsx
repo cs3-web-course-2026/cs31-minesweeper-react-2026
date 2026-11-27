@@ -15,6 +15,7 @@ import HrabovyiIvan from './pages/HrabovyiIvan';
 import BraginaAlona from './pages/BraginaAlona';
 import KorzhykAnton from './pages/KorzhykAnton';
 import HaponenkoMariia from './pages/HaponenkoMariia';
+import ZhydkovOleksandr from './pages/ZhydkovOleksandr';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="korzhyk-anton" element={<KorzhykAnton />} />
         <Route path="umrykhina-kseniia" element={<UmrykhinaKseniia />} />
         <Route path="haponenko-mariia" element={<HaponenkoMariia />} />
+        <Route path="zhydkov-oleksandr" element={<ZhydkovOleksandr />} />
       </Route>
     </Routes>
   );
