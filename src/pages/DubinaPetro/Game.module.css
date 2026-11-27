@@ -1,0 +1,85 @@
+@font-face {
+  /* цифровий шрифт для табло сапера  (Sizenko Alexander Style-7) */
+  font-family: "Digital-7";
+  src: url("./assets/digital-7.ttf") format("truetype");
+  font-display: swap;
+}
+
+.page {
+  --counter-width: 86px;
+  --result-width: 72px;
+  --cell-min: 28px;
+  --cell-min-mobile: 26px;
+
+  display: grid;
+  min-height: 100vh;
+  padding: 16px;
+  color: #111;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #808080;
+  place-items: center;
+}
+
+.game {
+  width: min(100%, 560px);
+  padding: 12px;
+  background: #c6c6c6;
+  border: 3px solid;
+  border-color: #fff #404040 #404040 #fff;
+  border-radius: 4px;
+  box-shadow: 0 8px 18px rgb(0 0 0 / 30%);
+}
+
+.title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.header {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 6px;
+  background: #c0c0c0;
+  border: 3px solid;
+  border-color: #777 #fff #fff #777;
+}
+
+.timer {
+  grid-column: 1;
+}
+
+.loss {
+  grid-column: 3;
+}
+
+.restart {
+  grid-column: 4;
+  justify-self: center;
+}
+
+.win {
+  grid-column: 5;
+}
+
+.mines {
+  grid-column: 7;
+}
+
+@media (width <= 480px) {
+  .page {
+    --counter-width: 50px;
+    --result-width: 40px;
+
+    padding: 14px;
+  }
+
+  .header {
+    gap: 2px;
+    padding: 10px 2px;
+  }
+}

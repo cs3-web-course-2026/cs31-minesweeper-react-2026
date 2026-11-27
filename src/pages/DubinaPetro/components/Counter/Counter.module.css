@@ -1,0 +1,38 @@
+.counter {
+  width: var(--counter-width);
+  min-height: 58px;
+  display: grid;
+  place-items: center;
+  padding: 4px 7px;
+  background: #000;
+  border: 3px solid;
+  border-color: #404040 #fff #fff #404040;
+}
+
+.label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.value {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #f00;
+  font-family: "Digital-7", "Courier New", Courier, monospace;
+  font-size: clamp(1.55rem, 6vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-shadow: 2px 0 #8b0000;
+}
+
+@media (width <= 480px) {
+  .counter {
+    width: var(--counter-width);
+  }
+}
