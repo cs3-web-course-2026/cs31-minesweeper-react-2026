@@ -201,16 +201,21 @@ function Game() {
     },
     {
       id: 221,
-      title: 'Minesweeper by Valeriia Khomychenko',
-      description:
-        'A React Minesweeper implementation with CSS Modules, safe first click, recursive reveal, timer, flagging, and win/lose detection.',
-      author: 'Valeriia Khomychenko',
-      link: 'khomychenko-valeriia',
       title: 'Classic Minesweeper by Petro Dubina',
       description:
         'A React implementation of classic Minesweeper with a timer, flags, and recursive cell reveal.',
       author: 'Petro Dubina',
       link: 'dubina-petro',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
+    {
+      id: 222,
+      title: 'Сапер',
+      description:
+        'A React Minesweeper implementation with CSS Modules, safe first click, recursive reveal, timer, flagging, and win/lose detection.',
+      author: 'Valeriia Khomychenko',
+      link: 'khomychenko-valeriia',
       difficulty: 'Intermediate',
       status: 'Complete',
     },
