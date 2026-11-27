@@ -1,0 +1,57 @@
+.pageWrapper {
+  box-sizing: border-box;
+  min-height: calc(100vh - 60px);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #2b6777;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.pageWrapper *,
+.pageWrapper *::before,
+.pageWrapper *::after {
+  box-sizing: border-box;
+}
+
+.minesweeperApp {
+  background-color: #c6c6c6;
+  border: 3px solid;
+  border-color: #fff #3a3a3a #3a3a3a #fff;
+  padding: 8px;
+  box-shadow: 0 8px 20px rgb(0 0 0 / 35%);
+}
+
+.frameInset {
+  border: 2px solid;
+  border-color: #7b7b7b #fff #fff #7b7b7b;
+  padding: 8px;
+}
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid;
+  border-color: #7b7b7b #fff #fff #7b7b7b;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+}
+
+.gameMessage {
+  min-height: 22px;
+  margin-bottom: 6px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #111;
+}
+
+.isWin {
+  color: #005c00;
+}
+
+.isLose {
+  color: #a80000;
+}

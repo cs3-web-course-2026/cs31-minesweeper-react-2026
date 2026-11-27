@@ -1,0 +1,27 @@
+.faceBtn {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1;
+  background-color: #c6c6c6;
+  border: 2px solid;
+  border-color: #fff #7b7b7b #7b7b7b #fff;
+  cursor: pointer;
+}
+
+.faceBtn:hover {
+  background-color: #d2d2d2;
+}
+
+.faceBtn:active {
+  border-color: #7b7b7b #fff #fff #7b7b7b;
+}
+
+@media (width <= 420px) {
+  .faceBtn {
+    width: 28px;
+    height: 28px;
+    font-size: 15px;
+  }
+}
