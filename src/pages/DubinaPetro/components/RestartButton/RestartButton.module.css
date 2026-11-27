@@ -1,0 +1,44 @@
+.button {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  min-width: 58px;
+  min-height: 58px;
+  padding: 0;
+  cursor: pointer;
+  background: #c0c0c0;
+  border: 3px solid;
+  border-color: #fff #404040 #404040 #fff;
+  border-radius: 0;
+  transition: none;
+}
+
+.button:hover {
+  background: #d0d0d0;
+  border-color: #fff #404040 #404040 #fff;
+  transform: none;
+}
+
+.button:active {
+  border-color: #404040 #fff #fff #404040;
+}
+
+.button:focus-visible {
+  outline: 1px dotted #404040;
+  outline-offset: -5px;
+}
+
+.face {
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  object-fit: contain;
+}
+
+@media (width <= 480px) {
+  .button {
+    width: 46px;
+    min-width: 46px;
+  }
+}
