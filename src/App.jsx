@@ -14,6 +14,7 @@ import HavrasPavlo from './pages/HavrasPavlo';
 import HrabovyiIvan from './pages/HrabovyiIvan';
 import BraginaAlona from './pages/BraginaAlona';
 import KorzhykAnton from './pages/KorzhykAnton';
+import HaponenkoMariia from './pages/HaponenkoMariia';
 import ZhydkovOleksandr from './pages/ZhydkovOleksandr';
 import DubinaPetro from './pages/DubinaPetro';
 
@@ -38,6 +39,7 @@ function App() {
         <Route path="bragina-alona" element={<BraginaAlona />} />
         <Route path="korzhyk-anton" element={<KorzhykAnton />} />
         <Route path="umrykhina-kseniia" element={<UmrykhinaKseniia />} />
+        <Route path="haponenko-mariia" element={<HaponenkoMariia />} />
         <Route path="zhydkov-oleksandr" element={<ZhydkovOleksandr />} />
         <Route path="dubina-petro" element={<DubinaPetro />} />
       </Route>

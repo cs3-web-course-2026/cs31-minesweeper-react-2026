@@ -1,0 +1,13 @@
+.gameInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--hud-gap, 40px);
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-bottom: var(--hud-margin-bottom, 20px);
+  background: #fff;
+  padding: var(--hud-padding, 10px);
+  border: 3px inset #fff;
+  border-radius: var(--hud-radius, 8px);
+}

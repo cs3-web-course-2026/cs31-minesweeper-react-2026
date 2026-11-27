@@ -1,0 +1,8 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(var(--board-cols, 9), var(--cell-size, clamp(24px, 7.5vw, 45px)));
+  gap: var(--board-gap, 2px);
+  background-color: #7b7b7b;
+  border: var(--board-border-width, 3px) inset #fff;
+  padding: var(--board-padding, 2px);
+}
