@@ -1,0 +1,20 @@
+/* RestartButton.module.css */
+.btnStart {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--color-minion-yellow);
+  border-radius: 50%;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: #fff;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnStartImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

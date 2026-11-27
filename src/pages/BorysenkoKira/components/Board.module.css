@@ -1,0 +1,9 @@
+/* Board.module.css */
+.gameBoard {
+  display: grid;
+  grid-template-columns: repeat(var(--board-cols), minmax(20px, var(--cell-size)));
+  background-color: var(--color-border);
+  border: 3px solid var(--color-denim-blue);
+  border-radius: 8px;
+  gap: 2px;
+}
