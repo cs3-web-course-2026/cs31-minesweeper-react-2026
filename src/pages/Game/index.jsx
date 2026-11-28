@@ -92,8 +92,7 @@ function Game() {
     {
       id: 5,
       title: 'Сапер',
-      description:
-        'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
+      description: 'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
       author: 'Kharyna Serhii',
       link: 'kharyna-serhii',
       difficulty: 'Beginner',
@@ -128,12 +127,11 @@ function Game() {
       link: 'bragina-alona',
       difficulty: 'Intermediate',
       status: 'Complete',
-    },
-    {
+     },
+     {
       id: 15,
       title: 'Зелений сапер',
-      description:
-        'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
+      description: 'Класична гра з таймером, прапорцями та визначенням перемоги й поразки.',
       author: 'Vasylchenko Alina',
       link: 'vasylchenko-alina',
       difficulty: 'Beginner',
@@ -158,7 +156,7 @@ function Game() {
       link: 'isaieva-anna',
       difficulty: 'Intermediate',
       status: 'Complete',
-    },
+      },
     {
       id: 16,
       title: 'Minesweeper by Ivan Hrabovyi',
