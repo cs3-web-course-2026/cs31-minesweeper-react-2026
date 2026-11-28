@@ -1,0 +1,23 @@
+.counterBox {
+  background-color: #171923;
+  color: #f6ad55;
+  font-family: monospace;
+  font-size: 1.35rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #2d3748;
+  min-width: 74px;
+  text-align: center;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  border: 0;
+}

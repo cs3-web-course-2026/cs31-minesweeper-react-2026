@@ -207,6 +207,16 @@ function Game() {
       difficulty: 'Intermediate',
       status: 'Complete',
     },
+    {
+      id: 222,
+      title: 'Сапер',
+      description:
+        'A React Minesweeper implementation with CSS Modules, safe first click, recursive reveal, timer, flagging, and win/lose detection.',
+      author: 'Valeriia Khomychenko',
+      link: 'khomychenko-valeriia',
+      difficulty: 'Intermediate',
+      status: 'Complete',
+    },
   ];
 
   return (

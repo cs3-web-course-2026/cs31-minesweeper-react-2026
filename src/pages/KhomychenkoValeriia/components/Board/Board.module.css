@@ -1,0 +1,13 @@
+.board {
+  --board-cell-size: 34px;
+
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: auto;
+  background-color: #171923;
+  border-radius: 12px;
+  border: 1px solid #2d3748;
+}
